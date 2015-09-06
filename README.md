@@ -7,6 +7,9 @@
 - **DO NOT** merge into dev unless via *pull requests*
 - Pull requests must be approved by a teammate, i.e. that the change has been successful and the code is satisfactory.
 
+###Software Engineering Practices
+- Where possible, have **unit tested** code!
+- Follow [Unity best practices](http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/)
 
 ###Workflow
 The workflow we will be a simplified version of the system described in the image below. We will mostly work out of **dev** until major milestones are reached.
@@ -16,6 +19,3 @@ The workflow we will be a simplified version of the system described in the imag
 Note: When submitting, a description of the submission is **REQUIRED**
 Include a brief description of all work done and more specifically, include whether you have made a bug fix, a feature addition, or an overhaul/addition of a system.
 
-###Software Engineering Practices
-- Where possible, have **unit tested** code!
-- Follow [Unity best practices](http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/)
