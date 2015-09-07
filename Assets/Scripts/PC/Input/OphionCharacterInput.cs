@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 public class OphionCharacterInput : RaycastCharacterInput
 {
+	public ShieldController shieldController;
 	
 	/// <summary>
 	/// IF true always run.
@@ -74,8 +75,9 @@ public class OphionCharacterInput : RaycastCharacterInput
 			swimButtonDown = false;
 		}
 
-		if (Input.GetKey (KeyCode.P) ) {
-			shieldEquipped = !shieldEquipped;
+		if (Input.GetKeyDown (KeyCode.P) ) {
+			if(shieldController.ShieldStateSwitch())
+				shieldEquipped = !shieldEquipped;
 		}
 	}
 	
