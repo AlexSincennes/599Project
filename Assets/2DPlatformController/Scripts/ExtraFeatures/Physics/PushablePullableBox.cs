@@ -110,7 +110,7 @@ public class PushablePullableBox : Platform {
 	/// Moves during late update like a normal character.
 	/// </summary>
 	void LateUpdate() {
-		bool grounded = IsGrounded(groundedLookAhead);
+		bool grounded = IsGrounded(groundedLookAhead, true);
 		if (!grounded) UnLatch();
 		MoveInY(grounded);
 		// Move in X
@@ -223,7 +223,7 @@ public class PushablePullableBox : Platform {
 	/// <param name="direction">Direction of the latch.</param>
 	private void Latch(RaycastCharacterController controller, RC_Direction direction) {
 		BoxPuller puller = controller.GetComponent<BoxPuller>();
-		if (IsGrounded(groundedLookAhead) && (puller == null || puller.CanLatch(this) )) {
+		if (IsGrounded(groundedLookAhead, true) && (puller == null || puller.CanLatch(this) )) {
 			this.direction = direction;
 			this.controller = controller;
 			gameObject.layer = latchedLayer;
@@ -260,7 +260,7 @@ public class PushablePullableBox : Platform {
 	/// <summary>
 	/// Determines whether this instance is grounded for the specified offset.
 	/// </summary>
-	public bool IsGrounded(float offset, bool includeClimables = true){
+	public bool IsGrounded(float offset, bool includeClimables){
 		foreach (RaycastCollider foot in bottom) {
 			if (foot.IsColliding(1 << backgroundLayer , offset)) return true;
 		}

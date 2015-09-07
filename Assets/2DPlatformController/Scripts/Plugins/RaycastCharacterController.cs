@@ -271,7 +271,7 @@ public class RaycastCharacterController : MonoBehaviour {
 	/// <param name='offset'>
 	/// How much to look ahead from the feet colliders when determining if the character is grounded.
 	/// </param>
-	public bool IsGrounded(float offset, bool includeClimables = true){
+	public bool IsGrounded(float offset, bool includeClimables){
 		foreach (RaycastCollider foot in feetColliders) {
 			if (foot.IsColliding(1 << backgroundLayer | 1 << passThroughLayer | (includeClimables ? 1 << climableLayer : 0) , offset)) return true;
 		}
@@ -447,7 +447,7 @@ public class RaycastCharacterController : MonoBehaviour {
 	void LateUpdate() {
 		frameTime = FrameTime;
 		if (controllerActive) {
-			bool grounded = IsGrounded(groundedLookAhead);
+			bool grounded = IsGrounded(groundedLookAhead, true);
 			if (grounded) {
 				fallingTime = 0.0f;
 			} else {

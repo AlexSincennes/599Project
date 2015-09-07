@@ -30,7 +30,7 @@ public class EnemyBounceAndFall : RaycastCharacterController , IEnemy {
 	void LateUpdate () {
 		if (controllerActive) {
 			frameTime = RaycastCharacterController.FrameTime;
-			bool grounded = IsGrounded(groundedLookAhead);
+			bool grounded = IsGrounded(groundedLookAhead, true);
 			if (stunTimer > 0 ) {
 				stunTimer -= frameTime;
 				ForceSetCharacterState(CharacterState.STUNNED);
