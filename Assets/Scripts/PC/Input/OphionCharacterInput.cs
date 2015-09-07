@@ -4,13 +4,15 @@ using System.Collections;
 /// <summary>
 /// A simple character input. Arrows to move, left SHIFT to run, SPACE to jump.
 /// </summary>
-public class CharacterInput : RaycastCharacterInput
+public class OphionCharacterInput : RaycastCharacterInput
 {
 	
 	/// <summary>
 	/// IF true always run.
 	/// </summary>
 	public bool alwaysRun;
+	
+	public bool shieldEquipped;
 	
 	/// <summary>
 	/// If true dropping from a passthrough platform requires user to press down and then jump.
@@ -70,6 +72,10 @@ public class CharacterInput : RaycastCharacterInput
 		} else {
 			jumpButtonDown = false;
 			swimButtonDown = false;
+		}
+
+		if (Input.GetKey (KeyCode.P) ) {
+			shieldEquipped = !shieldEquipped;
 		}
 	}
 	
