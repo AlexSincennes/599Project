@@ -14,7 +14,7 @@ public class ShieldController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// define what character can and can't do based on shield state
-		if(charinput.shieldEquipped) {
+		if(charinput.shieldEquipped && !controller.IsLedgeHanging) {
 			controller.ledgeHanging.canLedgeHang = false;
 		} else {
 			controller.ledgeHanging.canLedgeHang = true;
