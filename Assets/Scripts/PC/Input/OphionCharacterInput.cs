@@ -7,6 +7,7 @@ using System.Collections;
 public class OphionCharacterInput : RaycastCharacterInput
 {
 	public ShieldController shieldController;
+	public GameObject avatar;
 	
 	/// <summary>
 	/// IF true always run.
@@ -78,6 +79,14 @@ public class OphionCharacterInput : RaycastCharacterInput
 		if (Input.GetKeyDown (KeyCode.P) ) {
 			if(shieldController.ShieldStateSwitch())
 				shieldEquipped = !shieldEquipped;
+			Material mat = avatar.GetComponent<SkinnedMeshRenderer>().material;
+			if(shieldEquipped) {
+				mat.color = new Color(0.8f,0.0f,0.0f);
+			}
+			else
+			{
+				mat.color = new Color(0.54f,0.64f,0.86f);
+			}
 		}
 	}
 	

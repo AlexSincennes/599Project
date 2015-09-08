@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ShieldController : MonoBehaviour {
 	
-	public RaycastCharacterController2D controller;
+	public OphionRaycastCharacterController controller;
 
 	// Use this for initialization
 	void Start () {
