@@ -71,7 +71,5 @@ public class SimpleCharacterInput : RaycastCharacterInput
 			jumpButtonDown = false;
 			swimButtonDown = false;
 		}
-	}
-	
+	}	
 }
-
