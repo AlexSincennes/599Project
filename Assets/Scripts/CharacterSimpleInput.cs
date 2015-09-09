@@ -27,4 +27,6 @@ public class CharacterSimpleInput : MonoBehaviour {
 		}
 		transform.Translate (new Vector3(movement,0,0));
 	}
+
+
 }

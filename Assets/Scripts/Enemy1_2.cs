@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy1 : MonoBehaviour {
+public class Enemy1_2 : MonoBehaviour {
 	public const int WALK = 1;
 	public const int ATTACK = 2;
 	public const int IDLE = 3;
@@ -12,12 +12,12 @@ public class Enemy1 : MonoBehaviour {
 	public Vector3 targetPosition;
 	public Vector3 startPosition;
 	public float Speed = 3;
-	public GameObject Arrow;
+	public GameObject Bullet;
 	public Transform Bow;
 	public float attackRate;
 
-	private int state = WALK;
-	private bool moveLeft = true;
+	public int state = WALK;
+	public bool moveLeft = true;
 	private bool canAttack = false;
 	private float lastAttackTime = 0;
 
@@ -33,16 +33,6 @@ public class Enemy1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		float dis = 0;
-		dis = Vector3.Distance(player.position, transform.position);
-
-		if (dis > attackDis) {
-			SetState (WALK);
-
-		} else if(state != IDLE && moveLeft && canAttack){
-			SetState (ATTACK);
-		}
 
 		switch (state) {
 		case WALK:
@@ -69,8 +59,9 @@ public class Enemy1 : MonoBehaviour {
 			break;
 		case ATTACK:
 			if(Time.time - lastAttackTime > attackRate)
-			{
-				GameObject temp = (GameObject) Instantiate( Arrow, Bow. position, Arrow.transform.rotation );
+			{ 
+				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
+				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
 				lastAttackTime = Time.time;
 			}
 				
@@ -86,14 +77,14 @@ public class Enemy1 : MonoBehaviour {
 			break;
 		}
 
-		targetPosition.y = transform.position.y;
+		//targetPosition.y = transform.position.y;
 		Vector3 targetRotation = Vector3.zero;
 		if (moveLeft && state != ATTACK&& state != IDLE) {
 			targetRotation = new Vector3 (0, 180, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 5);
+			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 20);
 		} else if (!moveLeft && state != ATTACK&& state != IDLE){
 			targetRotation = new Vector3 (0, 0, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 5);
+			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 20);
 		}
 
 		//
@@ -101,12 +92,7 @@ public class Enemy1 : MonoBehaviour {
 		//transform.rotation = Quaternion.Lerp(this.transform.rotation,rotationTarget,Time.deltaTime * 5);
 
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * Speed);
-		if (transform.eulerAngles.y - targetRotation.y <=0f) {
-			canAttack = true;
-		} else 
-		{
-			canAttack = false;
-		}
+
 	}
 
 	public void SetState(int state) 
@@ -129,5 +115,9 @@ public class Enemy1 : MonoBehaviour {
 			break;
 		}
 	}
+
+
+
+
 }
 	
