@@ -5,14 +5,22 @@ public class ShieldTest : MonoBehaviour {
 	public bool canReflect = false;
 	public GameObject reflectItem;
 	public Transform attacker;
+	public bool shieldEquip = false;
+	public GameObject shieldmesh;
+
 	// Use this for initialization
 	void Start () {
-	
+		shieldmesh.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (canReflect) 
+
+		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+			shieldEquip = !shieldEquip;
+			shieldmesh.SetActive(shieldEquip);
+		}
+		if (shieldEquip && canReflect && Input.GetKey(KeyCode.Mouse1)) 
 		{
 			//Debug.Log(attacker.gameObject.name+"------------alalal");
 

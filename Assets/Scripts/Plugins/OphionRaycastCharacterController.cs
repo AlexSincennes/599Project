@@ -18,7 +18,7 @@ public class OphionRaycastCharacterController : RaycastCharacterController
 	// Use this for initialization
 	void Start () {
 		if (!debug) {
-			debugText.text = "";
+			//debugText.text = "";
 		}
 	}
 	
@@ -40,7 +40,9 @@ public class OphionRaycastCharacterController : RaycastCharacterController
 			}
 		} 
 		else {
-			blockText.text = "";
+			if(debug){
+				blockText.text = "";
+			}
 		}
 
 	}

@@ -4,11 +4,13 @@ using System.Collections;
 public class ShieldController : MonoBehaviour
 {	
 	public float deflectTime;
-	public GameObject Bullet;
 	public OphionRaycastCharacterInput ophionInput;
 
+	public bool canReflect = false;
+	public GameObject reflectItem;
+	public Transform attacker;
+
 	private float lastDeflectTime = 0;
-	private bool canDeflect = false;
 
 	// Use this for initialization
 	void Start()
@@ -18,6 +20,7 @@ public class ShieldController : MonoBehaviour
 
 	void Update()
 	{
+		/*
 		print("DEFLECT");
 		//If the block button was pressed.
 		if (ophionInput.blockButtonDown) {
@@ -29,14 +32,24 @@ public class ShieldController : MonoBehaviour
 			else{
 				canDeflect = false;
 			}
-
 		}
+		*/
 	}
 
 	void OnTriggerEnter(Collider other) 
 	{
 		//If the player is blocking
 		if(ophionInput.blockButtonDown){
+			if (other.gameObject.tag == "Bullet")
+			{
+				Destroy(other.transform.parent.gameObject);
+
+				GameObject temp = (GameObject) Instantiate( reflectItem, transform.position,reflectItem.transform.rotation );
+				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
+				temp.transform.GetComponentInChildren<BulletTest>().enemy = attacker;
+				canReflect = false;
+			}
+			/*
 			//If the player can deflect
 			if(canDeflect){
 				if (other.gameObject.tag == "Bullet") {
@@ -54,6 +67,7 @@ public class ShieldController : MonoBehaviour
 			else{
 				Destroy(other);
 			}
+			*/
 		}
 	}
 }
