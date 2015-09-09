@@ -15,12 +15,14 @@ public class DetectEnemy : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) 
 	{
-		transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
+		if (other.gameObject.tag == "Player")
+			transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
 
 	}
 
 	void OnTriggerExit(Collider other) 
 	{
+
 		if (other.gameObject.tag == "Player")
 			transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
 	}
