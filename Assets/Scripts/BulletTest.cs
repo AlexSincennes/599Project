@@ -9,7 +9,7 @@ public class BulletTest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		if (shooter.eulerAngles.y <10) {
+		if (shooter.eulerAngles.y < 10) {
 			isLeft = false;
 			targetposion = transform.parent.position - Enemy1_2.player.position;
 		} else  if (shooter.eulerAngles.y > 10)
@@ -40,7 +40,7 @@ public class BulletTest : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if(other.gameObject.tag == "Terrain" || other.gameObject.tag == "Player")
+		if(other.gameObject.tag == "Terrain" || other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
 			Destroy(transform.parent.gameObject);
 	}
 }

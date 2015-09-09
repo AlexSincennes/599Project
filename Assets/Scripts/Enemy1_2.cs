@@ -44,7 +44,7 @@ public class Enemy1_2 : MonoBehaviour {
 					moveLeft = false;
 				}else
 				{
-					targetPosition = new Vector3(startPosition.x - patrolDis, transform.position.y ,0);
+					targetPosition = new Vector3(startPosition.x - patrolDis, transform.position.y ,-1);
 				}
 			}else
 			{
@@ -53,7 +53,7 @@ public class Enemy1_2 : MonoBehaviour {
 					moveLeft = true;
 				}else
 				{
-					targetPosition = new Vector3(startPosition.x + patrolDis, transform.position.y ,0);
+					targetPosition = new Vector3(startPosition.x + patrolDis, transform.position.y ,-1);
 				}
 			}
 			break;

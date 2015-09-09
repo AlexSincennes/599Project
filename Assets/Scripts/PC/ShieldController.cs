@@ -3,43 +3,57 @@ using System.Collections;
 
 public class ShieldController : MonoBehaviour
 {	
-	public OphionRaycastCharacterController controller;
+	public float deflectTime;
+	public GameObject Bullet;
+	public OphionRaycastCharacterInput ophionInput;
+
+	private float lastDeflectTime = 0;
+	private bool canDeflect = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 	
 	}
-	
-	/// <summary>
-	/// Switches the state of the shield if possible (equipped->unequipped and vice-versa).
-	/// </summary>
-	/// <returns><c>true</c>, if state was switched <c>false</c> otherwise.</returns>
-	public bool ShieldStateSwitch () {
-		// define what character can and can't do based on shield state
-		if(controller.ledgeHanging.canLedgeHang == true) {
-			if(CanEquipShield()) {
-				controller.ledgeHanging.canLedgeHang = false;
-				controller.climbing.allowClimbing = false;
-				Debug.Log("Equipped shield.");
-				return true;
-			}
-			else
-				return false;
-		}
-		else {
-			if(CanEquipShield()) {
-				controller.ledgeHanging.canLedgeHang = true;
-				controller.climbing.allowClimbing = true;
-				Debug.Log("Unequipped shield.");
-				return true;
-			}
-			else
-				return false;
-		}
 
+	void Update()
+	{
+		print("DEFLECT");
+		//If the block button was pressed.
+		if (ophionInput.blockButtonDown) {
+			if(Time.time - lastDeflectTime < deflectTime)
+			{
+				canDeflect = true;
+
+			}
+			else{
+				canDeflect = false;
+			}
+
+		}
 	}
 
-	private bool CanEquipShield () {
-		return !controller.IsLedgeHanging && !controller.StartedClimbing;
+	void OnTriggerEnter(Collider other) 
+	{
+		//If the player is blocking
+		if(ophionInput.blockButtonDown){
+			//If the player can deflect
+			if(canDeflect){
+				if (other.gameObject.tag == "Bullet") {
+					//Get the shooter position from the bullet and destroy it
+					Transform bulletOrigin = other.GetComponentInChildren<BulletTest>().shooter;
+					Destroy(other);
+
+					//Generate a new bullet aimed at the shooter
+					GameObject temp = (GameObject) Instantiate( Bullet, transform.position , Bullet.transform.rotation );
+					temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
+					lastDeflectTime = Time.time;
+				}
+			}
+			//Make the bullet harmless
+			else{
+				Destroy(other);
+			}
+		}
 	}
 }

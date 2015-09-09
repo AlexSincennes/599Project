@@ -42,6 +42,33 @@ public class OphionSimpleCharacterInput : OphionRaycastCharacterInput
 			}
 		}
 
+		if (Input.GetKeyDown(KeyCode.D)||Input.GetKeyDown(KeyCode.A))
+		{
+			if(!shieldEquipButtonDown)
+			{
+				for(int i =0; i<10000000; i++);
+				shield.transform.Translate(new Vector3(-0.27f, 0.1f, -0.2f));
+			}
+			if(shieldEquipButtonDown)
+			{
+				for(int i =0; i<10000000; i++);
+				shield.transform.Translate(new Vector3(-0.43f, -0.1f, 0.2f));
+			}
+		}
+		else if(Input.GetKeyUp(KeyCode.D)||Input.GetKeyUp(KeyCode.A))
+		{
+			if(!shieldEquipButtonDown)
+			{
+				for(int i =0; i<10000000; i++);
+				shield.transform.Translate(new Vector3(0.27f, -0.1f, 0.2f));
+			}
+			if(shieldEquipButtonDown)
+			{
+				for(int i =0; i<10000000; i++);
+				shield.transform.Translate(new Vector3(0.43f, 0.1f, -0.2f));
+			}
+		}
+
 		//Block - Secondary Mouse Button
 		if (Input.GetKeyDown (KeyCode.Mouse1) && shieldEquipButtonDown) {
 			blockButtonDown = true;

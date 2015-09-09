@@ -21,7 +21,6 @@ public class SimpleCharacterInput : RaycastCharacterInput
 
 	void Update ()
 	{
-		
 		if (Input.GetKey(KeyCode.R)) {
 			Application.LoadLevel(0);
 		}
