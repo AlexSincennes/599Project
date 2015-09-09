@@ -47,10 +47,19 @@ public class BulletTest : MonoBehaviour {
 	void OnTriggerEnter(Collider other) 
 	{
 		if (other.gameObject.tag == "Player" && shooter.name != "Shield") {
-
+			ShieldTest temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>();
 			//other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().reflectItem = this.transform.parent.gameObject;
-			other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().attacker = shooter;
-			other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().canReflect = true;
+			if(temp.shieldEquip)
+			{
+				temp.attacker = shooter;
+				temp.canReflect = true;
+				temp.startClock = true;
+			}else
+			{
+				Application.LoadLevel(0);
+			}
+
+
 			Destroy(transform.parent.gameObject);
 			
 		}

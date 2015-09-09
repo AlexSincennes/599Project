@@ -7,21 +7,46 @@ public class ShieldTest : MonoBehaviour {
 	public Transform attacker;
 	public bool shieldEquip = false;
 	public GameObject shieldmesh;
-	public GameObject shieldmeshBack;
+	//public GameObject shieldmeshBack;
+
+	public bool startClock = false;
+	
+	private float lastTime;
 
 	// Use this for initialization
 	void Start () {
 		shieldmesh.SetActive (false);
-		shieldmeshBack.SetActive(true);
+		//shieldmeshBack.SetActive(true);
+		lastTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (canReflect && startClock) 
+		{
+			lastTime = Time.time;
+			startClock = false;
+		}
+		
+		if (Time.time - lastTime > 0.2f) 
+		{
+			canReflect = false;
+		}
+
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
 			shieldEquip = !shieldEquip;
 			shieldmesh.SetActive(shieldEquip);
-			shieldmeshBack.SetActive(!shieldEquip);
+			//shieldmeshBack.SetActive(!shieldEquip);
+			if(shieldEquip){
+				transform.parent.gameObject.GetComponent<RaycastCharacterController>().movement.walkSpeed = 1;
+				transform.parent.gameObject.GetComponent<RaycastCharacterController>().movement.runSpeed = 2;
+			}else
+			{
+				transform.parent.gameObject.GetComponent<RaycastCharacterController>().movement.walkSpeed = 3;
+				transform.parent.gameObject.GetComponent<RaycastCharacterController>().movement.runSpeed = 5.5f;
+			}
+
 			
 		}
 		if (shieldEquip && canReflect && Input.GetKey(KeyCode.Mouse1)) 
