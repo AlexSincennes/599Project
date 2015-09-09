@@ -12,6 +12,7 @@ public class Enemy1_2 : MonoBehaviour {
 	public Vector3 targetPosition;
 	public Vector3 startPosition;
 	public float Speed = 3;
+	public float RotateSpeed = 20;
 	public GameObject Bullet;
 	public Transform Bow;
 	public float attackRate;
@@ -81,10 +82,10 @@ public class Enemy1_2 : MonoBehaviour {
 		Vector3 targetRotation = Vector3.zero;
 		if (moveLeft && state != ATTACK&& state != IDLE) {
 			targetRotation = new Vector3 (0, 180, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 20);
+			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
 		} else if (!moveLeft && state != ATTACK&& state != IDLE){
 			targetRotation = new Vector3 (0, 0, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * 20);
+			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
 		}
 
 		//
