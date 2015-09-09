@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShieldEquip : RaycastCharacterInput {
+public class ShieldEquip : MonoBehaviour {
 
 	public bool shieldEquipped;
 	//private Vector3 moveDirection = Vector3.zero;
@@ -34,8 +34,6 @@ public class ShieldEquip : RaycastCharacterInput {
 				controller.Move(moveDirection);
 				transform.Rotate(Vector3.up,45F);*/
 			}
-			
-		
 		}
 	}
 }

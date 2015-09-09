@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShieldController : MonoBehaviour {
-	
+public class ShieldController : MonoBehaviour
+{	
 	public OphionRaycastCharacterController controller;
 
 	// Use this for initialization

@@ -4,10 +4,15 @@ using System.Collections;
 /// <summary>
 /// Abstract class for character input, extend this to provide your own input.
 /// </summary>
-public abstract class OphionRaycastCharacterInput : RaycastCharacterInput {
+public abstract class OphionRaycastCharacterInput : RaycastCharacterInput
+{
+	/// <summary>
+	/// Was the shield equip button pressed this frame.
+	/// </summary>
+	virtual public bool shieldEquipButtonDown{get; protected set;}
 
 	/// <summary>
-	/// Was the shield button pressed this frame.
+	/// Was the block button pressed this frame.
 	/// </summary>
-	virtual public bool shieldButtonToggle{get; protected set;}
+	virtual public bool blockButtonDown{get; protected set; }
 }

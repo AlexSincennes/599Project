@@ -32,13 +32,13 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		x = 0;
 		y = 0;
 		
-		if (Input.GetKey("right") && !Input.GetKey("left")) {
+		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) {
 			x = 0.5f;
 			movingDirection = 1;
-		} else if (Input.GetKey("left") && !Input.GetKey("right")) {
+		} else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) {
 			x = -0.5f;
 			movingDirection = -1;
-		} else if (Input.GetKey("right") && Input.GetKey("left")){
+		} else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)){
 			x = movingDirection / 2.0f;
 		}
 	
@@ -47,9 +47,9 @@ public class SimpleCharacterInput : RaycastCharacterInput
 			x *= 2;
 		}
 		
-		if (Input.GetKey("up") ) {
+		if (Input.GetKey(KeyCode.W) ) {
 			y = 1;
-		} else if (Input.GetKey("down") ) {
+		} else if (Input.GetKey(KeyCode.S) ) {
 			y = -1;
 			if (!jumpAndDownForDrop) dropFromPlatform = true;
 		}
@@ -57,7 +57,7 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		if (Input.GetKey(KeyCode.Space) ) {
 			jumpButtonHeld = true;
 			if (Input.GetKeyDown(KeyCode.Space)) {
-				if (jumpAndDownForDrop && Input.GetKey("down")) {
+				if (jumpAndDownForDrop && Input.GetKey(KeyCode.S)) {
 					dropFromPlatform = true;
 				} else {
 					jumpButtonDown = true;	

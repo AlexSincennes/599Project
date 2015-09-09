@@ -4,8 +4,8 @@ using System.Collections;
 /// <summary>
 /// Abstract class for character input, extend this to provide your own input.
 /// </summary>
-public abstract class RaycastCharacterInput : MonoBehaviour {
-	
+public abstract class RaycastCharacterInput : MonoBehaviour
+{	
 	/// <summary>
 	/// The x movement. Use 1.0f or -1.0f to run. Smaller values to walk.
 	/// </summary>
@@ -36,6 +36,10 @@ public abstract class RaycastCharacterInput : MonoBehaviour {
 	/// </summary>
 	virtual public bool dropFromPlatform{get; protected set;}
 
+	/// <summary>
+	/// Was the shield button pressed this frame.
+	/// </summary>
+	virtual public bool shieldButtonToggle{get; protected set;}
 	/// <summary>
 	/// Stop jump from happening, useful for platforms that don't let you jump (or special jump behaviour).
 	/// </summary>

@@ -4,8 +4,8 @@ using System.Collections;
 /// <summary>
 /// Raycast character controller a controller for 2D platform games.
 /// </summary>
-public class RaycastCharacterController : MonoBehaviour {
-	
+public class RaycastCharacterController : MonoBehaviour
+{	
 	/// <summary>
 	/// The feet colliders. These colliders push the characters upwards and also hnadle climbing.
 	/// </summary>
