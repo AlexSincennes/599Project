@@ -54,15 +54,13 @@ public class BulletTest : MonoBehaviour {
 			Destroy(transform.parent.gameObject);
 			
 		}
-		Debug.Log (other.transform.parent.name +"------------hahaha");
-		if (other.transform.parent.gameObject.tag == "Enemy" ) 
+		//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
+		if (other.transform.gameObject.tag == "Enemy" && shooter.name == "Shield") 
 		{
-			//Debug.Log(shooter.gameObject.name+"------------hahaha");
+			Destroy(other.transform.parent.gameObject);
+			Destroy(transform.parent.gameObject);
 		}
 	}
 
-	void OnCollisionEnter(Collision coll)
-	{
-		Debug.Log (coll.transform.parent.name +"------------hahaha");
-	}
+
 }
