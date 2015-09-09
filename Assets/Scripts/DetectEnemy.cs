@@ -23,8 +23,12 @@ public class DetectEnemy : MonoBehaviour {
 	void OnTriggerExit(Collider other) 
 	{
 
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player") 
+		{
 			transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
+			GameObject.FindGameObjectWithTag("Player").transform.parent.gameObject.GetComponentInChildren<ShieldTest>().canReflect = false;
+		}
+			
 	}
 	
 	void OnCollisionEnter(Collision collision) 
