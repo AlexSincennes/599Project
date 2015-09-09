@@ -7,10 +7,12 @@ public class ShieldTest : MonoBehaviour {
 	public Transform attacker;
 	public bool shieldEquip = false;
 	public GameObject shieldmesh;
+	public GameObject shieldmeshBack;
 
 	// Use this for initialization
 	void Start () {
 		shieldmesh.SetActive (false);
+		shieldmeshBack.SetActive(true);
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,8 @@ public class ShieldTest : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
 			shieldEquip = !shieldEquip;
 			shieldmesh.SetActive(shieldEquip);
+			shieldmeshBack.SetActive(!shieldEquip);
+			
 		}
 		if (shieldEquip && canReflect && Input.GetKey(KeyCode.Mouse1)) 
 		{
