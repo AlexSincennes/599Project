@@ -9,23 +9,26 @@ public class BulletTest : MonoBehaviour {
 	
 	public Transform enemy;
     public float speed=5;
+	private Vector3 oriSpeed;
 	// Use this for initialization
 	void Start ()
     {
         Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
         float dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
         transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
-        this.GetComponent<Rigidbody>().velocity = new Vector3(speed * Mathf.Sin(dirEuler), speed * Mathf.Cos(dirEuler), 0);
+		oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
+		this.GetComponent<Rigidbody>().velocity = oriSpeed;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {	
+		oriSpeed = this.GetComponent<Rigidbody> ().velocity;
 	}	
 	
 	
 	
-	void OnTriggerEnter(Collider other) 
+	void OnCollisionEnter(Collision other) 
 	{
 		if (other.gameObject.tag == "Player") 
 		{
@@ -40,7 +43,11 @@ public class BulletTest : MonoBehaviour {
 				//temp.attacker = shooter;
 				//temp.canReflect = true;
 				//temp.startClock = true;
-				transform.GetComponent<Rigidbody>().velocity = -transform.GetComponent<Rigidbody>().velocity;
+				transform.GetComponent<CapsuleCollider>().isTrigger = true;
+				transform.GetComponent<Rigidbody>().velocity = -oriSpeed;
+				transform.GetComponent<CapsuleCollider>().isTrigger = false;
+				//transform.GetComponent<Rigidbody>().c
+				//transform.GetComponent<Rigidbody>().isKinematic = false;
 				shooter = other.transform;
 			}
 
