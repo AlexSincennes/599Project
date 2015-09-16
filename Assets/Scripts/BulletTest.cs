@@ -3,43 +3,24 @@ using System.Collections;
 
 public class BulletTest : MonoBehaviour {
 	public Transform shooter;
-	private float dis;
-	private Vector3 targetposion;
-	private bool isLeft = false;
+	//private float dis;
+	//private Vector3 targetposion;
+	//private bool isLeft = false;
 	
 	public Transform enemy;
+    public float speed=5;
 	// Use this for initialization
-	void Start () {
-		if (shooter.name != "Shield") {
-			if (shooter.eulerAngles.y < 10) {
-				isLeft = false;
-				targetposion = transform.parent.position - enemy.position;
-			} else  if (shooter.eulerAngles.y > 10) {
-				isLeft = true;
-				targetposion = enemy.position - transform.parent.position;
-			}
-		} else {
-			isLeft = true;
-			targetposion = enemy.position - transform.parent.position;
-		}
-		
-		
-		
-		transform.eulerAngles = new Vector3(0,0,(Mathf.Acos(Vector3.Dot(targetposion,Vector3.up) / targetposion.magnitude))* Mathf.Rad2Deg);
-		//transform.eulerAngles = new Vector3 (0,0,initialAngle);
-		//dis = Mathf.Abs (transform.position.x - Enemy1_2.player.position.x); 
-	}
+	void Start ()
+    {
+        Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
+        float dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
+        transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
+        this.GetComponent<Rigidbody>().velocity = new Vector3(speed * Mathf.Sin(dirEuler), speed * Mathf.Cos(dirEuler), 0);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
-		//transform.position = Vector3.MoveTowards(transform.position, targetposion , Time.deltaTime * Speed);
-		if (!isLeft) {
-			transform.parent.Translate (-targetposion*Time.deltaTime);
-		} else  if (isLeft) {
-			transform.parent.Translate (targetposion*Time.deltaTime);
-		}
-		
+	void Update ()
+    {	
 	}	
 	
 	
