@@ -3,34 +3,58 @@ using System.Collections;
 
 public class BulletTest : MonoBehaviour {
 	public Transform shooter;
-	//private float dis;
-	//private Vector3 targetposion;
-	//private bool isLeft = false;
+    //private float dis;
+    //private Vector3 targetposion;
+    //private bool isLeft = false;
+    public int i=0;
 	
 	public Transform enemy;
     public float speed=5;
 	private Vector3 oriSpeed;
 	private Rigidbody myRigid;
+    private Vector3 angle;
 	// Use this for initialization
 	void Start ()
     {
 		myRigid = this.GetComponent<Rigidbody> ();
         Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
         float dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
-        transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
-		oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
-		myRigid.velocity = oriSpeed;
+        float delta = dirEuler / 10f;// * Mathf.Sign(enemyPos.x);
+
+        while (enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / 2.0f / speed / speed - enemyPos.y < 0)
+            dirEuler -= delta;
+
+        delta *= 0.5f;
+        dirEuler += delta;
+        
+        while (true)
+        {
+            float temp = enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / speed / speed / 2.0f - enemyPos.y;
+            if (Mathf.Abs(temp) < 0.05)
+                break;
+            delta *= 0.5f;
+            if (temp > 0)
+                dirEuler += delta;
+            else
+                dirEuler -= delta;
+        }
+        angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
+        myRigid.velocity=oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
     }
 	
 	// Update is called once per frame
 	void Update ()
-    {	
-		oriSpeed = myRigid.velocity;
-	}	
-	
-	
-	
-	void OnCollisionEnter(Collision other) 
+    {
+        if (myRigid.velocity.magnitude < 2) return;
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Acos(oriSpeed.y/oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
+        oriSpeed = myRigid.velocity;
+        transform.eulerAngles = new Vector3(0, 0, -Mathf.Acos(oriSpeed.y / oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
+
+    }
+
+
+
+    void OnCollisionEnter(Collision other) 
 	{
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
