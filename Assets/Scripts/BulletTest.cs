@@ -27,25 +27,29 @@ public class BulletTest : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.gameObject.tag == "Player" && shooter.name != "Shield") {
+		if (other.gameObject.tag == "Player") 
+		{
+			Application.LoadLevel(0);
+		}
+		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {
+			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
 			ShieldTest temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>();
 			//other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().reflectItem = this.transform.parent.gameObject;
 			if(temp.shieldEquip)
 			{
-				temp.attacker = shooter;
-				temp.canReflect = true;
-				temp.startClock = true;
-			}else
-			{
-				Application.LoadLevel(0);
+				//temp.attacker = shooter;
+				//temp.canReflect = true;
+				//temp.startClock = true;
+				transform.GetComponent<Rigidbody>().velocity = -transform.GetComponent<Rigidbody>().velocity;
+				shooter = other.transform;
 			}
 
 
-			Destroy(transform.parent.gameObject);
+			//Destroy(transform.parent.gameObject);
 			
 		}
-		//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
-		if (other.transform.gameObject.tag == "Enemy" && shooter.name == "Shield") 
+
+		if (other.gameObject.tag == "Enemy" && shooter.name == "Shield") 
 		{
 			Destroy(other.transform.parent.gameObject);
 			Destroy(transform.parent.gameObject);

@@ -10,7 +10,7 @@ using System.Collections;
 /// </summary>
 public class SetUpPhysics : MonoBehaviour {
 	
-	public float gravity = -12.0f;
+	public float gravity = -45.0f;
 	public RaycastCharacterController character;
 	public float timeScale = 1.2f;
 

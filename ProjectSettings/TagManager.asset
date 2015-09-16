@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - WALLJUMP
   - Bullet
+  - Shield
   layers:
   - Default
   - TransparentFX
