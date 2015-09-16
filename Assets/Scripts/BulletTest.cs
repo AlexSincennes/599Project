@@ -10,27 +10,29 @@ public class BulletTest : MonoBehaviour {
 	public Transform enemy;
     public float speed=5;
 	private Vector3 oriSpeed;
+	private Rigidbody myRigid;
 	// Use this for initialization
 	void Start ()
     {
+		myRigid = this.GetComponent<Rigidbody> ();
         Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
         float dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
         transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
 		oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
-		this.GetComponent<Rigidbody>().velocity = oriSpeed;
+		myRigid.velocity = oriSpeed;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {	
-		oriSpeed = this.GetComponent<Rigidbody> ().velocity;
+		oriSpeed = myRigid.velocity;
 	}	
 	
 	
 	
 	void OnCollisionEnter(Collision other) 
 	{
-		if (other.gameObject.tag == "Player") 
+		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
 			Application.LoadLevel(0);
 		}
@@ -44,7 +46,7 @@ public class BulletTest : MonoBehaviour {
 				//temp.canReflect = true;
 				//temp.startClock = true;
 				transform.GetComponent<CapsuleCollider>().isTrigger = true;
-				transform.GetComponent<Rigidbody>().velocity = -oriSpeed;
+				myRigid.velocity = -oriSpeed;
 				transform.GetComponent<CapsuleCollider>().isTrigger = false;
 				//transform.GetComponent<Rigidbody>().c
 				//transform.GetComponent<Rigidbody>().isKinematic = false;
@@ -61,6 +63,8 @@ public class BulletTest : MonoBehaviour {
 			Destroy(other.transform.parent.gameObject);
 			Destroy(transform.parent.gameObject);
 		}
+
+
 	}
 
 
