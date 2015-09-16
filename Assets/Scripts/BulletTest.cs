@@ -45,7 +45,7 @@ public class BulletTest : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (myRigid.velocity.magnitude < 2) return;
+        if (myRigid.velocity.magnitude < 10) return;
         transform.eulerAngles = new Vector3(0, 0, Mathf.Acos(oriSpeed.y/oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
         oriSpeed = myRigid.velocity;
         transform.eulerAngles = new Vector3(0, 0, -Mathf.Acos(oriSpeed.y / oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
