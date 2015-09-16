@@ -13,9 +13,12 @@ public class BulletTest : MonoBehaviour {
 	private Vector3 oriSpeed;
 	private Rigidbody myRigid;
     private Vector3 angle;
+	public float liveTime;
+	private float startTime;
 	// Use this for initialization
 	void Start ()
     {
+		startTime = Time.time;
 		myRigid = this.GetComponent<Rigidbody> ();
         Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
         float dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
@@ -30,7 +33,7 @@ public class BulletTest : MonoBehaviour {
         while (true)
         {
             float temp = enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / speed / speed / 2.0f - enemyPos.y;
-            if (Mathf.Abs(temp) < 0.05)
+            if (Mathf.Abs(temp) < 0.05f)
                 break;
             delta *= 0.5f;
             if (temp > 0)
@@ -40,15 +43,22 @@ public class BulletTest : MonoBehaviour {
         }
         angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
         myRigid.velocity=oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
+
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+		if (Time.time - startTime > liveTime) 
+		{
+			Destroy(this.transform.parent.gameObject);
+		}
         if (myRigid.velocity.magnitude < 10) return;
         transform.eulerAngles = new Vector3(0, 0, Mathf.Acos(oriSpeed.y/oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
         oriSpeed = myRigid.velocity;
         transform.eulerAngles = new Vector3(0, 0, -Mathf.Acos(oriSpeed.y / oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
+
 
     }
 

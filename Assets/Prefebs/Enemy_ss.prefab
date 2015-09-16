@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11437804}
   m_Layer: 0
   m_Name: Enemy_ss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ GameObject:
   - 23: {fileID: 2303506}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .879999995, y: .779999971, z: 0}
+  m_LocalPosition: {x: 1, y: -.5, z: .0109999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 449204}
@@ -87,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: .00999999978}
+  m_LocalPosition: {x: 3, y: -.460000008, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: .00999999978}
   m_Children: []
   m_Father: {fileID: 449204}
   m_RootOrder: 2
@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.5, z: 0}
+  m_LocalPosition: {x: -12, y: 19.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460542}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 449204}
@@ -129,7 +129,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1fcc22408e31746659308485d8e35ccd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -219,14 +219,14 @@ MonoBehaviour:
   attackDis: 0
   patrolDis: 5
   targetPosition: {x: 0, y: 0, z: 0}
-  startPosition: {x: 8, y: 1.5, z: 0}
-  Speed: 3
-  RotateSpeed: 20
+  startPosition: {x: -12, y: 19.5, z: 0}
+  Speed: 2.5
+  RotateSpeed: 10
   Bullet: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
   Bow: {fileID: 403248}
-  attackRate: .5
+  attackRate: 2
   state: 1
-  moveLeft: 1
+  moveLeft: 0
 --- !u!114 &11465112
 MonoBehaviour:
   m_ObjectHideFlags: 1

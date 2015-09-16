@@ -121,6 +121,7 @@ MonoBehaviour:
   i: 0
   enemy: {fileID: 0}
   speed: 15
+  liveTime: 5
 --- !u!136 &13602188
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -200,6 +201,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: liveTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

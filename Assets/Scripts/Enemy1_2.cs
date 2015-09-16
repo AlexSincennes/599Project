@@ -49,11 +49,13 @@ public class Enemy1_2 : MonoBehaviour {
 				}
 			}else
 			{
+
 				if(transform.position.x == startPosition.x + patrolDis)
 				{
 					moveLeft = true;
 				}else
 				{
+					//Debug.Log("lalalalal");
 					targetPosition = new Vector3(startPosition.x + patrolDis, transform.position.y ,0);
 				}
 			}
