@@ -15,16 +15,31 @@ public class DetectEnemy : MonoBehaviour {
 
 	void OnTriggerStay(Collider other) 
 	{
-		if (other.gameObject.tag == "Player")
-			transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
-
+		//Debug.Log ("lalala");
+		if (other.gameObject.tag == "Player") 
+		{
+			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
+				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
+		}
+			
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
+			transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (2);
 	}
 
 	void OnTriggerExit(Collider other) 
 	{
 
-		if (other.gameObject.tag == "Player")
-			transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
+		if (other.gameObject.tag == "Player") 
+		{
+			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
+				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
+			if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
+				transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (1);
+		}
+			
 	}
 	
 	void OnCollisionEnter(Collision collision) 

@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy1_2 : MonoBehaviour {
+public class EnemyMelee : MonoBehaviour {
 	public const int WALK = 1;
 	public const int ATTACK = 2;
 	public const int IDLE = 3;
 	public const int GETHIT = 4;
+	public const int TRACK = 5;
+
 	
 	public float attackDis;
 	public float patrolDis;
@@ -30,6 +32,7 @@ public class Enemy1_2 : MonoBehaviour {
 		if(player == null) {
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+		patrolDis = transform.parent.FindChild("detection").lossyScale.x/2;
 	}
 	
 	// Update is called once per frame
@@ -37,65 +40,70 @@ public class Enemy1_2 : MonoBehaviour {
 		
 		switch (state) {
 		case WALK:
-			//lastAttackTime = 0;
+			canAttack = false;
+			break;
+		case ATTACK:
+			canAttack = true;
+			if(player.position.x > startPosition.x + transform.parent.position.x)
+			{
+				if(moveLeft)
+				{
+					moveLeft = false;
+				}
+				targetPosition = new Vector3(startPosition.x + patrolDis, transform.localPosition.y ,0);
+			}else if(player.position.x <=startPosition.x  + transform.parent.position.x)
+			{
+				if(!moveLeft)
+				{
+					moveLeft = true;
+				}
+				targetPosition = new Vector3(startPosition.x - patrolDis, transform.localPosition.y ,0);
+			}
+
+			break;
+		
+		}
+
+		if (!canAttack) 
+		{
 			if(moveLeft)
 			{
-				if(transform.position.x - startPosition.x + patrolDis <= 0.01f)
+				if(transform.localPosition.x - startPosition.x + patrolDis <= 0.01f)
 				{
 					moveLeft = false;
 				}else
 				{
-					targetPosition = new Vector3(startPosition.x - patrolDis, transform.position.y ,0);
+					targetPosition = new Vector3(startPosition.x - patrolDis, transform.localPosition.y ,0);
 				}
 			}else
 			{
-
-				if(startPosition.x + patrolDis - transform.position.x   <= 0.01f)
+				
+				if(startPosition.x + patrolDis - transform.localPosition.x   <= 0.01f)
 				{
 					moveLeft = true;
 				}else
 				{
 					//Debug.Log("lalalalal");
-					targetPosition = new Vector3(startPosition.x + patrolDis, transform.position.y ,0);
+					targetPosition = new Vector3(startPosition.x + patrolDis, transform.localPosition.y ,0);
 				}
 			}
-			break;
-		case ATTACK:
-			if(Time.time - lastAttackTime > attackRate)
-			{ 
-				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
-				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
-				temp.transform.GetComponentInChildren<BulletTest>().enemy = player;
-				lastAttackTime = Time.time;
-			}
-			
-			
-			//temp.transform.parent = this.transform;
-			//SetState(IDLE);
-			break;
-		case IDLE:
-			
-			break;
-		case GETHIT:
-			
-			break;
 		}
-		
+
 		//targetPosition.y = transform.position.y;
 		Vector3 targetRotation = Vector3.zero;
-		if (moveLeft && state != ATTACK&& state != IDLE) {
+		if (moveLeft  ) {
 			targetRotation = new Vector3 (0, 180, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
-		} else if (!moveLeft && state != ATTACK&& state != IDLE){
+			transform.localEulerAngles = Vector3.Lerp (this.transform.localEulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
+		} else if (!moveLeft ){
 			targetRotation = new Vector3 (0, 0, 0);
-			transform.eulerAngles = Vector3.Lerp (this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
+			transform.localEulerAngles = Vector3.Lerp (this.transform.localEulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
 		}
 		
 		//
 		//Quaternion rotationTarget = Quaternion.LookRotation((targetPosition - this.transform.position).normalized);
 		//transform.rotation = Quaternion.Lerp(this.transform.rotation,rotationTarget,Time.deltaTime * 5);
 		
-		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * Speed);
+		transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, Time.deltaTime * Speed);
 		
 	}
 	
@@ -109,7 +117,7 @@ public class Enemy1_2 : MonoBehaviour {
 			Speed = 3;
 			break;
 		case ATTACK:
-			Speed = 0;
+			Speed = 6;
 			break;
 		case IDLE:
 			Speed = 0;
@@ -117,10 +125,18 @@ public class Enemy1_2 : MonoBehaviour {
 		case GETHIT:
 			Speed = 0;
 			break;
+		case TRACK:
+			Speed = 10;
+			break;
+		
 		}
 	}
-	
-	
-	
+
+	void OnTriggerEnter(Collider other)
+	{
+		//Debug.Log ("lala");
+		if (other.gameObject.tag == "Player")
+			Application.LoadLevel (0);
+	}
 	
 }
