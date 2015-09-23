@@ -20,7 +20,9 @@ public class DetectEnemy : MonoBehaviour {
 		{
 			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
 				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
-		}
+            if (transform.parent.gameObject.GetComponent<EnemyStandStill>())
+                transform.parent.gameObject.GetComponent<EnemyStandStill>().SetState(2);
+        }
 			
 	}
 	void OnTriggerEnter(Collider other)
@@ -36,7 +38,9 @@ public class DetectEnemy : MonoBehaviour {
 		{
 			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
 				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
-			if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
+            if (transform.parent.gameObject.GetComponent<EnemyStandStill>())
+                transform.parent.gameObject.GetComponent<EnemyStandStill>().SetState(1);
+            if (transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
 				transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (1);
 		}
 			

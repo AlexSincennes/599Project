@@ -42,7 +42,8 @@ public class EnemyKeepAttack : MonoBehaviour {
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
 				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
 				temp.transform.GetComponentInChildren<BulletTest>().enemy = Target.transform;
-				lastAttackTime = Time.time;
+                temp.transform.GetComponentInChildren<BulletTest>().ifKeepShooting = true;
+            lastAttackTime = Time.time;
 			}
 			
 			
