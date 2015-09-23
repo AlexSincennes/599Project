@@ -46,12 +46,12 @@ public class ShieldTest : MonoBehaviour {
 		}*/
 
 
-		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+		/*if (Input.GetKeyDown(KeyCode.LeftAlt)) {
 
 			shieldEquip = !shieldEquip;
 			shieldmesh.SetActive(shieldEquip);
 			//shieldmeshBack.SetActive(!shieldEquip)			
-		}
+		}*/
 
 		if(shieldEquip && !shieldDefence){
 			playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 3;
