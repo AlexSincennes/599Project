@@ -140,7 +140,7 @@ public class EnemyMelee : MonoBehaviour {
 			Destroy(transform.parent.gameObject);
 		}
 		if (other.gameObject.tag == "Player")
-			Application.LoadLevel (0);
+			Application.LoadLevel(Application.loadedLevel);
 	}
 	
 }

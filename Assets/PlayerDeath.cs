@@ -16,6 +16,6 @@ public class PlayerDeath : MonoBehaviour {
 	void OnTriggerEnter(Collider other) 
 	{
 		if(other.gameObject.tag == "Player")
-			Application.LoadLevel (0);
+			Application.LoadLevel(Application.loadedLevel);
 	}
 }

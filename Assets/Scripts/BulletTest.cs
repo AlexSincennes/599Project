@@ -78,7 +78,7 @@ public class BulletTest : MonoBehaviour {
 		//Debug.Log (other.gameObject.tag);
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
-			Application.LoadLevel(0);
+			Application.LoadLevel(Application.loadedLevel);
 		}
 		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {
 			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
