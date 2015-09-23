@@ -134,7 +134,11 @@ public class EnemyMelee : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		//Debug.Log ("lala");
+		//Debug.Log (other.gameObject.tag);
+		if (other.gameObject.tag == "Shield") 
+		{
+			Destroy(transform.parent.gameObject);
+		}
 		if (other.gameObject.tag == "Player")
 			Application.LoadLevel (0);
 	}

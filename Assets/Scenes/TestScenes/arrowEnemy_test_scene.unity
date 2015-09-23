@@ -115,6 +115,64 @@ Transform:
   - {fileID: 264774184}
   m_Father: {fileID: 1026906422}
   m_RootOrder: 0
+--- !u!1001 &77448063
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -14.2632351
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 449204, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 101952, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_Name
+      value: Enemy_ss (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: patrolDis
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: startPosition.x
+      value: -14.2632399
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: startPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &118388344
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +184,7 @@ GameObject:
   - 33: {fileID: 118388348}
   - 23: {fileID: 118388347}
   - 65: {fileID: 118388346}
+  - 54: {fileID: 118388349}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Shield
@@ -188,6 +247,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 118388344}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &118388349
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118388344}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &164199150
 Prefab:
   m_ObjectHideFlags: 0
@@ -359,7 +433,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 13.8900003}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &264774183
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &533399512
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +1003,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1181387712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,6 +1129,10 @@ Prefab:
     - target: {fileID: 131100, guid: 2a4cf634c0ed88645aeb6537fac2993d, type: 2}
       propertyPath: m_Name
       value: EnemyMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501116, guid: 2a4cf634c0ed88645aeb6537fac2993d, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a4cf634c0ed88645aeb6537fac2993d, type: 2}
@@ -1616,7 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectItem: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
-  shieldEquip: 0
+  shieldEquip: 1
   shieldDefence: 0
   shieldmesh: {fileID: 1300228579}
   directionShield: {fileID: 118388344}
@@ -1674,14 +1752,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1932080056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1300001, y: 1.38999999, z: .100000001}
+  m_LocalPosition: {x: -21.8999996, y: 1.38999999, z: .100000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1547604334}
   - {fileID: 449466776}
   - {fileID: 1874354990}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1932080058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,12 +1795,12 @@ MonoBehaviour:
     ignoreAnglesLessThan: 0
   headColliders:
   - transform: {fileID: 1932080057}
-    offset: {x: -.199999809, y: .249997973, z: 0}
+    offset: {x: -.199998856, y: .249997973, z: 0}
     distance: .799997211
     direction: 0
     ignoreAnglesLessThan: 0
   - transform: {fileID: 1932080057}
-    offset: {x: .300000191, y: .249997973, z: 0}
+    offset: {x: .299999237, y: .249997973, z: 0}
     distance: .799997211
     direction: 0
     ignoreAnglesLessThan: 0
@@ -1739,17 +1817,17 @@ MonoBehaviour:
     ignoreAnglesLessThan: 0
   - transform: {fileID: 1932080057}
     offset: {x: 0, y: .749997973, z: 0}
-    distance: .300000191
+    distance: .300001144
     direction: 2
     ignoreAnglesLessThan: 0
   - transform: {fileID: 1932080057}
     offset: {x: 0, y: -.400001526, z: 0}
-    distance: .300000191
+    distance: .300001144
     direction: 2
     ignoreAnglesLessThan: 0
   - transform: {fileID: 1932080057}
     offset: {x: 0, y: 0, z: 0}
-    distance: .300000191
+    distance: .300001144
     direction: 2
     ignoreAnglesLessThan: 0
   - transform: {fileID: 1932080057}
@@ -1913,7 +1991,7 @@ Transform:
   m_Children:
   - {fileID: 1055008409}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1945444500
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,10 +15,10 @@ public class ShieldObject : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other) 
 	{
-		//if (other.gameObject.tag == "Player") {
+		if (other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>()) {
 			ShieldTest temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>();
 			temp.shieldEquip = true;
 			Destroy(this.gameObject);
-		//}
+		}
 	}
 }
