@@ -75,6 +75,7 @@ public class BulletTest : MonoBehaviour {
 
     void OnCollisionEnter(Collision other) 
 	{
+		//Debug.Log (other.gameObject.tag);
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
 			Application.LoadLevel(0);
