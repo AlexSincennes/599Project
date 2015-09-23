@@ -1395,6 +1395,9 @@ public class RaycastCharacterController : MonoBehaviour
 			} 
 			// Jump Off
 			else if (characterInput.jumpButtonDown) {
+				ledgeHangState = LedgeHangingState.CLIMBING;
+				ledgeHangTimer = 0.0f;
+				/*
 				if (ledgeHanging.jumpOnlyInOppositeDirection) {
 					oppositeDirectionTimer = ledgeHanging.oppositeDirectionTime;
 					if (ledgeHangDirection == RC_Direction.LEFT)
@@ -1415,6 +1418,7 @@ public class RaycastCharacterController : MonoBehaviour
 				} else {
 					State = CharacterState.FALLING;
 				}
+				*/
 			}
 			// Climb
 			else if (characterInput.y > 0.0f) {
