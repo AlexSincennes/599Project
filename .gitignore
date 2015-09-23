@@ -66,12 +66,10 @@ $RECYCLE.BIN/
 # Other Excludes
 # =========================
 Builds/
-*.suo
-ProjectSettings/ProjectSettings.asset
-ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/UnityAdsSettings.asset
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/UnityAnalyticsManager.asset
 ProjectSettings/ProjectSettings.asset
-ProjectSettings/ProjectSettings.asset
+
+.vs/599Project/v14/.suo
