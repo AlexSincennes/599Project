@@ -9,7 +9,16 @@ public class ShieldObject : MonoBehaviour {
 	private float lasttime = 0;
 	void Start () {
 		lasttime = 0;
+
+		//Debug.Log (GameObject.Find("EnterTimes").GetComponent<EnterTimes>().time);
+		if(Time.time - lasttime > 30)
+		{
+			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
+			start = false;
+		}
+
 		lasttime = Time.time;
+
 	}
 	
 	// Update is called once per frame
@@ -17,12 +26,15 @@ public class ShieldObject : MonoBehaviour {
 
 		if (Application.loadedLevel == 2) 
 		{
+
 			if (start && Mathf.Abs (Camera.main.gameObject.transform.position.x - transform.position.x) <= 0.01f) 
 			{
 				lasttime = Time.time;
-				
+					
 				start = false;
 			}
+				
+
 			if (Time.time - lasttime > 3.5f) 
 			{
 				Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
