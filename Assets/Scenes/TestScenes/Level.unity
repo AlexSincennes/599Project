@@ -1642,6 +1642,7 @@ MonoBehaviour:
   attackRate: 2.5
   state: 2
   moveLeft: 1
+  angle: 1.37
   Target: {fileID: 1901117179}
 --- !u!4 &439898301 stripped
 Transform:

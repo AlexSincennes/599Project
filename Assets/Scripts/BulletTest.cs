@@ -17,6 +17,7 @@ public class BulletTest : MonoBehaviour {
 	private float startTime;
     public bool ifKeepShooting=false;
     float dirEuler;
+	public float angleKeepShooting=0;
     // Use this for initialization
     void Start()
     {
@@ -48,7 +49,7 @@ public class BulletTest : MonoBehaviour {
         }
         else
         {
-            dirEuler = Mathf.PI *7/16;
+            dirEuler = angleKeepShooting;
         }
         angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
         myRigid.velocity=oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);

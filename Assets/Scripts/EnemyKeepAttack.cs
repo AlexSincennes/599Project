@@ -21,6 +21,7 @@ public class EnemyKeepAttack : MonoBehaviour {
 	public bool moveLeft = true;
 	private bool canAttack = false;
 	private float lastAttackTime = 0;
+	public float angle;
 	
 	public static Transform player = null;
 
@@ -43,6 +44,8 @@ public class EnemyKeepAttack : MonoBehaviour {
 				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
 				temp.transform.GetComponentInChildren<BulletTest>().enemy = Target.transform;
                 temp.transform.GetComponentInChildren<BulletTest>().ifKeepShooting = true;
+			temp.transform.GetComponentInChildren<BulletTest>().angleKeepShooting = angle;
+
             lastAttackTime = Time.time;
 			}
 			

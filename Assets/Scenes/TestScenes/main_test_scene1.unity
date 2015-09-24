@@ -3922,6 +3922,7 @@ MonoBehaviour:
   attackRate: 2.5
   state: 2
   moveLeft: 1
+  angle: -1.37
   Target: {fileID: 1901117179}
 --- !u!1 &1805927541
 GameObject:
