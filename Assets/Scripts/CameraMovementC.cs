@@ -6,7 +6,10 @@ public class CameraMovementC : MonoBehaviour {
 	public float distance ;
 	// Use this for initialization
 	void Start () {
-	
+		if (target == null) 
+		{
+			target = GameObject.Find("HeroCharacter").transform;
+		}
 	}
 	
 	// Update is called once per frame

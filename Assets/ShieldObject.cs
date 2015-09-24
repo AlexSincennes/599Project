@@ -9,20 +9,26 @@ public class ShieldObject : MonoBehaviour {
 	private float lasttime = 0;
 	void Start () {
 		lasttime = 0;
+		lasttime = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (start && Mathf.Abs (Camera.main.gameObject.transform.position.x - transform.position.x) <= 0.01f) 
-		{
-			lasttime = Time.time;
 
-			start = false;
-		}
-		if (Time.time - lasttime > 4) 
+		if (Application.loadedLevel == 2) 
 		{
-			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
+			if (start && Mathf.Abs (Camera.main.gameObject.transform.position.x - transform.position.x) <= 0.01f) 
+			{
+				lasttime = Time.time;
+				
+				start = false;
+			}
+			if (Time.time - lasttime > 3.5f) 
+			{
+				Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
+			}
 		}
+
 	}
 	void OnTriggerEnter(Collider other) 
 	{

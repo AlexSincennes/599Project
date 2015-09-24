@@ -3461,7 +3461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reflectItem: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
-  shieldEquip: 0
+  shieldEquip: 1
   shieldDefence: 0
   shieldmesh: {fileID: 584430212}
   directionShield: {fileID: 1162409198}
