@@ -87,15 +87,10 @@ public class BulletTest : MonoBehaviour {
 			//if(spawnpoint!=null)
 				//spawn = spawnpoint.transform.position;
 			Application.LoadLevel(Application.loadedLevel);
-<<<<<<< HEAD
+
 			GameManager.Instance.deathPos = other.transform.parent.position;
 			GameManager.Instance.curTimes++;
-=======
-			//if(spawnpoint!=null){
-				//spawnpoint.transform.position = spawn;
-				//player.transform.position = spawnpoint.transform.position;
-			//}
->>>>>>> origin/dev
+
 		}
 		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {
 			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );

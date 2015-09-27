@@ -17,8 +17,7 @@ public class PlayerDeath : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) 
-	{
-<<<<<<< HEAD
+	{		
 		if (other.gameObject.tag == "Player") 
 		{
 			Application.LoadLevel(Application.loadedLevel);
@@ -26,19 +25,6 @@ public class PlayerDeath : MonoBehaviour {
 			GameManager.Instance.curTimes++;
 		}
 			
-=======
-		if (other.gameObject.tag == "Player") {
-			//player = other.gameObject;
-			//if(spawnpoint!=null)
-				//spawn = spawnpoint.position;
-			//DontDestroyOnLoad(spawn);
-			Application.LoadLevel(Application.loadedLevel);
-			//spawnpoint = GameObject.FindGameObjectWithTag ("Spawn");
-			//if (spawnpoint != null) {
-				//spawnpoint.transform.position = spawn;
-				//player.transform.position = spawnpoint.position;
-			//}
-		}
->>>>>>> origin/dev
+
 	}
 }

@@ -143,7 +143,7 @@ public class EnemyMelee : MonoBehaviour {
 		{
 			Destroy(transform.parent.gameObject);
 		}
-<<<<<<< HEAD
+
 		if (other.gameObject.tag == "Player") 
 		{
 			Application.LoadLevel(Application.loadedLevel);
@@ -151,18 +151,7 @@ public class EnemyMelee : MonoBehaviour {
 			GameManager.Instance.curTimes++;
 		}
 			
-=======
-		if (other.gameObject.tag == "Player") {
-			//if(spawnpoint!=null)
-				//spawn = spawnpoint.transform.position;
-			Application.LoadLevel (Application.loadedLevel);
 
-			//if(spawnpoint!=null){
-				//spawnpoint.transform.position = spawn;
-				//player.transform.position = spawnpoint.transform.position;
-			//}
-		}
->>>>>>> origin/dev
 	}
 	
 }

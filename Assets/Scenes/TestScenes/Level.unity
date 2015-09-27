@@ -374,6 +374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c673aca8d115aa24ca94135dc1714bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnpoint: {fileID: 0}
+  player: {fileID: 0}
+  spawn: {fileID: 0}
 --- !u!65 &142177119
 BoxCollider:
   m_ObjectHideFlags: 0
