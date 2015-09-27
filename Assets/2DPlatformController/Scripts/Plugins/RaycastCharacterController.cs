@@ -102,7 +102,7 @@ public class RaycastCharacterController : MonoBehaviour
 	/// WARNING: If this is too large your character can fall through the ground, or move through small platforms.
 	/// </summary>
 	public static float maxFrameTime = 0.033f;
-	
+	public Transform spawnpoint;
 	
 	
 	#region private members
@@ -440,7 +440,10 @@ public class RaycastCharacterController : MonoBehaviour
 			}
 		}	
 	}
-	
+	void Start () {
+		spawnpoint.position = GameObject.FindGameObjectWithTag ("Spawn").transform.position;
+		transform.position = spawnpoint.position;
+	}
 	/// <summary>
 	/// Do the movement. This is done in LateUpdate so other objects can alter the character in Update.
 	/// </summary>

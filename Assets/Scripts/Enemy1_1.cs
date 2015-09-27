@@ -60,7 +60,7 @@ public class Enemy1_1 : MonoBehaviour {
 		case ATTACK:
 			if(Time.time - lastAttackTime > attackRate)
 			{
-				GameObject temp = (GameObject) Instantiate( Arrow, Bow. position, Arrow.transform.rotation );
+//				GameObject temp = (GameObject) Instantiate( Arrow, Bow. position, Arrow.transform.rotation );
 				lastAttackTime = Time.time;
 			}
 				

@@ -13,7 +13,7 @@ public class ShieldObject : MonoBehaviour {
 		//Debug.Log (GameObject.Find("EnterTimes").GetComponent<EnterTimes>().time);
 		if(Time.time - lasttime > 30)
 		{
-			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
+//			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
 			start = false;
 		}
 

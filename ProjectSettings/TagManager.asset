@@ -9,6 +9,7 @@ TagManager:
   - WALLJUMP
   - Bullet
   - Shield
+  - Spawn
   layers:
   - Default
   - TransparentFX
