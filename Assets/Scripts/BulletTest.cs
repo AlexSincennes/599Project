@@ -7,9 +7,7 @@ public class BulletTest : MonoBehaviour {
     //private Vector3 targetposion;
     //private bool isLeft = false;
     public int i=0;
-	public static GameObject spawnpoint = null;
-	public static GameObject player = null;
-	public static Vector3 spawn;
+	
 	public Transform enemy;
     public float speed=5;
 	private Vector3 oriSpeed;
@@ -25,8 +23,6 @@ public class BulletTest : MonoBehaviour {
     {
         startTime = Time.time;
         myRigid = this.GetComponent<Rigidbody>();
-		if (spawnpoint == null)
-			spawnpoint = GameObject.FindGameObjectWithTag ("Spawn");
         if (!ifKeepShooting)
         {
             Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
@@ -83,14 +79,7 @@ public class BulletTest : MonoBehaviour {
 		//Debug.Log (other.gameObject.tag);
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
-			//player = other.gameObject;
-			//if(spawnpoint!=null)
-				//spawn = spawnpoint.transform.position;
 			Application.LoadLevel(Application.loadedLevel);
-			//if(spawnpoint!=null){
-				//spawnpoint.transform.position = spawn;
-				//player.transform.position = spawnpoint.transform.position;
-			//}
 		}
 		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {
 			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
