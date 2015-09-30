@@ -7,9 +7,15 @@ public class ShieldTest : MonoBehaviour {
 	//public Transform attacker;
 	public bool shieldEquip = false;
 	public bool shieldDefence = false;
+	public bool canUseShield = true;
 	public GameObject shieldmesh;
 
 	public GameObject directionShield;
+
+	public float shieldcoldtime = 5f;
+	public float shielddefencetime = 2f;
+	private float curcoldtime;
+	private float curdefencetime ;
 	//public GameObject shieldmeshBack;
 
 	//public bool startClock = false;
@@ -28,30 +34,14 @@ public class ShieldTest : MonoBehaviour {
 		directionShield.transform.localPosition = new Vector3 (0,0.5f,-0.5f);
 		directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
 		directionShield.SetActive (false);
-		playerGO = transform.parent.gameObject;
+		playerGO = GameManager.Instance.player;
+
+		curcoldtime = shieldcoldtime;
+		curdefencetime = shielddefencetime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		if (canReflect && startClock) 
-		{
-			lastTime = Time.time;
-			startClock = false;
-		}
-		
-		if (Time.time - lastTime > 0.2f) 
-		{
-			canReflect = false;
-		}*/
-
-
-		/*if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-
-			shieldEquip = !shieldEquip;
-			shieldmesh.SetActive(shieldEquip);
-			//shieldmeshBack.SetActive(!shieldEquip)			
-		}*/
 
 		if(shieldEquip && !shieldDefence){
 			playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 6;
@@ -61,95 +51,120 @@ public class ShieldTest : MonoBehaviour {
 			playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 6;
 			playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 11f;
 		}
-		/*
-		if (shieldEquip && canReflect ) //&& Input.GetKey(KeyCode.Mouse1)
-		{
-			//Debug.Log(attacker.gameObject.name+"------------alalal");
 
-			GameObject temp = (GameObject) Instantiate( reflectItem, directionShield.transform.position,reflectItem.transform.rotation );
-			temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
-			temp.transform.GetComponentInChildren<BulletTest>().enemy = attacker;
-			canReflect = false;
-		}*/
 
 		// directionshield control
 		if(shieldEquip)
 		{
-			if(Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
+			if(curcoldtime>0)
 			{
+				if(canUseShield)
+				{
+					if(curdefencetime >0)
+					{
+						if(Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
+						{
+							
+							shieldmesh.SetActive(true);
+							directionShield.SetActive (false);
+							shieldDefence = false;
+							GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
+							curdefencetime = shielddefencetime;
+							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.78f,0.78f,0.78f);
+						}else
+						{
+							shieldDefence = true;
+							//playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 0;
+							//playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 0;
+							GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
+							
+							//limit use of shield
+							curdefencetime -= Time.deltaTime;
+							//Debug.Log(Color.Lerp(new Color(0.78f,0.78f,0.78f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime));
+							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = Color.Lerp(new Color(0.78f,0.78f,0.78f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime);
 
-				shieldmesh.SetActive(true);
-				directionShield.SetActive (false);
-				shieldDefence = false;
-				GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
+							if(Input.GetAxis("Horizontal")<0 && Input.GetAxis("Vertical")==0)
+							{
+								//Debug.Log(Input.GetAxis("Horizontal")+"lala");
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (-1,0.5f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Horizontal")>0 && Input.GetAxis("Vertical")==0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (1,0.5f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Vertical")>0 && Input.GetAxis("Horizontal")==0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (0,1.5f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,90);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Vertical")<0 && Input.GetAxis("Horizontal")==0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (0,-1f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,90);
+								directionShield.SetActive (true);
+							}
+							
+							if(Input.GetAxis("Horizontal")<0&&Input.GetAxis("Vertical")>0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (-1,1f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,-45);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Horizontal")<0&&Input.GetAxis("Vertical")<0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (-1,-0.5f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,45);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Horizontal")>0&&Input.GetAxis("Vertical")>0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (1,1f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,45);
+								directionShield.SetActive (true);
+							}
+							if(Input.GetAxis("Horizontal")>0&&Input.GetAxis("Vertical")<0)
+							{
+								shieldmesh.SetActive(false);
+								directionShield.transform.localPosition = new Vector3 (1,-0.5f,-0.5f);
+								directionShield.transform.localEulerAngles = new Vector3 (0,0,-45);
+								directionShield.SetActive (true);
+							}
+						}
+						
+					}else
+					{
+						shieldmesh.SetActive(true);
+						directionShield.SetActive (false);
+						shieldDefence = false;
+						GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
+						
+						canUseShield = false;
+						curdefencetime = shielddefencetime;
+					}
+				}else if(!canUseShield)
+				{
+					curcoldtime -= Time.deltaTime;
+
+				}
 			}else
 			{
-				shieldDefence = true;
-				//playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 0;
-				//playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 0;
-				GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
-
-
-				if(Input.GetAxis("Horizontal")<0 && Input.GetAxis("Vertical")==0)
-				{
-					
-					//Debug.Log(Input.GetAxis("Horizontal")+"lala");
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (-1,0.5f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Horizontal")>0 && Input.GetAxis("Vertical")==0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (1,0.5f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Vertical")>0 && Input.GetAxis("Horizontal")==0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (0,1.5f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,90);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Vertical")<0 && Input.GetAxis("Horizontal")==0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (0,-1f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,90);
-					directionShield.SetActive (true);
-				}
-				
-				if(Input.GetAxis("Horizontal")<0&&Input.GetAxis("Vertical")>0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (-1,1f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,-45);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Horizontal")<0&&Input.GetAxis("Vertical")<0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (-1,-0.5f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,45);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Horizontal")>0&&Input.GetAxis("Vertical")>0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (1,1f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,45);
-					directionShield.SetActive (true);
-				}
-				if(Input.GetAxis("Horizontal")>0&&Input.GetAxis("Vertical")<0)
-				{
-					shieldmesh.SetActive(false);
-					directionShield.transform.localPosition = new Vector3 (1,-0.5f,-0.5f);
-					directionShield.transform.localEulerAngles = new Vector3 (0,0,-45);
-					directionShield.SetActive (true);
-				}
+				canUseShield = true;
+				curcoldtime = shieldcoldtime;
 			}
+
+
 
 		}
 	}

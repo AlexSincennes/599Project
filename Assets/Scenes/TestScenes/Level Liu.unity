@@ -3106,6 +3106,10 @@ Prefab:
       propertyPath: m_Layer
       value: 27
       objectReference: {fileID: 0}
+    - target: {fileID: 112866, guid: 2a4cf634c0ed88645aeb6537fac2993d, type: 2}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a4cf634c0ed88645aeb6537fac2993d, type: 2}
   m_IsPrefabParent: 0
@@ -3358,8 +3362,11 @@ MonoBehaviour:
   reflectItem: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
   shieldEquip: 0
   shieldDefence: 0
+  canUseShield: 1
   shieldmesh: {fileID: 0}
   directionShield: {fileID: 0}
+  shieldcoldtime: 5
+  shielddefencetime: 2
 --- !u!1001 &980507378
 Prefab:
   m_ObjectHideFlags: 0

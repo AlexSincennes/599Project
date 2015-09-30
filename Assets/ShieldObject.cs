@@ -37,7 +37,7 @@ public class ShieldObject : MonoBehaviour {
 			}
 				
 
-			if (end && Time.time - lasttime > 1.5f) 
+			if (end && Time.time - lasttime > 1f) 
 			{
 				Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
 				if(Mathf.Abs (Camera.main.gameObject.transform.position.x - GameManager.Instance.player.transform.position.x) <= 0.01f)
