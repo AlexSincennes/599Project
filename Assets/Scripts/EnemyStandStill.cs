@@ -41,31 +41,6 @@ public class EnemyStandStill : MonoBehaviour {
         switch (state)
         {
             case WALK:
-                //lastAttackTime = 0;
-                if (moveLeft)
-                {
-                    if (transform.position.x - startPosition.x + patrolDis <= 0.01f)
-                    {
-                        moveLeft = false;
-                    }
-                    else
-                    {
-                        targetPosition = new Vector3(startPosition.x - patrolDis, transform.position.y, 0);
-                    }
-                }
-                else
-                {
-
-                    if (startPosition.x + patrolDis - transform.position.x <= 0.01f)
-                    {
-                        moveLeft = true;
-                    }
-                    else
-                    {
-                        //Debug.Log("lalalalal");
-                        targetPosition = new Vector3(startPosition.x + patrolDis, transform.position.y, 0);
-                    }
-                }
                 break;
             case ATTACK:
                 if (Time.time - lastAttackTime > attackRate)
@@ -75,8 +50,6 @@ public class EnemyStandStill : MonoBehaviour {
                     temp.transform.GetComponentInChildren<BulletTest>().enemy = player;
                     lastAttackTime = Time.time;
                 }
-
-
                 //temp.transform.parent = this.transform;
                 //SetState(IDLE);
                 break;
@@ -89,18 +62,6 @@ public class EnemyStandStill : MonoBehaviour {
         }
 
         //targetPosition.y = transform.position.y;
-        Vector3 targetRotation = Vector3.zero;
-        if (moveLeft && state != ATTACK && state != IDLE)
-        {
-            targetRotation = new Vector3(0, 180, 0);
-            transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
-        }
-        else if (!moveLeft && state != ATTACK && state != IDLE)
-        {
-            targetRotation = new Vector3(0, 0, 0);
-            transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
-        }
-
         //
         //Quaternion rotationTarget = Quaternion.LookRotation((targetPosition - this.transform.position).normalized);
         //transform.rotation = Quaternion.Lerp(this.transform.rotation,rotationTarget,Time.deltaTime * 5);
@@ -114,20 +75,5 @@ public class EnemyStandStill : MonoBehaviour {
         if (this.state == state)
             return;
         this.state = state;
-        switch (state)
-        {
-            case WALK:
-                Speed = 0;
-                break;
-            case ATTACK:
-                Speed = 0;
-                break;
-            case IDLE:
-                Speed = 0;
-                break;
-            case GETHIT:
-                Speed = 0;
-                break;
-        }
     }
 }

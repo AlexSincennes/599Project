@@ -16,6 +16,7 @@ public class Enemy1_2 : MonoBehaviour {
 	public GameObject Bullet;
 	public Transform Bow;
 	public float attackRate;
+    private float walkingSpeed;
 	
 	public int state = WALK;
 	public bool moveLeft = true;
@@ -30,6 +31,7 @@ public class Enemy1_2 : MonoBehaviour {
 		if(player == null) {
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+        walkingSpeed = Speed;
 	}
 	
 	// Update is called once per frame
@@ -95,7 +97,7 @@ public class Enemy1_2 : MonoBehaviour {
 		//Quaternion rotationTarget = Quaternion.LookRotation((targetPosition - this.transform.position).normalized);
 		//transform.rotation = Quaternion.Lerp(this.transform.rotation,rotationTarget,Time.deltaTime * 5);
 		
-		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * Speed);
+		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * walkingSpeed);
 		
 	}
 	
@@ -106,16 +108,16 @@ public class Enemy1_2 : MonoBehaviour {
 		this.state = state;
 		switch (state) {
 		case WALK:
-			Speed = 3;
+			walkingSpeed = Speed;
 			break;
 		case ATTACK:
-			Speed = 0;
+			walkingSpeed = 0;
 			break;
 		case IDLE:
-			Speed = 0;
+			walkingSpeed = 0;
 			break;
 		case GETHIT:
-			Speed = 0;
+			walkingSpeed = 0;
 			break;
 		}
 	}

@@ -28,53 +28,21 @@ public class EnemyKeepAttack : MonoBehaviour {
 	public GameObject Target;
 	
 	// Use this for initialization
-	void Start () {
-		if(player == null) {
-			//player = GameObject.FindGameObjectWithTag("Player").transform;
-		}
+	void Start ()
+    {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-
-			if(Time.time - lastAttackTime > attackRate)
-			{ 
-				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
-				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
-				temp.transform.GetComponentInChildren<BulletTest>().enemy = Target.transform;
-                temp.transform.GetComponentInChildren<BulletTest>().ifKeepShooting = true;
-			temp.transform.GetComponentInChildren<BulletTest>().angleKeepShooting = angle;
-
+	void Update ()
+    {
+		if(Time.time - lastAttackTime > attackRate)
+		{ 
+			GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
+			temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
+			temp.transform.GetComponentInChildren<BulletTest>().enemy = Target.transform;
+            temp.transform.GetComponentInChildren<BulletTest>().ifKeepShooting = true;
+            temp.transform.GetComponentInChildren<BulletTest>().angleKeepShooting = angle;
             lastAttackTime = Time.time;
-			}
-			
-			
-	
-	}
-	
-	public void SetState(int state) 
-	{
-		if (this.state == state)
-			return;
-		this.state = state;
-		switch (state) {
-		case WALK:
-			Speed = 3;
-			break;
-		case ATTACK:
-			Speed = 0;
-			break;
-		case IDLE:
-			Speed = 0;
-			break;
-		case GETHIT:
-			Speed = 0;
-			break;
 		}
 	}
-	
-	
-	
-	
 }
