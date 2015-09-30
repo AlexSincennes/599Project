@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public int curLevel;
 	public int curTimes;
 	public Vector3 deathPos;
+	public GameObject player;
 
 	void Awake()
 	{

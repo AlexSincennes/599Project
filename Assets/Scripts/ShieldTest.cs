@@ -81,11 +81,14 @@ public class ShieldTest : MonoBehaviour {
 				shieldmesh.SetActive(true);
 				directionShield.SetActive (false);
 				shieldDefence = false;
+				GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
 			}else
 			{
 				shieldDefence = true;
-				playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 0;
-				playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 0;
+				//playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 0;
+				//playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 0;
+				GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
+
 
 				if(Input.GetAxis("Horizontal")<0 && Input.GetAxis("Vertical")==0)
 				{

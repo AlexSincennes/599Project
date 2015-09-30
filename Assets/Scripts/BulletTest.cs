@@ -80,16 +80,16 @@ public class BulletTest : MonoBehaviour {
 
     void OnCollisionEnter(Collision other) 
 	{
-		//Debug.Log (other.gameObject.tag);
+		//Debug.Log (other.gameObject.tag +"lala");
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
 		{
 			//player = other.gameObject;
 			//if(spawnpoint!=null)
 				//spawn = spawnpoint.transform.position;
-			Application.LoadLevel(Application.loadedLevel);
+			HitBox health = other.gameObject.GetComponent<HitBox>();
+			if (health != null) health.Damage(1);
 
-			GameManager.Instance.deathPos = other.transform.parent.position;
-			GameManager.Instance.curTimes++;
+
 
 		}
 		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {

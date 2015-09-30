@@ -122,6 +122,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   speed: 15
   liveTime: 5
+  ifKeepShooting: 0
+  angleKeepShooting: 0
 --- !u!136 &13602188
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -209,6 +211,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: liveTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -14,10 +14,33 @@ public class HitBox : MonoBehaviour {
 	public SimpleHealth simplehealth;
 
 	public virtual void Damage(int amount) {
-		simplehealth.Damage(amount);
+		//simplehealth.Damage(amount);
+		//Application.LoadLevel(Application.loadedLevel);
+		
+		//GameManager.Instance.deathPos = transform.parent.position;
+		//GameManager.Instance.curTimes++;
+
+		GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
 	}
 
 	public virtual void Collect (Collectable collectable) {
 
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+
+		if (other.gameObject.tag == "Enemy") 
+		{
+			//Application.LoadLevel(Application.loadedLevel);
+			//GameManager.Instance.deathPos = transform.parent.position;
+			//GameManager.Instance.curTimes++;
+
+			GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
+		}
+		
+		
+	}
+
+
 }

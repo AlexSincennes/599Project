@@ -143,14 +143,7 @@ public class EnemyMelee : MonoBehaviour {
 		{
 			Destroy(transform.parent.gameObject);
 		}
-
-		if (other.gameObject.tag == "Player") 
-		{
-			Application.LoadLevel(Application.loadedLevel);
-			GameManager.Instance.deathPos = other.transform.parent.position;
-			GameManager.Instance.curTimes++;
-		}
-			
+					
 
 	}
 	

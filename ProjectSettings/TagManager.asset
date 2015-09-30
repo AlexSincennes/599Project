@@ -26,7 +26,6 @@ TagManager:
   - 
   - 
   - 
-  - background
   - 
   - 
   - 
@@ -39,10 +38,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - enemybody
+  - door
+  - shield
+  - bullet
+  - detectionarea
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScenes/main_test_scene1.unity
   - enabled: 1
     path: Assets/Scenes/TestScenes/Level.unity
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/Level Liu.unity

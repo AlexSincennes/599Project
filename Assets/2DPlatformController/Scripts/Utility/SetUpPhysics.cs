@@ -23,6 +23,7 @@ public class SetUpPhysics : MonoBehaviour {
 		foreach (int i in ignoreColliderLayers) {
 			Physics.IgnoreLayerCollision(0, i);
 			Physics.IgnoreLayerCollision(2, i);
+			//if(i != 29)
 			Physics.IgnoreLayerCollision(character.backgroundLayer, i);
 			Physics.IgnoreLayerCollision(character.passThroughLayer, i);
 			Physics.IgnoreLayerCollision(character.climableLayer, i);
