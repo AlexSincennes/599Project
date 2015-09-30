@@ -9,6 +9,7 @@ public class LoadOnClick : MonoBehaviour {
 	{
 		Application.LoadLevel (level);
 		loadingImage.SetActive (true);
+		if(level == 3)
 		GameManager.Instance.curTimes++;
 		GameManager.Instance.curLevel = level;
 	}

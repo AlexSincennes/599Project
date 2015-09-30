@@ -21,6 +21,7 @@ public class PlayerDeath : MonoBehaviour {
 		{
 			Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = other.transform.parent.position;
+			if(Application.loadedLevel == 3)
 			GameManager.Instance.curTimes++;
 		}
 			

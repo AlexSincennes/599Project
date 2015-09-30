@@ -15,12 +15,13 @@ public class HitBox : MonoBehaviour {
 
 	public virtual void Damage(int amount) {
 		//simplehealth.Damage(amount);
-		//Application.LoadLevel(Application.loadedLevel);
+		Application.LoadLevel(Application.loadedLevel);
 		
 		//GameManager.Instance.deathPos = transform.parent.position;
-		//GameManager.Instance.curTimes++;
+		if(Application.loadedLevel == 3)
+		GameManager.Instance.curTimes++;
 
-		GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
+		//GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
 	}
 
 	public virtual void Collect (Collectable collectable) {
@@ -32,11 +33,12 @@ public class HitBox : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy") 
 		{
-			//Application.LoadLevel(Application.loadedLevel);
+			Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = transform.parent.position;
-			//GameManager.Instance.curTimes++;
+			if(Application.loadedLevel == 3)
+			GameManager.Instance.curTimes++;
 
-			GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
+			//GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
 		}
 		
 		

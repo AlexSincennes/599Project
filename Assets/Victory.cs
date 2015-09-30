@@ -4,7 +4,7 @@ using System.Collections;
 public class Victory : MonoBehaviour {
 	public GameObject passLabel;
 	public GameObject []family;
-
+	public bool canFamilyMove = false;
 	private Vector3 endPos;
 	// Use this for initialization
 	void Start () {
@@ -21,11 +21,18 @@ public class Victory : MonoBehaviour {
 			if (Mathf.Abs(family [0].transform.position.x - endPos.x) <= 0.01f) 
 			{
 				passLabel.SetActive(true);
+
+				canFamilyMove = false;
 			}
-			if(Mathf.Abs(Camera.main.gameObject.transform.position.x - family [0].transform.position.x) <=0.01f)
+			if(canFamilyMove)
 			{
-				family [0].transform.position = Vector3.MoveTowards(family [0].transform.position, endPos, Time.deltaTime * 15);
-				family [1].transform.position = Vector3.MoveTowards(family [1].transform.position, endPos- new Vector3(2,0,0), Time.deltaTime * 15);
+				if(Mathf.Abs(Camera.main.gameObject.transform.position.x - family [0].transform.position.x) <=0.01f )
+				{
+					family [0].transform.position = Vector3.MoveTowards(family [0].transform.position, endPos, Time.deltaTime * 30);
+					family [1].transform.position = Vector3.MoveTowards(family [1].transform.position, endPos+ new Vector3(3,0,0), Time.deltaTime * 30);
+					
+				}
+
 			}
 
 		
@@ -39,7 +46,7 @@ public class Victory : MonoBehaviour {
 		family [0].SetActive (true);
 		family [1].SetActive (true);
 		Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = family [0].transform;
-
+		canFamilyMove = true;
 		endPos = new Vector3 (GameManager.Instance.player.transform.position.x,family [0].transform.position.y,family [0].transform.position.z); 
 	}
 }

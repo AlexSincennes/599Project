@@ -23,7 +23,9 @@ public class SimpleCharacterInput : RaycastCharacterInput
 	{
 		if (Input.GetKey(KeyCode.R)) {
 			//GameManager.Instance.deathPos = GameObject.Find("HeroCharacter").transform.position;
+			if(Application.loadedLevel == 3)
 			GameManager.Instance.curTimes++;
+
 			Application.LoadLevel(0);
 		}
 		
