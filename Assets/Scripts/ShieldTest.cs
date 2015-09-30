@@ -74,9 +74,9 @@ public class ShieldTest : MonoBehaviour {
 						}else
 						{
 							shieldDefence = true;
-							//playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 0;
-							//playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 0;
-							GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
+							playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 1;
+							playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 1;
+							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
 							
 							//limit use of shield
 							curdefencetime -= Time.deltaTime;
@@ -148,7 +148,7 @@ public class ShieldTest : MonoBehaviour {
 						shieldmesh.SetActive(true);
 						directionShield.SetActive (false);
 						shieldDefence = false;
-						GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
+						//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
 						
 						canUseShield = false;
 						curdefencetime = shielddefencetime;

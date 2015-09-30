@@ -659,7 +659,7 @@ public class RaycastCharacterController : MonoBehaviour
 			float additionalDistance = 0.0f;
 			// If crouching and using autoHeightReduction skip any sides higher than provided value
 			if (!isCrouching || !crouch.useHeightReduction || sides[i].offset.y <= crouch.ignoredSideCollidersHigherThan) {
-				if (ledgeHanging.autoGrab && velocity.y <= 0.0f) additionalDistance = ledgeHanging.autoGrabDistance;
+				if (ledgeHanging.autoGrab && velocity.y <= 3.0f) additionalDistance = ledgeHanging.autoGrabDistance;
 				else if (wall.canWallSlide) additionalDistance = wall.wallSlideAdditionalDistance;
 				
 				hitSides = sides [i].GetCollision (1 << backgroundLayer, additionalDistance);
@@ -668,7 +668,7 @@ public class RaycastCharacterController : MonoBehaviour
 				if (hitSides.collider != null) {
 					
 					// Update ledge hang
-					if (ledgeHanging.canLedgeHang && !grounded && velocity.y <= 0.0f) {
+					if (ledgeHanging.canLedgeHang && !grounded && velocity.y <= 3.0f) {
 						if (sides [i].direction == RC_Direction.RIGHT && (sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])) {
 							ledgeHangHitCount++;
 							ledgeHangDirection = RC_Direction.RIGHT;
@@ -899,7 +899,7 @@ public class RaycastCharacterController : MonoBehaviour
 		
 		// Fall/Stop
 		bool hasHitFeet = false;
-		if ((velocity.y <= 0.0f || startedClimbing) && ledgeDropTimer <= 0.0f) {
+		if ((velocity.y <= 3.0f || startedClimbing) && ledgeDropTimer <= 0.0f) {
 			float maxForce = 0.0f;
 			GameObject hitGameObject = null;
 			float lastHitDistance = -1;

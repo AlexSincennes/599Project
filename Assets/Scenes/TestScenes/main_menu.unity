@@ -870,7 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curLevel: 0
   curTimes: 0
-  deathPos: {x: 0, y: 0, z: 0}
+  spawnPointPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
 --- !u!4 &1327279441
 Transform:

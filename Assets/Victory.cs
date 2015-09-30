@@ -40,6 +40,6 @@ public class Victory : MonoBehaviour {
 		family [1].SetActive (true);
 		Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = family [0].transform;
 
-		endPos = new Vector3 (GameObject.Find ("HeroCharacter").transform.position.x,family [0].transform.position.y,family [0].transform.position.z); 
+		endPos = new Vector3 (GameManager.Instance.player.transform.position.x,family [0].transform.position.y,family [0].transform.position.z); 
 	}
 }

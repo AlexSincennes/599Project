@@ -8,9 +8,21 @@ public class CheckPoint : MonoBehaviour {
 	{
 		GameManager.Instance.player = player;
 		if (GameManager.Instance.curTimes < 2) {
-			player.transform.position = new Vector3 (12.9f, -2.9f, 0.0f);
+			//Debug.Log("lalala222");
+			player.transform.position = new Vector3 (101f, 1.5f, 0.0f);
 		} else {
-			player.transform.position = GameManager.Instance.deathPos;
+			if(GameManager.Instance.spawnPointPos == Vector3.zero)
+			{
+				//Debug.Log("lalala1111");
+				player.transform.position = new Vector3 (101f, 1.5f, 0.0f);
+			} else
+			{
+				//Debug.Log("lalala");
+				Camera.main.gameObject.transform.position = GameManager.Instance.spawnPointPos;
+				player.transform.position = GameManager.Instance.spawnPointPos;
+
+			}
+
 		}
 	}
 	
