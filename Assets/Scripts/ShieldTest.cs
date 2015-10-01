@@ -70,7 +70,7 @@ public class ShieldTest : MonoBehaviour {
 							shieldDefence = false;
 							GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
 							curdefencetime = shielddefencetime;
-							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.78f,0.78f,0.78f);
+							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0f,102f/255f,1f);
 						}else
 						{
 							shieldDefence = true;
@@ -81,7 +81,7 @@ public class ShieldTest : MonoBehaviour {
 							//limit use of shield
 							curdefencetime -= Time.deltaTime;
 							//Debug.Log(Color.Lerp(new Color(0.78f,0.78f,0.78f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime));
-							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = Color.Lerp(new Color(0.78f,0.78f,0.78f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime);
+							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = Color.Lerp(new Color(0f,102f/255f,1f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime);
 
 							if(Input.GetAxis("Horizontal")<0 && Input.GetAxis("Vertical")==0)
 							{
