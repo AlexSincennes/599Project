@@ -25,7 +25,7 @@ public class HitBox : MonoBehaviour {
 	}
 
 	public virtual void Collect (Collectable collectable) {
-
+		Debug.Log ("Collect "+ collectable.transform.parent.name+" !!!!!!!!!!");
 	}
 
 	void OnTriggerEnter(Collider other)
