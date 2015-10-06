@@ -96,7 +96,7 @@ public class BulletTest : MonoBehaviour {
 			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
 			ShieldTest temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>();
 			//other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().reflectItem = this.transform.parent.gameObject;
-			if(temp.shieldEquip)
+			if(temp.shieldEquip && temp.canReflect)
 			{
 				//temp.attacker = shooter;
 				//temp.canReflect = true;

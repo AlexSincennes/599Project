@@ -9,7 +9,7 @@ public class ShieldTest : MonoBehaviour {
 	public bool shieldDefence = false;
 	public bool canUseShield = true;
 	public GameObject shieldmesh;
-
+	public bool canReflect = true;
 	public GameObject directionShield;
 
 	public float shieldcoldtime = 5f;
@@ -77,7 +77,14 @@ public class ShieldTest : MonoBehaviour {
 							playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 1;
 							playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 1;
 							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
-							
+							//
+							if(curdefencetime >= 1.0f)
+							{
+								canReflect = true;
+							}else
+							{
+								canReflect = false;
+							}
 							//limit use of shield
 							curdefencetime -= Time.deltaTime;
 							//Debug.Log(Color.Lerp(new Color(0.78f,0.78f,0.78f), new Color(1,0,0), (shielddefencetime-curdefencetime)/shielddefencetime));
@@ -151,6 +158,7 @@ public class ShieldTest : MonoBehaviour {
 						//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
 						
 						canUseShield = false;
+						canReflect = false;
 						curdefencetime = shielddefencetime;
 					}
 				}else if(!canUseShield)
@@ -160,6 +168,7 @@ public class ShieldTest : MonoBehaviour {
 				}
 			}else
 			{
+				canReflect = true;
 				canUseShield = true;
 				curcoldtime = shieldcoldtime;
 			}
