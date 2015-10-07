@@ -59,7 +59,7 @@ public class CameraMovementC : MonoBehaviour {
 		{
 			GetCameraScreen();
 			GetDotDashArea ();
-			Camera.main.transform.position = new Vector3(Camera.main.transform.position.x+cameraScreenwidth*dotRatio,Camera.main.transform.position.y,Camera.main.transform.position.z);
+			Camera.main.transform.position = new Vector3(Camera.main.transform.position.x+cameraScreenwidth*dashRatio,Camera.main.transform.position.y,Camera.main.transform.position.z);
 			//GameManager.Instance.player.transform.position = new Vector3(leftDot,GameManager.Instance.player.transform.position.y,GameManager.Instance.player.transform.position.z);
 			isleftArea = true;
 			isGetCameraScreen = false;
