@@ -13,7 +13,7 @@ public class Victory : MonoBehaviour {
 		family [1].SetActive (false);
 	}
 	
-	// Update is called once per frame
+	//// Update is called once per frame
 	void Update () {
 		if (family [0].activeInHierarchy && family [1].activeInHierarchy) 
 		{
@@ -21,7 +21,7 @@ public class Victory : MonoBehaviour {
 			if (Mathf.Abs(family [0].transform.position.x - endPos.x) <= 0.01f) 
 			{
 				passLabel.SetActive(true);
-
+				Time.timeScale = 0;
 				canFamilyMove = false;
 			}
 			if(canFamilyMove)

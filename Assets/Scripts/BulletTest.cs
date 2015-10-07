@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BulletTest : MonoBehaviour {
@@ -14,7 +14,7 @@ public class BulletTest : MonoBehaviour {
     public float speed=5;
 	private Vector3 oriSpeed;
 	private Rigidbody myRigid;
-    private Vector3 angle;
+    //private Vector3 angle;
 	public float liveTime;
 	private float startTime;
     public bool ifKeepShooting=false;
@@ -62,7 +62,7 @@ public class BulletTest : MonoBehaviour {
         {
             dirEuler = angleKeepShooting;
         }
-        angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
+        //angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
         myRigid.velocity=oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
 
 

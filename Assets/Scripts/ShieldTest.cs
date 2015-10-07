@@ -21,7 +21,7 @@ public class ShieldTest : MonoBehaviour {
 
 	//public bool startClock = false;
 	
-	private float lastTime;
+	//private float lastTime;
 
 
 	GameObject playerGO ;
@@ -29,7 +29,7 @@ public class ShieldTest : MonoBehaviour {
 	void Start () {
 		shieldmesh.SetActive (false);
 		//shieldmeshBack.SetActive(true);
-		lastTime = 0;
+		//lastTime = 0;
 
 		//set directionshield to default status
 		directionShield.transform.localPosition = new Vector3 (0,0.5f,-0.5f);
@@ -78,13 +78,13 @@ public class ShieldTest : MonoBehaviour {
 							playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 1;
 							playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 1;
 							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
-							//
-							if(curdefencetime >= shieldcanreflecttime)
-							{
-								canReflect = true;
-							}else
-							{
-								canReflect = false;
+							//									
+							if(curdefencetime >= shieldcanreflecttime)		
+							{		
+								canReflect = true;		
+							}else		
+							{		
+								canReflect = false;		
 							}
 							//limit use of shield
 							curdefencetime -= Time.deltaTime;
@@ -169,8 +169,8 @@ public class ShieldTest : MonoBehaviour {
 				}
 			}else
 			{
-				canReflect = true;
 				canUseShield = true;
+				canReflect = true;
 				curcoldtime = shieldcoldtime;
 			}
 

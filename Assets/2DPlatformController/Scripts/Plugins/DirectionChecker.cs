@@ -17,7 +17,7 @@ public class DirectionChecker : MonoBehaviour {
 	/// right or -1 for left.
 	/// </summary>
 	public int startingDirection = 1;
-
+	public Transform hero;
 	/// <summary>
 	/// The current direction being faced. 0 = NONE, 1 = RIGHT
 	/// -1 = LEFT.
@@ -25,16 +25,20 @@ public class DirectionChecker : MonoBehaviour {
 	virtual public int CurrentDirection {
 		get; private set;
 	}
-
+//
 	/// <summary>
 	/// Call to recalculate the direction.
-	/// </summary>
+	///// </summary>
 	/// <returns><c>true</c>, if colliders were switched, <c>false</c> otherwise.</returns>
 	virtual public bool UpdateDirection (RaycastCharacterController character) {
 		int newDirection = 0;
 
+		if (character.dir == 1) {
 
-		// Always return ledge hang dir - NEW
+		} else if (character.dir == -1) {
+
+		}
+		//// Always return ledge hang dir - NEW
 		if (character.IsLedgeHanging) {
 			if (character.LedgeHangDirection == RC_Direction.RIGHT) newDirection = 1;
 			if (character.LedgeHangDirection == RC_Direction.LEFT) newDirection =  -1;
@@ -59,6 +63,24 @@ public class DirectionChecker : MonoBehaviour {
 		}
 		return false;
 	}
+
+	/*virtual public bool UpdateDir(RaycastCharacterController character) {
+		int newDirection = 0;
+		
+		if (character.dir == 1) {
+			newDirection = 1;
+			character.dir = 0;
+		} else if (character.dir == -1) {
+			newDirection = -1;
+			character.dir = 0;
+		}
+		if (newDirection != 0 && newDirection != CurrentDirection) {
+			SwitchColliders (character);
+			CurrentDirection = newDirection;
+			return true;
+	//	}
+		return false;
+	}*/
 
 	virtual protected void SwitchColliders(RaycastCharacterController character) {
 		character.SwitchColliders ();
