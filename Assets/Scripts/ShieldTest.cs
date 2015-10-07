@@ -14,6 +14,7 @@ public class ShieldTest : MonoBehaviour {
 
 	public float shieldcoldtime = 5f;
 	public float shielddefencetime = 2f;
+	public float shieldcanreflecttime = 1f;
 	private float curcoldtime;
 	private float curdefencetime ;
 	//public GameObject shieldmeshBack;
@@ -78,7 +79,7 @@ public class ShieldTest : MonoBehaviour {
 							playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 1;
 							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
 							//
-							if(curdefencetime >= 1.0f)
+							if(curdefencetime >= shieldcanreflecttime)
 							{
 								canReflect = true;
 							}else
