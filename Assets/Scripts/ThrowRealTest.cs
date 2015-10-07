@@ -4,10 +4,10 @@ using System.Collections;
 public class ThrowRealTest : MonoBehaviour {
 	public float angle;
 	public float velocity;
-	float dis;
+	//float dis;
 	// Use this for initialization
 	void Start () {
-		dis = Mathf.Abs (Enemy1.player.position.x - transform.position.x);
+		//dis = Mathf.Abs (Enemy1.player.position.x - transform.position.x);
 	}
 	
 	// Update is called once per frame

@@ -10,7 +10,7 @@ public class ShieldController : MonoBehaviour
 	public GameObject reflectItem;
 	public Transform attacker;
 
-	private float lastDeflectTime = 0;
+	//private float lastDeflectTime = 0;
 
 	// Use this for initialization
 	void Start()

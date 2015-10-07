@@ -18,7 +18,7 @@ public class Enemy1_1 : MonoBehaviour {
 
 	public int state = WALK;
 	private bool moveLeft = true;
-	private bool canAttack = false;
+	//private bool canAttack = false;
 	private float lastAttackTime = 0;
 
 	public static Transform player = null;

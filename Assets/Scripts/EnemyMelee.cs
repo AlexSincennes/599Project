@@ -22,7 +22,7 @@ public class EnemyMelee : MonoBehaviour {
 	public int state = WALK;
 	public bool moveLeft = true;
 	private bool canAttack = false;
-	private float lastAttackTime = 0;
+	//private float lastAttackTime = 0;
 	public static GameObject spawnpoint = null;
 	public static Vector3 spawn;
 	public static Transform player = null;

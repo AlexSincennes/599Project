@@ -21,7 +21,8 @@ public class HeroAnimator : MonoBehaviour {
 	private CharacterState currentState;
 	private CharacterState previousState;
 	private Vector3 rootOffset;
-
+	public Transform hero;
+	public GameObject h1;
 	void Start(){
 		// Set all animations to loop
    		GetComponent<Animation>().wrapMode = WrapMode.Loop;
@@ -53,16 +54,20 @@ public class HeroAnimator : MonoBehaviour {
 	void Update() {
 		CheckDirection ();
 		// When turning face towards the camera, unless climbing/rope climbing
-		if (controller.State != CharacterState.CLIMBING && controller.State != CharacterState.ROPE_CLIMBING &&
+		if (((controller.State == CharacterState.AIRBORNE)&&(controller.monty == 1)) || ((controller.State == CharacterState.FALLING)&&(controller.monty == 1))|| ((controller.State == CharacterState.WALL_SLIDING)&&(controller.monty == 1))){
+		}
+		else if (controller.State != CharacterState.CLIMBING && controller.State != CharacterState.ROPE_CLIMBING &&
 		    controller.State != CharacterState.ROPE_SWING && controller.State != CharacterState.ROPE_HANGING) {
 			transform.localRotation = Quaternion.RotateTowards (	transform.localRotation, 
 				                                                    (Quaternion.Angle (transform.localRotation, targetRotation) >= 180) ? Quaternion.Euler(0, 180, 0) : targetRotation, 
 				                                                    Time.deltaTime * 400.0f);
-		} else {
+		}
+		else {
 			transform.localRotation = Quaternion.RotateTowards (	transform.localRotation, 
 			                                                   		targetRotation, 
 			                                                    	Time.deltaTime * 400.0f);
 		}
+
 	}
 
 	/// <summary>
@@ -106,12 +111,14 @@ public class HeroAnimator : MonoBehaviour {
 			case CharacterState.PULLING: Pull(); break;
 		}
 	}
-	
+	//
 	protected void Idle (CharacterState previousState) {
 		GetComponent<Animation>().CrossFade ("idle");
 		CheckDirection();
+		if (controller.monty == 1)
+			controller.monty = 0;
 	}
-	
+	//
 	protected void Walk ()
 	{
 		if (playWalkAnimationsWhileSwimming || !controller.IsSwimming) {
@@ -140,9 +147,11 @@ public class HeroAnimator : MonoBehaviour {
 			GetComponent<Animation>().CrossFade("fall");
 		}
 		CheckDirection();
+
 	}
 
 	protected void Jump() {
+
 		GetComponent<Animation>().CrossFade("jump");
 		CheckDirection();
 	}
@@ -150,6 +159,8 @@ public class HeroAnimator : MonoBehaviour {
 	protected void Airborne() {
 		GetComponent<Animation>().CrossFade("airborne");
 		CheckDirection();
+		//transform.Rotate (new Vector3 (0, 1, 0), 180);
+
 	}
 
 
@@ -209,6 +220,7 @@ public class HeroAnimator : MonoBehaviour {
 	}
 	
 	protected void WallSlide() {
+
 		GetComponent<Animation>().CrossFade("wallslide");
 	}
 	
