@@ -21,7 +21,8 @@ public class HeroAnimator : MonoBehaviour {
 	private CharacterState currentState;
 	private CharacterState previousState;
 	private Vector3 rootOffset;
-
+	public Transform hero;
+	public GameObject h1;
 	void Start(){
 		// Set all animations to loop
    		GetComponent<Animation>().wrapMode = WrapMode.Loop;
@@ -63,6 +64,7 @@ public class HeroAnimator : MonoBehaviour {
 			                                                   		targetRotation, 
 			                                                    	Time.deltaTime * 400.0f);
 		}
+
 	}
 
 	/// <summary>
@@ -106,7 +108,7 @@ public class HeroAnimator : MonoBehaviour {
 			case CharacterState.PULLING: Pull(); break;
 		}
 	}
-	
+	//
 	protected void Idle (CharacterState previousState) {
 		GetComponent<Animation>().CrossFade ("idle");
 		CheckDirection();
@@ -140,6 +142,7 @@ public class HeroAnimator : MonoBehaviour {
 			GetComponent<Animation>().CrossFade("fall");
 		}
 		CheckDirection();
+
 	}
 
 	protected void Jump() {
@@ -150,6 +153,7 @@ public class HeroAnimator : MonoBehaviour {
 	protected void Airborne() {
 		GetComponent<Animation>().CrossFade("airborne");
 		CheckDirection();
+
 	}
 
 

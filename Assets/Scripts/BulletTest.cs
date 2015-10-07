@@ -14,7 +14,7 @@ public class BulletTest : MonoBehaviour {
     public float speed=5;
 	private Vector3 oriSpeed;
 	private Rigidbody myRigid;
-    private Vector3 angle;
+    //private Vector3 angle;
 	public float liveTime;
 	private float startTime;
     public bool ifKeepShooting=false;
@@ -30,32 +30,38 @@ public class BulletTest : MonoBehaviour {
         if (!ifKeepShooting)
         {
             Vector3 enemyPos = enemy.transform.position - shooter.transform.position;
-            dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
-            float delta = dirEuler / 10f;// * Mathf.Sign(enemyPos.x);
-
-            while (enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / 2.0f / speed / speed - enemyPos.y < 0 && Mathf.Abs(dirEuler)>0.01f)
-                dirEuler -= delta;
-
-            delta *= 0.5f;
-            dirEuler += delta;
-
-            while (true)
+			float ymax = -speed * speed / 2 / Physics.gravity.y + Physics.gravity.y * enemyPos.x * enemyPos.x / 2 / speed / speed;
+            if (enemyPos.y > ymax)
+                dirEuler = Mathf.Sign(enemyPos.x) * Mathf.PI / 4;
+            else
             {
-                float temp = enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / speed / speed / 2.0f - enemyPos.y;
-                if (Mathf.Abs(temp) < 0.05f)
-                    break;
-                delta *= 0.5f;
-                if (temp > 0)
-                    dirEuler += delta;
-                else
+                dirEuler = Mathf.Acos(enemyPos.y / enemyPos.magnitude) * Mathf.Sign(enemyPos.x);
+                float delta = dirEuler / 10f;// * Mathf.Sign(enemyPos.x);
+
+                while (enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / 2.0f / speed / speed - enemyPos.y < 0 && Mathf.Abs(dirEuler) > 0.01f)
                     dirEuler -= delta;
+
+                delta *= 0.5f;
+                dirEuler += delta;
+
+                while (true)
+                {
+                    float temp = enemyPos.x * Mathf.Cos(dirEuler) / Mathf.Sin(dirEuler) + enemyPos.x * enemyPos.x / Mathf.Sin(dirEuler) / Mathf.Sin(dirEuler) * Physics.gravity.y / speed / speed / 2.0f - enemyPos.y;
+                    if (Mathf.Abs(temp) < 0.05f)
+                        break;
+                    delta *= 0.5f;
+                    if (temp > 0)
+                        dirEuler += delta;
+                    else
+                        dirEuler -= delta;
+                }
             }
         }
         else
         {
             dirEuler = angleKeepShooting;
         }
-        angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
+        //angle=transform.eulerAngles = new Vector3(0, 0, -dirEuler * Mathf.Rad2Deg);
         myRigid.velocity=oriSpeed = new Vector3 (speed * Mathf.Sin (dirEuler), speed * Mathf.Cos (dirEuler), 0);
 
 

@@ -20,7 +20,7 @@ public class Enemy1_2 : MonoBehaviour {
 	
 	public int state = WALK;
 	public bool moveLeft = true;
-	private bool canAttack = false;
+	//private bool canAttack = false;
 	private float lastAttackTime = 0;
 	
 	public static Transform player = null;
