@@ -18,7 +18,7 @@ public class HitBox : MonoBehaviour {
 		Application.LoadLevel(Application.loadedLevel);
 		
 		//GameManager.Instance.deathPos = transform.parent.position;
-		if(Application.loadedLevel == 3)
+		if(Application.loadedLevel == 2)
 		GameManager.Instance.curTimes++;
 
 		//GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
@@ -35,7 +35,7 @@ public class HitBox : MonoBehaviour {
 		{
 			Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = transform.parent.position;
-			if(Application.loadedLevel == 3)
+			if(Application.loadedLevel == 2)
 			GameManager.Instance.curTimes++;
 
 			//GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);

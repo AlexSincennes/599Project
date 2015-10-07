@@ -24,7 +24,7 @@ public class CameraMovementC : MonoBehaviour {
 	private Vector3 areaSwitchTarget;
 	private bool isSwitchingArea = false;
 
-	private Victory levelVictory;
+	//private Victory levelVictory;
 	//private Transform mainCamera;
 	// Use this for initialization
 	void Start () {
@@ -183,7 +183,7 @@ public class CameraMovementC : MonoBehaviour {
 	public void FirstLevelVictory(Victory win)
 	{
 		isVictory = true;
-		levelVictory = win;
+		////levelVictory = win;
 		target = win.family [0].transform;
 
 	}
