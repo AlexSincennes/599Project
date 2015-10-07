@@ -150,7 +150,7 @@ public class CameraMovementC : MonoBehaviour {
 						isSwitchingArea = true;
 					}
 
-					transform.position = Vector3.MoveTowards (transform.position ,areaSwitchTarget ,Time.deltaTime*120);
+					transform.position = Vector3.MoveTowards (transform.position ,areaSwitchTarget ,Time.deltaTime*100);
 
 					if(Mathf.Abs(transform.position.x - areaSwitchTarget.x )<=0.01f)
 					{
@@ -176,7 +176,7 @@ public class CameraMovementC : MonoBehaviour {
 	void DoVictory()
 	{
 		//move camera to family0
-		transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distance),Time.deltaTime*60); 
+		transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distance),Time.deltaTime*80); 
 
 	}
 
