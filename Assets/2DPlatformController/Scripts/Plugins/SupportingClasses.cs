@@ -145,7 +145,7 @@ public class WallDetails {
 	/// The reduciton in gravity when the character is wall sliding (only used if wallSlide = true). Set to
 	/// 0 to make it stick.
 	/// </summary>
-	public float wallSlideGravityFactor = 0.1f;
+	public float wallSlideGravityFactor = 0.33f;
 	/// <summary>
 	/// The time where user input is ingored in the x direction when wall jupming away from a wall.
 	/// </summary>
@@ -153,12 +153,12 @@ public class WallDetails {
 	/// <summary>
 	/// Additional distance to add to side collider hit checks when determining if we are wall sliding.
 	/// </summary>
-	public float wallSlideAdditionalDistance = 1.0f;
-	///// <summary>
+	public float wallSlideAdditionalDistance = 0.05f;
+	/// <summary>
 	/// Amount off leeway between pushing against a wall, and being able to wall jump 
 	/// by holding opposite direction and pressing jump.
 	/// </summary>
-	public float wallJumpTime = 0.5f;
+	public float wallJumpTime = 0.33f;
 	/// <summary>
 	/// The offset for the extra raycast used for edge detection.
 	/// Note the y value is the y offset but that the x value is used as a scalar
@@ -199,7 +199,7 @@ public class ClimbDetails {
 	/// If the ladder allows climbing horizontally use this speed.
 	/// </summary> 
 	public float horizontalSpeed = 1.5f;
-	//
+	
 	/// <summary>
 	/// How many feet colliders are required to be on the ladder before it can be climbed. cannot be larger
 	/// than total eet colliders. Larger numbers make ladders "thinner", i.e. you have to be closer to the
@@ -260,7 +260,7 @@ public class LedgeDetails {
 	/// else the character will grab ledges when they shouldn't be able 
 	/// to.
 	/// </summary>
-	public float autoGrabDistance = 0.5f;
+	public float autoGrabDistance = 0.1f;
 	
 	/// <summary>
 	/// When a ledge hang starts the edge detection offset is added to the ledge hang raycast 
@@ -280,7 +280,7 @@ public class LedgeDetails {
 	/// The time where user input is ingored in the x direction when wall jupming away from a ledge.
 	/// </summary>
 	public float oppositeDirectionTime = 0.5f;
-	//
+	
 	/// <summary>
 	/// Velocity imparted by a jump from a ledge hang. If this is zero jump
 	/// will simply cause the cahracter to fall from the ledge (and the jump
@@ -298,14 +298,14 @@ public class LedgeDetails {
 	/// hands when grasping for a ledge).
 	/// </summary>
 	public float graspPoint = 0.4f;
-
+	
 	/// <summary>
 	/// How much leeway to use when cacluating the grasp. A bigger number
 	/// makes it easier to ledge hang, but it will looks incorrect
 	/// if the value is too large.
 	/// </summary>
-	public float graspLeeway = 10.0f;
-
+	public float graspLeeway = 0.1f;
+	
 	/// <summary>
 	/// The time it takes to get to the hang position in seconds.
 	/// </summary>
@@ -373,7 +373,7 @@ public class CrouchDetails {
 	/// to transforms, or listen for events and handle it compeltely in your own code.
 	/// </summary>
 	public bool useHeightReduction;
-	//
+	
 	/// <summary>
 	/// If use heightRecution = true then this is amount the characters head colliders 
 	/// will be reduced by. Specifically the head collider distance is scaled by this factor

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Victory : MonoBehaviour {
@@ -13,7 +13,7 @@ public class Victory : MonoBehaviour {
 		family [1].SetActive (false);
 	}
 	
-	//// Update is called once per frame
+	// Update is called once per frame
 	void Update () {
 		if (family [0].activeInHierarchy && family [1].activeInHierarchy) 
 		{
@@ -21,7 +21,7 @@ public class Victory : MonoBehaviour {
 			if (Mathf.Abs(family [0].transform.position.x - endPos.x) <= 0.01f) 
 			{
 				passLabel.SetActive(true);
-				//Time.timeScale = 0;
+
 				canFamilyMove = false;
 			}
 			if(canFamilyMove)
@@ -45,10 +45,7 @@ public class Victory : MonoBehaviour {
 	{
 		family [0].SetActive (true);
 		family [1].SetActive (true);
-		//Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = family [0].transform;
-		GameManager.Instance.player.GetComponent<RaycastCharacterController> ().controllerActive = false;
-
-		Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().FirstLevelVictory (this);
+		Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = family [0].transform;
 		canFamilyMove = true;
 		endPos = new Vector3 (GameManager.Instance.player.transform.position.x,family [0].transform.position.y,family [0].transform.position.z); 
 	}

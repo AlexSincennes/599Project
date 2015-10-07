@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour {
 	void Start () {
 		PauseUI.SetActive(false);
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Pause")){
@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour {
 			PauseUI.SetActive(true);
 			Time.timeScale = 0;
 		}
-		else if(!paused){
+		if(!paused){
 			PauseUI.SetActive(false);
 			Time.timeScale = 1.5f;
 		}

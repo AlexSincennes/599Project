@@ -19,7 +19,7 @@ public class EnemyKeepAttack : MonoBehaviour {
 	
 	public int state = ATTACK;
 	public bool moveLeft = true;
-	//private bool canAttack = false;
+	private bool canAttack = false;
 	private float lastAttackTime = 0;
 	public float angle;
 	
