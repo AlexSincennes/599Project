@@ -8,9 +8,11 @@ public class CameraMovementC : MonoBehaviour {
 	public float dashRatio =0.3f ;
 	public bool isleftArea;
 
+
 	private float cameraScreenHeight;
 	private float cameraScreenwidth;
 	private bool isGetCameraScreen = true;
+	private bool isVictory = false;
 
 	private float leftDot;
 	private float leftDash;
@@ -21,6 +23,8 @@ public class CameraMovementC : MonoBehaviour {
 
 	private Vector3 areaSwitchTarget;
 	private bool isSwitchingArea = false;
+
+	private Victory levelVictory;
 	//private Transform mainCamera;
 	// Use this for initialization
 	void Start () {
@@ -39,18 +43,24 @@ public class CameraMovementC : MonoBehaviour {
 
 		transform.position = new Vector3 (target.position.x, target.position.y + 5, target.position.z - distance);
 		//Debug.Log (Screen.width + "  " + Screen.height);
-
+		isVictory = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isGetCameraScreen) 
-		{
-			GetDotDashArea ();
-		}
-		CheckDotDashArea ();
-		//transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distance),Time.deltaTime*60); 
 
+		//transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distance),Time.deltaTime*60); 
+		if (isVictory) 
+		{
+			DoVictory ();
+		} else 
+		{
+			if (!isGetCameraScreen) 
+			{
+				GetDotDashArea ();
+			}
+			CheckDotDashArea ();
+		}
 	}
 
 	void LateUpdate()
@@ -60,7 +70,7 @@ public class CameraMovementC : MonoBehaviour {
 			GetCameraScreen();
 			GetDotDashArea ();
 			Camera.main.transform.position = new Vector3(Camera.main.transform.position.x+cameraScreenwidth*dashRatio,Camera.main.transform.position.y,Camera.main.transform.position.z);
-			//GameManager.Instance.player.transform.position = new Vector3(leftDot,GameManager.Instance.player.transform.position.y,GameManager.Instance.player.transform.position.z);
+
 			isleftArea = true;
 			isGetCameraScreen = false;
 		}
@@ -161,7 +171,22 @@ public class CameraMovementC : MonoBehaviour {
 				}
 			}
 		}
+	}
 
+	void DoVictory()
+	{
+		//move camera to family0
+		transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distance),Time.deltaTime*60); 
 
 	}
+
+	public void FirstLevelVictory(Victory win)
+	{
+		isVictory = true;
+		levelVictory = win;
+		target = win.family [0].transform;
+
+	}
+
+
 }

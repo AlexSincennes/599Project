@@ -69,7 +69,7 @@ public class ShieldTest : MonoBehaviour {
 							shieldmesh.SetActive(true);
 							directionShield.SetActive (false);
 							shieldDefence = false;
-							GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
+							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
 							curdefencetime = shielddefencetime;
 							transform.parent.gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0f,102f/255f,1f);
 						}else
