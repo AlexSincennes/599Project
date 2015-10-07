@@ -119,6 +119,7 @@ public class RaycastCharacterController : MonoBehaviour
 	private bool startedClimbing = false;
 	private float fallThroughTimer = 0.0f;
 	public int dir;
+	public int monty;
 	private bool isLedgeHanging = false;
 	private LedgeHangingState ledgeHangState;
 	private float ledgeHangTimer = 0.0f;
@@ -809,7 +810,7 @@ public class RaycastCharacterController : MonoBehaviour
 				stopWallSlide = false;
 			}
 			if (wall.wallJumpTag != null && wall.wallJumpTag != "" && currentWallTag != wall.wallJumpTag) stopWallSlide = true;
-			if (!stopWallSlide && wall.canWallSlide && ((wallSlideDirection == RC_Direction.RIGHT /*&& characterInput.x > 0*/) || (wallSlideDirection == RC_Direction.LEFT /*&& characterInput.x < 0*/))) {
+			if (!stopWallSlide && wall.canWallSlide){ //&& ((wallSlideDirection == RC_Direction.RIGHT /*&& characterInput.x > 0*/) || (wallSlideDirection == RC_Direction.LEFT /*&& characterInput.x < 0*/))) {
 				//// Support sliding on moving platforms
 				// RaycastHit hit = actualWallCollider.GetCollision(1<< backgroundLayer, 0.1f);
 				print ("Wierd");
@@ -1234,13 +1235,13 @@ public class RaycastCharacterController : MonoBehaviour
 					}
 				}
 			}
-			// "Hard" wall jump also works for easy wall jump
+			//// "Hard" wall jump also works for easy wall jump
 			if (wallJumpTimer > 0.0f) {
 				print("HAHAHAHA");
-				if ((characterInput.jumpButtonDown) && (isWallSliding)) //|| (wallJumpDirection == RC_Direction.RIGHT/* && characterInput.x < 0*/)))
+				if ((characterInput.jumpButtonDown) && (isWallSliding))//|| (characterInput.jumpButtonDown)) //|| (wallJumpDirection == RC_Direction.RIGHT/* && characterInput.x < 0*/)))
 				    {
 					print("LALALALALALA");
-				    ////|| (hasPressedDirectionForWallJump && characterInput.jumpButtonDown)) {
+				    ////) {
 				    Unparent();
 					startedClimbing = false;
 					velocity.y = wall.wallJumpSpeed.y;
@@ -1261,6 +1262,7 @@ public class RaycastCharacterController : MonoBehaviour
 						else if ((wallSlideDirection == RC_Direction.RIGHT)){  
 							////velocity.x =  wall.wallJumpSpeed.x;
 							dir = -1;
+							print("check1");
 							////checkair = 1;
 						}
 					}
@@ -1282,24 +1284,25 @@ public class RaycastCharacterController : MonoBehaviour
 			// Animations
 			if ((!IsGrounded (groundedLookAhead, false) && !hasHitFeet) || jumpButtonTimer > 0.0f) {
 				State = CharacterState.AIRBORNE;
-				if(State == CharacterState.WALL_JUMPING)
-				{
-					print("DOREME");
-					/*if(dir == 1){
-						h1.Rotate(new Vector3(0,1,0),180);
-						dir =0;}
-					else if (dir == -1){
-						//h1.Rotate(new Vector3(0,1,0),180);
-						//dir =0;}*/
-					directionChecker.UpdateDirection(this);
+				if(dir == 1){
+					h1.Rotate(new Vector3(0,1,0),180);
+					monty = 1;
+					dir =0;}
+				else if (dir == -1){
+					h1.Rotate(new Vector3(0,1,0),180);
+					monty = 1;
+					dir =0;}
+				//directionChecker.UpdateDirection(this);
 				
-				}
-					//////checkair = 0;
+
+					////checkair = 0;
 
 			}
 			
 			if (velocity.y < jump.fallVelocity) {
 				State = CharacterState.FALLING;
+
+				//directionChecker.UpdateDirection(this);
 			}
 			
 			if (startedClimbing){

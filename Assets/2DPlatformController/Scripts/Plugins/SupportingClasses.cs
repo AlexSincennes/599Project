@@ -199,7 +199,7 @@ public class ClimbDetails {
 	/// If the ladder allows climbing horizontally use this speed.
 	/// </summary> 
 	public float horizontalSpeed = 1.5f;
-	
+	//
 	/// <summary>
 	/// How many feet colliders are required to be on the ladder before it can be climbed. cannot be larger
 	/// than total eet colliders. Larger numbers make ladders "thinner", i.e. you have to be closer to the
