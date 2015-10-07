@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public int curTimes;
 	public Vector3 spawnPointPos = Vector3.zero;
 	public GameObject player;
+	public bool isCutScene = true;
 
 	void Awake()
 	{

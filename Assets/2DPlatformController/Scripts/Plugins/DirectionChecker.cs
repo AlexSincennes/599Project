@@ -33,7 +33,7 @@ public class DirectionChecker : MonoBehaviour {
 	virtual public bool UpdateDirection (RaycastCharacterController character) {
 		int newDirection = 0;
 
-		
+
 		// Always return ledge hang dir - NEW
 		if (character.IsLedgeHanging) {
 			if (character.LedgeHangDirection == RC_Direction.RIGHT) newDirection = 1;

@@ -18,7 +18,7 @@ public class ApplayCheckPoint : MonoBehaviour {
 		//Debug.Log (other.gameObject.tag+"alalal");
 		if (other.gameObject.tag == "Player") 
 		{
-			GameManager.Instance.spawnPointPos = this.transform.position;
+			GameManager.Instance.spawnPointPos = transform.position;
 
 			transform.GetChild(0).GetComponentInChildren<Renderer>().material.color = Color.red;
 		}

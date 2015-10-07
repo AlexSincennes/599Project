@@ -11,12 +11,12 @@ public class ShieldObject : MonoBehaviour {
 		lasttime = 0;
 
 		//Debug.Log (GameManager.Instance.curTimes);
-		if(GameManager.Instance.curTimes>1)//Time.time - lasttime > 30
+		/*if(GameManager.Instance.curTimes>1 || !GameManager.Instance.isCutScene )//Time.time - lasttime > 30
 		{
 			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
 			start = false;
 			GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
-		}
+		}*/
 
 		lasttime = Time.time;
 
@@ -25,7 +25,7 @@ public class ShieldObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Application.loadedLevel == 3) 
+		if (Application.loadedLevel == 3 && GameManager.Instance.isCutScene) 
 		{
 			//Debug.Log(Mathf.Abs (Camera.main.gameObject.transform.position.x - transform.position.x)+"lala");
 			if (start && Mathf.Abs (Camera.main.gameObject.transform.position.x - transform.position.x) <= 0.01f) 

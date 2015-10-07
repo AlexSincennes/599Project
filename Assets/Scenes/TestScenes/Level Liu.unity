@@ -2721,7 +2721,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 8
@@ -2771,7 +2771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1459676280}
-  distance: 20
+  distance: 25
+  dotRatio: .699999988
+  dashRatio: .300000012
+  isleftArea: 0
 --- !u!82 &285324779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9867,6 +9870,7 @@ MonoBehaviour:
   directionShield: {fileID: 0}
   shieldcoldtime: 5
   shielddefencetime: 2
+  shieldcanreflecttime: 1
 --- !u!1001 &980507378
 Prefab:
   m_ObjectHideFlags: 0
@@ -14406,8 +14410,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747562767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.94320679, y: -5.8772049, z: 0}
-  m_LocalScale: {x: 75.767952, y: 10, z: 1}
+  m_LocalPosition: {x: 3.94320703, y: -5.8772049, z: 0}
+  m_LocalScale: {x: 75, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1636200955}
   m_RootOrder: 33
@@ -16134,7 +16138,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069633593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.1867905, y: 8.58279514, z: 0}
+  m_LocalPosition: {x: -34.3600006, y: 8.58279514, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 194876888}

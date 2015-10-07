@@ -17,8 +17,8 @@ public class ShieldMovement : MonoBehaviour {
 	void Update () {
 		
 		//print(transform.position.x);
-		float x = Input.mousePosition.x;
-		float y = Input.mousePosition.y;
+		//float x = Input.mousePosition.x;
+		//float y = Input.mousePosition.y;
 		//print (dc.CurrentDirection);
 		tempX = Input.mousePosition.x - transform.position.x -550;
 		tempY = Input.mousePosition.y - transform.position.y - 200;

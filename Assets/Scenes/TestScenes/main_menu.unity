@@ -872,6 +872,7 @@ MonoBehaviour:
   curTimes: 0
   spawnPointPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+  isCutScene: 0
 --- !u!4 &1327279441
 Transform:
   m_ObjectHideFlags: 0
