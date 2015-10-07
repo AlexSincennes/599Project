@@ -8546,6 +8546,30 @@ Prefab:
       propertyPath: wall.wallJumpSpeed.y
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: headColliders.Array.data[0].offset.y
+      value: .24999845
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: headColliders.Array.data[0].distance
+      value: .800000072
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: headColliders.Array.data[1].offset.y
+      value: .24999845
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: headColliders.Array.data[1].distance
+      value: .800000072
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: sides.Array.data[0].offset.y
+      value: .74999845
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
+      propertyPath: sides.Array.data[2].offset.y
+      value: .74999845
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5439972, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
@@ -17464,7 +17488,7 @@ Transform:
   m_GameObject: {fileID: 2025688605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00611620815, y: .00611620815, z: .00611620815}
+  m_LocalScale: {x: .00625000009, y: .00625000009, z: .00625000009}
   m_Children:
   - {fileID: 352713838}
   - {fileID: 729143187}

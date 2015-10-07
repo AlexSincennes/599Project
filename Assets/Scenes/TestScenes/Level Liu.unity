@@ -8529,7 +8529,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
       propertyPath: jump.doubleJumpVelocity
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11433374, guid: afcb5719d78f925488c4b6ea4d1469a6, type: 2}
       propertyPath: movement.jumpAtRunSpeed
@@ -11998,6 +11998,10 @@ Prefab:
       propertyPath: RotateSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: Speed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
   m_IsPrefabParent: 0
@@ -13922,7 +13926,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: startPosition.x
-      value: 380.156799
+      value: 382.156799
       objectReference: {fileID: 0}
     - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: patrolDis
@@ -13942,11 +13946,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409148, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.69999981
+      value: 5.1500001
       objectReference: {fileID: 0}
     - target: {fileID: 409148, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: m_LocalScale.x
-      value: 14.5555449
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 409148, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -13983,6 +13987,14 @@ Prefab:
     - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
       propertyPath: RotateSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11191892, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437804, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
+      propertyPath: Speed
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8a33b72adc06b84096599aeb98e5d8d, type: 2}
@@ -17426,7 +17438,7 @@ Transform:
   m_GameObject: {fileID: 2025688605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00514138816, y: .00514138816, z: .00514138816}
+  m_LocalScale: {x: .00625000009, y: .00625000009, z: .00625000009}
   m_Children:
   - {fileID: 352713838}
   - {fileID: 729143187}
