@@ -25,13 +25,14 @@ public class Enemy1_2 : MonoBehaviour {
 	
 	public static Transform player = null;
 	
-	
+	private Animation myAni;
 	// Use this for initialization
 	void Start () {
 		if(player == null) {
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
         walkingSpeed = Speed;
+		myAni = transform.GetComponentInChildren<Animation> ();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +41,7 @@ public class Enemy1_2 : MonoBehaviour {
 		switch (state) {
 		case WALK:
 			//lastAttackTime = 0;
+			myAni.CrossFade("run",0.1f);
 			if(moveLeft)
 			{
 				if(transform.position.x - startPosition.x + patrolDis <= 0.01f)
@@ -63,6 +65,7 @@ public class Enemy1_2 : MonoBehaviour {
 			}
 			break;
 		case ATTACK:
+			myAni.CrossFade("idle",0.1f);
 			if(Time.time - lastAttackTime > attackRate)
 			{ 
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );

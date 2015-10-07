@@ -96,10 +96,10 @@ public class EnemyMelee : MonoBehaviour {
 		//targetPosition.y = transform.position.y;
 		Vector3 targetRotation = Vector3.zero;
 		if (moveLeft  ) {
-			targetRotation = new Vector3 (0, 180, 0);
+			targetRotation = new Vector3 (0, 270, 0);
 			transform.localEulerAngles = Vector3.Lerp (this.transform.localEulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
 		} else if (!moveLeft ){
-			targetRotation = new Vector3 (0, 0, 0);
+			targetRotation = new Vector3 (0, 90, 0);
 			transform.localEulerAngles = Vector3.Lerp (this.transform.localEulerAngles, targetRotation, Time.deltaTime * RotateSpeed);
 		}
 		
