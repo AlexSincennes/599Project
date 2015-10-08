@@ -797,7 +797,7 @@ public class RaycastCharacterController : MonoBehaviour
 		}
 		
 		// Check for wall slide
-		if (wallSlideCount > 0 && velocity.y <= 0.0f) {
+		if (wallSlideCount > 0 && velocity.y <= 5.0f) {
 			isWallHolding = true;
 			bool stopWallSlide = true;
 			RaycastHit hit = actualWallCollider.GetCollision(1<<backgroundLayer, wall.edgeDetectionOffset.x);
@@ -813,7 +813,8 @@ public class RaycastCharacterController : MonoBehaviour
 			if (!stopWallSlide && wall.canWallSlide){ //&& ((wallSlideDirection == RC_Direction.RIGHT /*&& characterInput.x > 0*/) || (wallSlideDirection == RC_Direction.LEFT /*&& characterInput.x < 0*/))) {
 				//// Support sliding on moving platforms
 				// RaycastHit hit = actualWallCollider.GetCollision(1<< backgroundLayer, 0.1f);
-				print ("Wierd");
+				//
+				//print ("Wierd");
 				isWallSliding = true;
 				State = CharacterState.WALL_SLIDING;
 				//// Handle moving platforms
@@ -1237,10 +1238,10 @@ public class RaycastCharacterController : MonoBehaviour
 			}
 			//// "Hard" wall jump also works for easy wall jump
 			if (wallJumpTimer > 0.0f) {
-				print("HAHAHAHA");
+				//print("HAHAHAHA");
 				if ((characterInput.jumpButtonDown) && (isWallSliding))//|| (characterInput.jumpButtonDown)) //|| (wallJumpDirection == RC_Direction.RIGHT/* && characterInput.x < 0*/)))
 				    {
-					print("LALALALALALA");
+					//print("LALALALALALA");
 				    ////) {
 				    Unparent();
 					startedClimbing = false;
@@ -1254,7 +1255,7 @@ public class RaycastCharacterController : MonoBehaviour
 					if (wall.wallJumpOnlyInOppositeDirection) {
 						oppositeDirectionTimer = wall.oppositeDirectionTime;
 						if ((wallSlideDirection == RC_Direction.LEFT)) { 
-							print("check");
+							//print("check");
 							//velocity.x = -1* wall.wallJumpSpeed.x;
 							dir = 1;
 							//checkair = 1;
@@ -1262,7 +1263,7 @@ public class RaycastCharacterController : MonoBehaviour
 						else if ((wallSlideDirection == RC_Direction.RIGHT)){  
 							////velocity.x =  wall.wallJumpSpeed.x;
 							dir = -1;
-							print("check1");
+							//print("check1");
 							////checkair = 1;
 						}
 					}
