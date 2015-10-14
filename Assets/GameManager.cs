@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public Vector3 spawnPointPos = Vector3.zero;
 	public GameObject player;
 	public bool isCutScene = true;
+	public bool haveShield = false;
 
 	void Awake()
 	{

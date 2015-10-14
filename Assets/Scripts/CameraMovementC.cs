@@ -37,7 +37,8 @@ public class CameraMovementC : MonoBehaviour {
 
 		if(GameManager.Instance.curTimes>1 || !GameManager.Instance.isCutScene )//Time.time - lasttime > 30
 		{
-			Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = GameManager.Instance.player.transform;
+			//Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().
+			target = GameManager.Instance.player.transform;
 			GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;
 		}
 

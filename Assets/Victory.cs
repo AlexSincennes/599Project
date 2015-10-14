@@ -48,7 +48,7 @@ public class Victory : MonoBehaviour {
 		//Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = family [0].transform;
 		GameManager.Instance.player.GetComponent<RaycastCharacterController> ().controllerActive = false;
 
-		Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().FirstLevelVictory (this);
+		Camera.main.gameObject.GetComponentInChildren<CameraMovementC1> ().FirstLevelVictory (this);
 		canFamilyMove = true;
 		endPos = new Vector3 (GameManager.Instance.player.transform.position.x,family [0].transform.position.y,family [0].transform.position.z); 
 	}

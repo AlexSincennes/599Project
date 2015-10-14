@@ -20,6 +20,12 @@ public class ShieldObject : MonoBehaviour {
 
 		lasttime = Time.time;
 
+		if (GameManager.Instance.haveShield) 
+		{
+			GameObject.Find("HeroCharacter/Shield").GetComponent<ShieldTest>().shieldEquip = true;
+			Destroy(this.gameObject);
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -39,7 +45,7 @@ public class ShieldObject : MonoBehaviour {
 
 			if (end && Time.time - lasttime > 1f) 
 			{
-				Camera.main.gameObject.GetComponentInChildren<CameraMovementC> ().target = Player.transform;
+				Camera.main.gameObject.GetComponentInChildren<CameraMovementC1> ().target = Player.transform;
 				if(Mathf.Abs (Camera.main.gameObject.transform.position.x - GameManager.Instance.player.transform.position.x) <= 0.01f)
 				{
 					GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = true;	
@@ -55,6 +61,7 @@ public class ShieldObject : MonoBehaviour {
 		if (other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>()) {
 			ShieldTest temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>();
 			temp.shieldEquip = true;
+			GameManager.Instance.haveShield = true;
 			Destroy(this.gameObject);
 		}
 	}

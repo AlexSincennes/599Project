@@ -17,7 +17,7 @@ public class CheckPoint : MonoBehaviour {
 				player.transform.position = new Vector3 (101f, 1.5f, 0.0f);
 			} else
 			{
-				Debug.Log("lalala");
+				//Debug.Log("lalala");
 				player.transform.position = GameManager.Instance.spawnPointPos;
 				Camera.main.gameObject.transform.position = GameManager.Instance.spawnPointPos;
 
