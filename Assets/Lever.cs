@@ -22,6 +22,7 @@ public class Lever : MonoBehaviour {
 			lever.transform.Rotate(new Vector3(0,0,1),90);
 			if(obj != null)
 				obj.SetActive(false);
+			//
 			if(obj1 != null)
 			obj1.SetActive(false);
 			isFirst = false;
