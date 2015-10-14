@@ -56,6 +56,7 @@ public class CameraMovementC1 : MonoBehaviour
 
 	void Update () //Interpolate the position of sphere
 	{
+		Debug.Log (m_rc.State);
 		if (isVictory) {
 			DoVictory ();
 		} else 
@@ -77,7 +78,7 @@ public class CameraMovementC1 : MonoBehaviour
 			case FROZEN:
 			{
 				trackSphere.Translate(Vector3.zero);
-				if(m_rc.State == CharacterState.WALKING) //oppsite dir
+				if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
 				{
 					status = EXPEND;
 				}
@@ -89,7 +90,7 @@ public class CameraMovementC1 : MonoBehaviour
 
 				if (Mathf.Abs (trackSphere.localPosition.x) <= softBoundary) 
 				{
-					if(m_rc.State == CharacterState.WALKING)
+					if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
 					{
 						status = EXPEND;
 					}
@@ -102,7 +103,7 @@ public class CameraMovementC1 : MonoBehaviour
 			case EXPEND:
 			{
 
-				if(m_rc.State == CharacterState.WALKING)
+				if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
 				{
 					//Debug.Log(new Vector3(m_dc.CurrentDirection,0,0));
 					lastDir = m_dc.CurrentDirection;
