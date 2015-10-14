@@ -56,7 +56,7 @@ public class CameraMovementC1 : MonoBehaviour
 
 	void Update () //Interpolate the position of sphere
 	{
-		Debug.Log (m_rc.State);
+		//Debug.Log(m_dc.CurrentDirection);
 		if (isVictory) {
 			DoVictory ();
 		} else 
@@ -65,18 +65,32 @@ public class CameraMovementC1 : MonoBehaviour
 			{
 			case BOUNDARY:
 			{
-				if(m_rc.State == CharacterState.IDLE)
+
+				if(m_rc.State == CharacterState.IDLE  )
 				{
-					status = SHRINK;
-				}else
+					if(m_dc.CurrentDirection == -lastDir)
+					{
+						status = SHRINK;
+						lastDir = -m_dc.CurrentDirection;
+					}else
+					{
+						status = SHRINK;
+					}
+
+				}else if(m_dc.CurrentDirection == lastDir)
 				{
 					trackSphere.Translate(Vector3.zero);
+				}else if(m_dc.CurrentDirection == -lastDir)
+				{
+					status = EXPEND;
+					//lastDir = -m_dc.CurrentDirection;
 				}
 
 			}
 				break;
 			case FROZEN:
 			{
+				//Debug.Log (m_rc.State);
 				trackSphere.Translate(Vector3.zero);
 				if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
 				{
@@ -87,7 +101,7 @@ public class CameraMovementC1 : MonoBehaviour
 				break;
 			case SHRINK:
 			{
-
+				//Debug.Log(m_dc.CurrentDirection);
 				if (Mathf.Abs (trackSphere.localPosition.x) <= softBoundary) 
 				{
 					if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
@@ -96,7 +110,10 @@ public class CameraMovementC1 : MonoBehaviour
 					}
 				}else
 				{
-					trackSphere.Translate(new Vector3(-lastDir,0,0)*m_rc.movement.walkSpeed*shrinkCof);
+					if(trackSphere.localPosition.x>0)
+						trackSphere.Translate(new Vector3(-1,0,0)*m_rc.movement.walkSpeed*shrinkCof);
+					else if(trackSphere.localPosition.x<0)
+						trackSphere.Translate(new Vector3(1,0,0)*m_rc.movement.walkSpeed*shrinkCof);
 				}
 			}
 				break;
