@@ -26,7 +26,7 @@ public class CameraMovementC1 : MonoBehaviour
 	private DirectionChecker m_dc;
 	private RaycastCharacterController m_rc;
 	private int lastDir = 0;
-
+	private float lastJumpPos = 0;
 	void Start()
 	{
 		m_player = GameManager.Instance.player;
@@ -61,6 +61,7 @@ public class CameraMovementC1 : MonoBehaviour
 			DoVictory ();
 		} else 
 		{
+			Debug.Log(status);
 			switch(status)
 			{
 			case BOUNDARY:
@@ -76,6 +77,7 @@ public class CameraMovementC1 : MonoBehaviour
 					{
 						status = SHRINK;
 					}
+					lastJumpPos = m_player.transform.position.x;
 
 				}else if(m_dc.CurrentDirection == lastDir)
 				{
@@ -104,9 +106,22 @@ public class CameraMovementC1 : MonoBehaviour
 				//Debug.Log(m_dc.CurrentDirection);
 				if (Mathf.Abs (trackSphere.localPosition.x) <= softBoundary) 
 				{
+					//Debug.Log("hahahaha");
 					if(m_rc.State == CharacterState.WALKING || m_rc.State == CharacterState.JUMPING || m_rc.State == CharacterState.AIRBORNE|| m_rc.State == CharacterState.FALLING|| m_rc.State == CharacterState.DOUBLE_JUMPING)
 					{
-						status = EXPEND;
+
+						if(Mathf.Abs(m_player.transform.position.x - lastJumpPos) >= 0.01f)
+						{
+							status = EXPEND;
+						}
+							
+					}else
+					{
+						//Debug.Log("hahahaha");
+						if(m_player.transform.position.x == lastJumpPos)
+						{
+							trackSphere.Translate(Vector3.zero);
+						}
 					}
 				}else
 				{
@@ -134,14 +149,18 @@ public class CameraMovementC1 : MonoBehaviour
 				if (Mathf.Abs (trackSphere.localPosition.x) >= hardBoundary) 
 				{
 					status = BOUNDARY;
+					//Debug.Log("hahahaha");
 				}else if(isStart &&  m_rc.State == CharacterState.IDLE)
 				{
 					if(Mathf.Abs (trackSphere.localPosition.x) > softBoundary)
 					{
+						//Debug.Log("hahahaha");
 						status = SHRINK;
+						lastJumpPos = m_player.transform.position.x;
 					}else
 					{
 						status = FROZEN;
+
 					}
 				}
 			}
