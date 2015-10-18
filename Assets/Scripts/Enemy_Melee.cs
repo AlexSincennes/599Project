@@ -63,19 +63,19 @@ public class Enemy_Melee : MonoBehaviour {
 			}
 			break;
 		case ATTACK:
-			float dis_attack = Mathf.Abs(transform.position.x - player.position.x);
+			float dis_attack1 = Vector3.Distance(transform.position,player.position);
 			if(Time.time - lastAttackTime > attackRate)
 			{
 				myAni["stun2"].wrapMode = WrapMode.Once;
 				myAni.Play("stun2");
 				lastAttackTime = Time.time;
 			}
-
-			if(myAni["stun2"].normalizedTime >=0.9f && dis_attack - attackDis <= 0.01f)
+			//Debug.Log(dis_attack1);
+			if(myAni["stun2"].normalizedTime >=0.9f && dis_attack1 - attackDis <= 1.5f)
 			{
 				player.GetComponentInChildren<HitBox>().Die();
 			}
-
+			float dis_attack = Mathf.Abs(transform.position.x - player.position.x);
 			if(dis_attack - attackDis > 0.01f && !myAni.IsPlaying("stun2"))
 			{
 				SetState(FOLLOW);
