@@ -23,9 +23,8 @@ public class EnemyMelee : MonoBehaviour {
 	public bool moveLeft = true;
 	private bool canAttack = false;
 	//private float lastAttackTime = 0;
-	public static GameObject spawnpoint = null;
-	public static Vector3 spawn;
-	public static Transform player = null;
+
+	public Transform player = null;
 	
 	
 	// Use this for initialization
@@ -34,8 +33,7 @@ public class EnemyMelee : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 			 
 		}
-		if (spawnpoint == null)
-			spawnpoint = GameObject.FindGameObjectWithTag ("Spawn");
+
 		patrolDis = transform.parent.FindChild("detection").lossyScale.x/2;
 	}
 	

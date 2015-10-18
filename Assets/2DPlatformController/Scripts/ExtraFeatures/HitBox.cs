@@ -44,5 +44,12 @@ public class HitBox : MonoBehaviour {
 		
 	}
 
+	public void Die()
+	{
+		Application.LoadLevel(Application.loadedLevel);
+		if(Application.loadedLevel == 2)
+			GameManager.Instance.curTimes++;
+	}
+
 
 }

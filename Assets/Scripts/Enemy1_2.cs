@@ -23,7 +23,7 @@ public class Enemy1_2 : MonoBehaviour {
 	//private bool canAttack = false;
 	private float lastAttackTime = 0;
 	
-	public static Transform player = null;
+	public Transform player = null;
 	
 	private Animation myAni;
 	// Use this for initialization

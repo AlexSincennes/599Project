@@ -13,7 +13,7 @@ public class CheckPoint : MonoBehaviour {
 		} else {
 			if(GameManager.Instance.spawnPointPos == Vector3.zero)
 			{
-				Debug.Log("lalala1111");
+				///Debug.Log("lalala1111");
 				player.transform.position = new Vector3 (-10f, 0.5f, 0.0f);
 			} else
 			{

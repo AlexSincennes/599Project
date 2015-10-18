@@ -29,6 +29,9 @@ public class DetectEnemy : MonoBehaviour {
 	{
 		if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
 			transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (2);
+
+		if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
+			transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.FOLLOW);
 	}
 
 	void OnTriggerExit(Collider other) 

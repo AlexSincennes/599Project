@@ -61,7 +61,7 @@ public class CameraMovementC1 : MonoBehaviour
 			DoVictory ();
 		} else 
 		{
-			Debug.Log(status);
+			//Debug.Log(status);
 			switch(status)
 			{
 			case BOUNDARY:
