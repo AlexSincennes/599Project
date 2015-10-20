@@ -20,7 +20,12 @@ public abstract class RaycastCharacterInput : MonoBehaviour
 	/// Is the jump button being held down.
 	/// </summary>
 	virtual public bool jumpButtonHeld{get; protected set;}
-	
+
+	/// <summary>
+	/// Is the jump button being held down.
+	/// </summary>
+	virtual public bool DashButtonDown{get; protected set;}
+
 	/// <summary>
 	/// Was the jump button pressed this frame.
 	/// </summary>
@@ -47,4 +52,5 @@ public abstract class RaycastCharacterInput : MonoBehaviour
 		jumpButtonDown = false; 
 		jumpButtonHeld = false;
 	}
+	public int check = 0;
 }

@@ -30,11 +30,14 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		}
 		
 		jumpButtonHeld = false;
+		if (check == 0) {
+			DashButtonDown = false;
+		}
 		jumpButtonDown = false;
 		dropFromPlatform = false;
 		x = 0;
 		y = 0;
-		
+
 		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) {
 			x = 0.5f;
 			movingDirection = 1;
@@ -49,7 +52,10 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		if (alwaysRun || Input.GetKey(KeyCode.LeftShift)) {
 			x *= 2;
 		}
-		
+		if (Input.GetKeyUp (KeyCode.Z)) {
+			//print("yolo");
+			DashButtonDown = true;
+		}
 		if (Input.GetKey(KeyCode.W) ) {
 			y = 1;
 		} else if (Input.GetKey(KeyCode.S) ) {
