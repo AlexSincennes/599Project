@@ -30,7 +30,7 @@ public class HitBox : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log (other.gameObject.tag );
+		//Debug.Log (other.gameObject.tag );
 		if (other.gameObject.tag == "Enemy") 
 		{
 			Application.LoadLevel(Application.loadedLevel);
