@@ -53,4 +53,5 @@ public abstract class RaycastCharacterInput : MonoBehaviour
 		jumpButtonHeld = false;
 	}
 	public int check = 0;
+	public bool shieldT = false;
 }

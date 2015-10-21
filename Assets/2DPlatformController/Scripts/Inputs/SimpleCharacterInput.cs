@@ -52,9 +52,13 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		if (alwaysRun || Input.GetKey(KeyCode.LeftShift)) {
 			x *= 2;
 		}
-		if (Input.GetKeyUp (KeyCode.Z)) {
-			//print("yolo");
-			DashButtonDown = true;
+		if (shieldT == true) {
+			if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.UpArrow)) || (Input.GetKey (KeyCode.DownArrow))) {
+				if (Input.GetKeyUp (KeyCode.Z)) {
+					//print("yolo");
+					DashButtonDown = true;
+				}
+			}
 		}
 		if (Input.GetKey(KeyCode.W) ) {
 			y = 1;

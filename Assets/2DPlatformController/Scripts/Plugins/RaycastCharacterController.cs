@@ -531,6 +531,9 @@ public class RaycastCharacterController : MonoBehaviour
 	
 	protected void MoveInXDirection (bool grounded)
 	{
+		if (transform.GetComponentInChildren<ShieldTest> ().shieldEquip) {
+			characterInput.shieldT = true;
+		}
 		// Create a copy of character input which we can modify;
 		float characterInputX = characterInput.x;
 		
@@ -681,7 +684,7 @@ public class RaycastCharacterController : MonoBehaviour
 			RaycastHit hitSides;
 			hitSides = sides [i].GetCollision (1 << backgroundLayer, 0.5f);
 			if (hitSides.collider != null) {
-				print ("Coliding");
+				//print ("Coliding");
 				dashcheck ++;
 			}
 			else{
@@ -698,7 +701,7 @@ public class RaycastCharacterController : MonoBehaviour
 		if (characterInput.DashButtonDown) {
 
 			if(characterInput.check == 0){
-				print ("move");
+				//print ("move");
 				moved = 1;
 				characterInput.check = 1;
 				if(CurrentDirection == 1){
