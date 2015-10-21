@@ -12,6 +12,7 @@ using System.Collections;
 public class HitBox : MonoBehaviour {
 
 	public SimpleHealth simplehealth;
+	public BashManager bashManager;
 
 	public virtual void Damage(int amount) {
 		//simplehealth.Damage(amount);
@@ -26,6 +27,7 @@ public class HitBox : MonoBehaviour {
 
 	public virtual void Collect (Collectable collectable) {
 		Debug.Log ("Collect "+ collectable.transform.parent.name+" !!!!!!!!!!");
+		bashManager.UpdateBashMeter (10.0f);
 	}
 
 	void OnTriggerEnter(Collider other)

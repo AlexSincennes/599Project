@@ -52,11 +52,12 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		if (alwaysRun || Input.GetKey(KeyCode.LeftShift)) {
 			x *= 2;
 		}
-		if (shieldT == true) {
+		if (shieldT == true && transform.GetComponentInChildren<HitBox>().bashManager.curMeter>0) {
 			if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.UpArrow)) || (Input.GetKey (KeyCode.DownArrow))) {
 				if (Input.GetKeyUp (KeyCode.Z)) {
 					//print("yolo");
 					DashButtonDown = true;
+					transform.GetComponentInChildren<HitBox>().bashManager.UpdateBashMeter(-10.0f);
 				}
 			}
 		}
