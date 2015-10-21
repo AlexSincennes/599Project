@@ -54,7 +54,7 @@ public class CameraMovementC1 : MonoBehaviour
 	}
 
 
-	void Update () //Interpolate the position of sphere
+	void FixedUpdate () //Interpolate the position of sphere
 	{
 		//Debug.Log(m_dc.CurrentDirection);
 		if (isVictory) {

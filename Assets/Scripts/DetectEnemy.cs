@@ -45,6 +45,9 @@ public class DetectEnemy : MonoBehaviour {
                 transform.parent.gameObject.GetComponent<EnemyStandStill>().SetState(1);
             if (transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
 				transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (1);
+
+			if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
+				transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.WALK);
 		}
 			
 	}
