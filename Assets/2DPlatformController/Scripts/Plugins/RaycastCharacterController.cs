@@ -128,7 +128,14 @@ public class RaycastCharacterController : MonoBehaviour
 	private RC_Direction ledgeHangDirection;
 	private RaycastCollider[] highestSideColliders;
 	private float ledgeDropTimer;
-	//private int checkair = 0;
+
+	//Dash Params
+	private float maxDashTime = 1.0f;
+	private float dashSpeed = 15.0f;
+	private float dashStoppingSpeed = 0.1f;
+	private float currentDashTime = 1.0f;
+	private Vector3 DashTemp;
+	private int moved = 0;
 
 	private bool isLadderTopClimbing;
 	private LadderTopState ladderTopClimbState;
@@ -524,6 +531,9 @@ public class RaycastCharacterController : MonoBehaviour
 	
 	protected void MoveInXDirection (bool grounded)
 	{
+		if (transform.GetComponentInChildren<ShieldTest> ().shieldEquip) {
+			characterInput.shieldT = true;
+		}
 		// Create a copy of character input which we can modify;
 		float characterInputX = characterInput.x;
 		
@@ -568,39 +578,56 @@ public class RaycastCharacterController : MonoBehaviour
 			// TODO Move these behaviours to different functions (can wait till 2.0 upgrade?)
 			switch (movement.movementStyle) {
 			case MovementStyle.PHYSICS_LIKE:
-				float newVelocity = velocity.x + (frameTime * movement.acceleration * characterInputX) * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
-				// Climbing sideways
-				if (climbing.allowClimbing && startedClimbing) {
-					velocity.x = newVelocity;
-					if (velocity.x > climbing.horizontalSpeed)
-						velocity.x = climbing.horizontalSpeed;
-					if (velocity.x < -1 * climbing.horizontalSpeed)
-						velocity.x = -1 * climbing.horizontalSpeed;
-				} else if (walking) {
-					// If going too fast just apply drag (don't just limit to walk speed else you may get odd jerks)
-					if ((velocity.x > movement.walkSpeed && characterInputX >= 0.0f) || (velocity.x < movement.walkSpeed * -1 && characterInputX <= 0.0f)) {
-						velocity.x = velocity.x * actualDrag;
-						// If we went too far go back to walk speed
-						if (velocity.x < movement.walkSpeed && characterInputX >= 0.0f) {
-							velocity.x = movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
-						} else if (velocity.x > movement.walkSpeed * -1 && characterInputX <= 0.0f) {
-							velocity.x = movement.walkSpeed * -1 * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+				if(false && (characterInput.DashButtonDown))
+				{
+					currentDashTime = 0.0f;
+				}
+				if (false && currentDashTime < maxDashTime)
+				{
+					if(characterInputX >= 0.0f){
+						velocity.x = dashSpeed;
+					}
+					else{
+						velocity.x = -dashSpeed;
+					}
+					currentDashTime += dashStoppingSpeed;
+				}
+				else
+				{
+					float newVelocity = velocity.x + (frameTime * movement.acceleration * characterInputX) * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+					// Climbing sideways
+					if (climbing.allowClimbing && startedClimbing) {
+						velocity.x = newVelocity;
+						if (velocity.x > climbing.horizontalSpeed)
+							velocity.x = climbing.horizontalSpeed;
+						if (velocity.x < -1 * climbing.horizontalSpeed)
+							velocity.x = -1 * climbing.horizontalSpeed;
+					} else if (walking) {
+						// If going too fast just apply drag (don't just limit to walk speed else you may get odd jerks)
+						if ((velocity.x > movement.walkSpeed && characterInputX >= 0.0f) || (velocity.x < movement.walkSpeed * -1 && characterInputX <= 0.0f)) {
+							velocity.x = velocity.x * actualDrag;
+							// If we went too far go back to walk speed
+							if (velocity.x < movement.walkSpeed && characterInputX >= 0.0f) {
+								velocity.x = movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+							} else if (velocity.x > movement.walkSpeed * -1 && characterInputX <= 0.0f) {
+								velocity.x = movement.walkSpeed * -1 * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+							}
+						} else {
+							velocity.x = newVelocity;
+							// Limit to walk speed;
+							if (velocity.x > movement.walkSpeed)
+								velocity.x = movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+							if (velocity.x < -1 * movement.walkSpeed)
+								velocity.x = -1 * movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
 						}
 					} else {
 						velocity.x = newVelocity;
-						// Limit to walk speed;
-						if (velocity.x > movement.walkSpeed)
-							velocity.x = movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
-						if (velocity.x < -1 * movement.walkSpeed)
-							velocity.x = -1 * movement.walkSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+						// Limit to run speed;
+						if (velocity.x > movement.runSpeed)
+							velocity.x = movement.runSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
+						if (velocity.x < -1 * movement.runSpeed)
+							velocity.x = -1 * movement.runSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
 					}
-				} else {
-					velocity.x = newVelocity;
-					// Limit to run speed;
-					if (velocity.x > movement.runSpeed)
-						velocity.x = movement.runSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
-					if (velocity.x < -1 * movement.runSpeed)
-						velocity.x = -1 * movement.runSpeed * (IsSwimming ? (1 - swimming.waterResistance.x) : 1);
 				}
 				break;
 			case MovementStyle.DIGITAL:
@@ -625,7 +652,24 @@ public class RaycastCharacterController : MonoBehaviour
 		} else {
 			switch (movement.movementStyle) {
 			case MovementStyle.PHYSICS_LIKE:
-				velocity.x = velocity.x * actualDrag;
+				if(false && characterInput.DashButtonDown)
+				{
+					currentDashTime = 0.0f;
+				}
+				if (false && currentDashTime < maxDashTime)
+				{
+					if(CurrentDirection == 1){
+						velocity.x = dashSpeed;
+					}
+					else if (CurrentDirection == -1){
+						velocity.x = -1 * dashSpeed;
+						print("yolo1");
+					}
+					currentDashTime += dashStoppingSpeed;
+				}
+				else{
+					velocity.x = velocity.x * actualDrag;
+				}
 				break;
 			case MovementStyle.DIGITAL:
 				velocity.x = 0;
@@ -635,9 +679,55 @@ public class RaycastCharacterController : MonoBehaviour
 				break;
 			}
 		}
-		
+		int dashcheck = 0;
+		for (int i = 0; i < sides.Length; i++) {
+			RaycastHit hitSides;
+			hitSides = sides [i].GetCollision (1 << backgroundLayer, 0.5f);
+			if (hitSides.collider != null) {
+				//print ("Coliding");
+				dashcheck ++;
+			}
+			else{
+				//characterInput.check =0;
+			}
+		}
+		if ((dashcheck == 0)&&(characterInput.check == 2)) {
+			characterInput.check = 0;
+		} else if(dashcheck > 0){
+			characterInput.check = 2;
+		}
+
 		// Apply velocity
-		if ((myParent == null || !myParent.overrideX) && velocity.x > movement.skinSize || velocity.x * -1 > movement.skinSize) {
+		if (characterInput.DashButtonDown) {
+
+			if(characterInput.check == 0){
+				//print ("move");
+				moved = 1;
+				characterInput.check = 1;
+				if(CurrentDirection == 1){
+					DashTemp.x = myTransform.position.x + 6;
+				}
+				else if(CurrentDirection == -1){
+					DashTemp.x = myTransform.position.x - 6;
+				}else{
+					DashTemp.x = myTransform.position.x;
+				}
+				DashTemp.y = myTransform.position.y;
+				DashTemp.z = myTransform.position.z;
+			}else if(characterInput.check == 2){
+				DashTemp.x = myTransform.position.x;
+				DashTemp.y = myTransform.position.y;
+				DashTemp.z = myTransform.position.z;
+			}
+
+			myTransform.position = Vector3.MoveTowards(myTransform.position,DashTemp,15*Time.deltaTime);
+			if((myTransform.position.x == DashTemp.x)&&(moved == 1)){
+				moved =0;
+				characterInput.check = 0;
+			}
+
+		}
+		else if ((myParent == null || !myParent.overrideX) && velocity.x > movement.skinSize || velocity.x * -1 > movement.skinSize) {
 			if (targetSlope != 0.0f) myTransform.Translate (Quaternion.Euler(0,0,targetSlope) * new Vector3(velocity.x * frameTime, 0.0f, 0.0f));	
 			else myTransform.Translate (velocity.x * frameTime, 0.0f, 0.0f);	
 		}
@@ -655,7 +745,7 @@ public class RaycastCharacterController : MonoBehaviour
 		
 		isWallSliding = false;
 		isWallHolding = false;
-		
+
 		for (int i = 0; i < sides.Length; i++) {
 			RaycastHit hitSides;
 			float additionalDistance = 0.0f;
@@ -668,7 +758,7 @@ public class RaycastCharacterController : MonoBehaviour
 				
 				// Hit something ...
 				if (hitSides.collider != null) {
-					
+
 					// Update ledge hang
 					if (ledgeHanging.canLedgeHang && !grounded && velocity.y <= 3.0f) {
 						if (sides [i].direction == RC_Direction.RIGHT && (sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])) {
@@ -852,7 +942,10 @@ public class RaycastCharacterController : MonoBehaviour
 		
 		// Animation 
 		if (grounded) {
-			if  (		(velocity.x > movement.walkSpeed && characterInput.x > 0.1f) || 
+			if(characterInput.DashButtonDown){
+				State = CharacterState.RUNNING;
+			}
+			else if  (		(velocity.x > movement.walkSpeed && characterInput.x > 0.1f) || 
 			     (velocity.x < movement.walkSpeed * -1 && characterInput.x < -0.1f)) {
 				State = CharacterState.RUNNING;
 			} else if (	(velocity.x > maxSpeedForIdle && characterInput.x > 0.1f) || 
