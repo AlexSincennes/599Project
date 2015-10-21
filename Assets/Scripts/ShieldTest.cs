@@ -45,8 +45,8 @@ public class ShieldTest : MonoBehaviour {
 	void Update () {
 
 		if(shieldEquip && !shieldDefence){
-			playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 6;
-			playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 5.5f;
+			playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 10;
+			playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 10f;
 		}else if(!shieldEquip && !shieldDefence)
 		{
 			//playerGO.GetComponent<RaycastCharacterController>().movement.walkSpeed = 6;

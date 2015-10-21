@@ -54,7 +54,7 @@ public class CameraMovementC1 : MonoBehaviour
 	}
 
 
-	void Update () //Interpolate the position of sphere
+	void FixedUpdate () //Interpolate the position of sphere
 	{
 		//Debug.Log(m_dc.CurrentDirection);
 		if (isVictory) {
@@ -177,14 +177,14 @@ public class CameraMovementC1 : MonoBehaviour
 	{
 		if (!isVictory)
 		{
-			transform.position = Vector3.MoveTowards (transform.position,new Vector3 (trackSphere.position.x,m_player.transform.position.y+5,trackSphere.position.z -distanceZ),Time.deltaTime*cameraSpeed);
+			transform.position = Vector3.MoveTowards (transform.position,new Vector3 (trackSphere.position.x,m_player.transform.position.y+2,trackSphere.position.z -distanceZ),Time.deltaTime*cameraSpeed);
 		}
 	}
 
 
 	void DoVictory()	
 	{
-		transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+5,target.position.z -distanceZ),Time.deltaTime*80); 
+		transform.position = Vector3.MoveTowards (transform.position,new Vector3 (target.position.x,target.position.y+2,target.position.z -distanceZ),Time.deltaTime*80); 
 	}
 
 	public void FirstLevelVictory(Victory win)
