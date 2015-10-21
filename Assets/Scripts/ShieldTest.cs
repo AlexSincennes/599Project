@@ -79,7 +79,7 @@ public class ShieldTest : MonoBehaviour {
 							playerGO.GetComponent<RaycastCharacterController>().movement.runSpeed = 1;
 							//GameManager.Instance.player.GetComponent<RaycastCharacterController>().controllerActive = false;	
 							//									
-							if(curdefencetime >= shieldcanreflecttime)		
+							if((shielddefencetime - curdefencetime) <= shieldcanreflecttime)		
 							{		
 								canReflect = true;		
 							}else		
