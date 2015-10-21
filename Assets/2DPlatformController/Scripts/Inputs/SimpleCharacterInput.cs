@@ -30,7 +30,7 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		}
 		
 		jumpButtonHeld = false;
-		if (check == 0) {
+		if ((check == 0)||(check == 2)) {
 			DashButtonDown = false;
 		}
 		jumpButtonDown = false;

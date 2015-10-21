@@ -135,6 +135,7 @@ public class RaycastCharacterController : MonoBehaviour
 	private float dashStoppingSpeed = 0.1f;
 	private float currentDashTime = 1.0f;
 	private Vector3 DashTemp;
+	private int moved = 0;
 
 	private bool isLadderTopClimbing;
 	private LadderTopState ladderTopClimbState;
@@ -467,7 +468,6 @@ public class RaycastCharacterController : MonoBehaviour
 			if (stunTimer > 0 ) {
 				stunTimer -= frameTime;
 				State = CharacterState.STUNNED;
-				characterInput.check = 0;
 			}
 			if (ledgeHanging.canLedgeHang && isLedgeHanging) {
 				DoLedgeHang();
@@ -676,26 +676,50 @@ public class RaycastCharacterController : MonoBehaviour
 				break;
 			}
 		}
-		
+		int dashcheck = 0;
+		for (int i = 0; i < sides.Length; i++) {
+			RaycastHit hitSides;
+			hitSides = sides [i].GetCollision (1 << backgroundLayer, 0.5f);
+			if (hitSides.collider != null) {
+				print ("Coliding");
+				dashcheck ++;
+			}
+			else{
+				//characterInput.check =0;
+			}
+		}
+		if ((dashcheck == 0)&&(characterInput.check == 2)) {
+			characterInput.check = 0;
+		} else if(dashcheck > 0){
+			characterInput.check = 2;
+		}
+
 		// Apply velocity
 		if (characterInput.DashButtonDown) {
+
 			if(characterInput.check == 0){
+				print ("move");
+				moved = 1;
 				characterInput.check = 1;
 				if(CurrentDirection == 1){
 					DashTemp.x = myTransform.position.x + 6;
 				}
 				else if(CurrentDirection == -1){
 					DashTemp.x = myTransform.position.x - 6;
-				}
-				else{
+				}else{
 					DashTemp.x = myTransform.position.x;
 				}
+				DashTemp.y = myTransform.position.y;
+				DashTemp.z = myTransform.position.z;
+			}else if(characterInput.check == 2){
+				DashTemp.x = myTransform.position.x;
 				DashTemp.y = myTransform.position.y;
 				DashTemp.z = myTransform.position.z;
 			}
 
 			myTransform.position = Vector3.MoveTowards(myTransform.position,DashTemp,15*Time.deltaTime);
-			if(myTransform.position.x == DashTemp.x){
+			if((myTransform.position.x == DashTemp.x)&&(moved == 1)){
+				moved =0;
 				characterInput.check = 0;
 			}
 
@@ -718,7 +742,7 @@ public class RaycastCharacterController : MonoBehaviour
 		
 		isWallSliding = false;
 		isWallHolding = false;
-		
+
 		for (int i = 0; i < sides.Length; i++) {
 			RaycastHit hitSides;
 			float additionalDistance = 0.0f;
@@ -731,7 +755,7 @@ public class RaycastCharacterController : MonoBehaviour
 				
 				// Hit something ...
 				if (hitSides.collider != null) {
-					characterInput.check = 0;
+
 					// Update ledge hang
 					if (ledgeHanging.canLedgeHang && !grounded && velocity.y <= 3.0f) {
 						if (sides [i].direction == RC_Direction.RIGHT && (sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])) {
@@ -880,7 +904,6 @@ public class RaycastCharacterController : MonoBehaviour
 				//print ("Wierd");
 				isWallSliding = true;
 				State = CharacterState.WALL_SLIDING;
-				characterInput.check = 0;
 				//// Handle moving platforms
 				
 				if (hit.collider != null) {
