@@ -9,12 +9,12 @@ public class CheckPoint : MonoBehaviour {
 		GameManager.Instance.player = player;
 		if (GameManager.Instance.curTimes < 2) {
 			////Debug.Log("lalala222");
-			player.transform.position = new Vector3 (-10f, 0.5f, 0.0f);//101
+			player.transform.position = new Vector3 (-20f, 0.5f, 0.0f);//101
 		} else {
 			if(GameManager.Instance.spawnPointPos == Vector3.zero)
 			{
 				///Debug.Log("lalala1111");
-				player.transform.position = new Vector3 (-10f, 0.5f, 0.0f);
+				player.transform.position = new Vector3 (-20f, 0.5f, 0.0f);
 			} else
 			{
 				Debug.Log("lalala");
