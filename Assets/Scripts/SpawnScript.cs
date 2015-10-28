@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
-
+	 
 	public GameObject[] obj;
+	public float[] weights;
 	public float spawnDist = 15f;
 
 	private float travelDist = 0f;
@@ -29,6 +30,12 @@ public class SpawnScript : MonoBehaviour {
 
 	void Spawn(float offset){
 		Vector3 spawnPos = transform.position - new Vector3(offset, 0, 0);
-		Instantiate(obj[Random.Range(0, obj.Length)], spawnPos, Quaternion.identity);
+		Instantiate(obj[RandFuncs.Sample(weights)], spawnPos, Quaternion.identity);
+	}
+
+	[System.Serializable]
+	public class MultiDimensionalInt
+	{
+		public int[] intArray;
 	}
 }

@@ -32,7 +32,7 @@ public class ShieldControl2D : MonoBehaviour {
 		directionShield.transform.localPosition = new Vector3 (0,0.2f,-1.5f);
 		directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
 		directionShield.SetActive (false);
-		playerGO = GameObject.Find("HeroCharacter2D");//GameManager.Instance.player;
+		playerGO = GameObject.Find("Character2D");//GameManager.Instance.player;
 
 		isStartDefending = isStartbashing=false;
 		lastTime = 0;
