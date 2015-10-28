@@ -17,11 +17,6 @@ public class SwipeTest : MonoBehaviour {
 
 		EasyTouch.On_SimpleTap += On_SimpleTap;
 
-
-
-		EasyTouch.On_SwipeStart2Fingers += On_SwipeStart2Fingers;
-		EasyTouch.On_Swipe2Fingers += On_Swipe2Fingers;
-		EasyTouch.On_SwipeEnd2Fingers += On_SwipeEnd2Fingers;
 	}
 	
 	void OnDisable(){
@@ -41,12 +36,10 @@ public class SwipeTest : MonoBehaviour {
 		EasyTouch.On_SimpleTap -= On_SimpleTap;	
 
 
-		EasyTouch.On_SwipeStart2Fingers -= On_SwipeStart2Fingers;
-		EasyTouch.On_Swipe2Fingers -= On_Swipe2Fingers;
-		EasyTouch.On_SwipeEnd2Fingers -= On_SwipeEnd2Fingers;	
 	}
 	
-	
+
+
 	// At the swipe beginning 
 	private void On_SwipeStart( Gesture gesture){
 		//swipeText.text = "You start a swipe";
@@ -69,35 +62,23 @@ public class SwipeTest : MonoBehaviour {
 		//swipeText.text = "Last swipe : " + gesture.swipe.ToString() + " /  vector : " + gesture.swipeVector.normalized + " / angle : " + angles.ToString("f2");
 		//Debug.Log ("s1");
 		//Hero.transform.eulerAngles = new Vector3 (0,angles,0);
-		sc.angle = angles;
+		if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
+		{
+			Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
+		} else 
+		{
+			sc.angle = angles;
+		}
+
 	}
 
 	private void On_SimpleTap( Gesture gesture)
 	{
 		Hero.GetComponent<SimpleCharacterInput> ().jump = true;
-	}
-
-
-
-
-	//2fingers swipe
-	private void On_SwipeStart2Fingers( Gesture gesture){
-		
 
 	}
-	
-	// During the swipe
-	private void On_Swipe2Fingers(Gesture gesture){
-		
-		// the world coordinate from touch for z=5
-		Vector3 position = gesture.GetTouchToWorldPoint(5);
-		trail.transform.position = position;
-		
-	}
-	
-	// At the swipe end 
-	private void On_SwipeEnd2Fingers(Gesture gesture){
-		//Debug.Log ("s2");
-		Hero.GetComponentInChildren<ShieldControl2D> ().isBashing = true;
-	}
+
+
+
+
 }

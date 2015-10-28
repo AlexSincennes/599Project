@@ -69,8 +69,8 @@ public class Enemy1_2 : MonoBehaviour {
 			if(Time.time - lastAttackTime > attackRate)
 			{ 
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
-				temp.transform.GetComponentInChildren<BulletTest>().shooter = this.transform;
-				temp.transform.GetComponentInChildren<BulletTest>().enemy = player;
+				temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
+				temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
 				lastAttackTime = Time.time;
 			}
 			

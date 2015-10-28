@@ -13,4 +13,15 @@ public class EnemyDestory : MonoBehaviour {
 		
 		
 	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		//Debug.Log (other.gameObject.tag);
+		if (other.gameObject.tag == "Shield") 
+		{
+			Destroy(transform.parent.gameObject);
+		}
+		
+		
+	}
 }
