@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerDeath : MonoBehaviour {
+public class PlayerDeath : Platform2D {
 
 
 
@@ -15,8 +15,10 @@ public class PlayerDeath : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider other) 
+	void OnTriggerEnter2D(Collider2D other) 
 	{		
+
+		print ("Working");
 		if (other.gameObject.tag == "Player") 
 		{
 			Application.LoadLevel(Application.loadedLevel);
@@ -26,5 +28,11 @@ public class PlayerDeath : MonoBehaviour {
 		}
 			
 
+	}
+	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+		Application.LoadLevel(Application.loadedLevel);
+		//GameManager.Instance.deathPos = other.transform.parent.position;
+		if(Application.loadedLevel == 2)
+			GameManager.Instance.curTimes++;
 	}
 }

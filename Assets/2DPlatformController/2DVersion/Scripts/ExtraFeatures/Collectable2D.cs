@@ -6,7 +6,7 @@ using System.Collections;
 /// when collected and invokes the Collect method on the HitBox class.
 /// Requries a HitBox on the character :)
 /// </summary>
-public class Collectable2D : MonoBehaviour {
+public class Collectable2D : Platform2D {
 
 	/// <summary>
 	/// My renderer, as a variable so we can seperate the renderer and the trigger.
@@ -32,5 +32,12 @@ public class Collectable2D : MonoBehaviour {
 			GetComponent<Collider2D>().enabled = false;
 			if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().isKinematic = true;
 		}
+	}
+	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+		//if (particles != null) particles.Play ();
+
+		Destroy (this.gameObject);
+		//myRenderer.GetComponent<BoxCollider2D>().enabled = false;
+
 	}
 }

@@ -975,7 +975,9 @@ public class RaycastCharacterController2D : MonoBehaviour {
 							hitGameObject = hitLadder.collider.gameObject;
 						}
 					}
-					// Climbing 
+
+					// Climbing
+					if (hitFeet.collider != null)
 					if (climbing.allowClimbing && hitLadder.collider != null && hitLadder.fraction * (feetCollider.distance + slopes.slopeLookAhead) <= feetCollider.distance && jumpButtonTimer <= 0.0f) {
 						//bool ladder = hitLadder.collider.gameObject.GetComponent<Ladder>();
 						//if (ladder == null) hitLadder.collider.gameObject.GetComponent<Rope>(); // && ladder != null
