@@ -18,7 +18,7 @@ public class Enemy1_2 : MonoBehaviour {
 	public float attackRate;
     private float walkingSpeed;
 	
-	public int state = WALK;
+	public int state = IDLE;
 	public bool moveLeft = true;
 	//private bool canAttack = false;
 	private float lastAttackTime = 0;
@@ -41,7 +41,7 @@ public class Enemy1_2 : MonoBehaviour {
 		switch (state) {
 		case WALK:
 			//lastAttackTime = 0;
-			myAni.CrossFade("run",0.1f);
+			myAni.CrossFade("idle",0.1f);
 			if(moveLeft)
 			{
 				if(transform.position.x - startPosition.x + patrolDis <= 0.01f)
@@ -79,7 +79,7 @@ public class Enemy1_2 : MonoBehaviour {
 			//SetState(IDLE);
 			break;
 		case IDLE:
-			
+			myAni.CrossFade("idle",0.1f);
 			break;
 		case GETHIT:
 			
