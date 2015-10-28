@@ -20,6 +20,7 @@ public class Collectable2D : Platform2D {
 	public ParticleSystem particles;
 
 	void OnTriggerEnter2D(Collider2D other) {
+		Destroy (this.gameObject);
 		HitBox2D collector = other.gameObject.GetComponent<HitBox2D>();
 		if (collector != null) {
 			collector.Collect(this);
