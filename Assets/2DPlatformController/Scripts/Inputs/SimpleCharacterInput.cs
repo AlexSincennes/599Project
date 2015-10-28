@@ -16,8 +16,10 @@ public class SimpleCharacterInput : RaycastCharacterInput
 	/// If true dropping from a passthrough platform requires user to press down and then jump.
 	/// </summary>
 	public bool jumpAndDownForDrop;
+	public bool jump = false;
 
 	private int movingDirection;
+
 
 	void Update ()
 	{
@@ -38,7 +40,7 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		x = 0;
 		y = 0;
 
-		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) {
+		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)|| true) {
 			x = 0.5f;
 			movingDirection = 1;
 		} else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) {
@@ -68,19 +70,22 @@ public class SimpleCharacterInput : RaycastCharacterInput
 			if (!jumpAndDownForDrop) dropFromPlatform = true;
 		}
 		
-		if (Input.GetKey(KeyCode.Space) ) {
+		if ( jump) {//Input.GetKey(KeyCode.Space)
 			jumpButtonHeld = true;
-			if (Input.GetKeyDown(KeyCode.Space)) {
+
+			if (jump) {//Input.GetKeyDown(KeyCode.Space)
 				if (jumpAndDownForDrop && Input.GetKey(KeyCode.S)) {
 					dropFromPlatform = true;
 				} else {
 					jumpButtonDown = true;	
 				}
 				swimButtonDown = true;	
+				jump = false;
 			} else {
 				jumpButtonDown = false;		
 				swimButtonDown = false;
 			}
+			jump = false;
 		} else {
 			jumpButtonDown = false;
 			swimButtonDown = false;
