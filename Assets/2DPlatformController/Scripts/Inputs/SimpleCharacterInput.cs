@@ -40,6 +40,7 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		x = 0;
 		y = 0;
 
+		//Force Forward Motion
 		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)|| true) {
 			x = 0.5f;
 			movingDirection = 1;
@@ -50,19 +51,6 @@ public class SimpleCharacterInput : RaycastCharacterInput
 			x = movingDirection / 2.0f;
 		}
 	
-		// Shift to run
-		if (alwaysRun || Input.GetKey(KeyCode.LeftShift)) {
-			x *= 2;
-		}
-		if (shieldT == true && transform.GetComponentInChildren<HitBox>().bashManager.curMeter>0) {
-			if ((Input.GetKey (KeyCode.LeftArrow)) || (Input.GetKey (KeyCode.RightArrow)) || (Input.GetKey (KeyCode.UpArrow)) || (Input.GetKey (KeyCode.DownArrow))) {
-				if (Input.GetKeyUp (KeyCode.Z)) {
-					//print("yolo");
-					DashButtonDown = true;
-					transform.GetComponentInChildren<HitBox>().bashManager.UpdateBashMeter(-10.0f);
-				}
-			}
-		}
 		if (Input.GetKey(KeyCode.W) ) {
 			y = 1;
 		} else if (Input.GetKey(KeyCode.S) ) {

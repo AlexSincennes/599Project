@@ -40,7 +40,6 @@ public class ShieldControl2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Camera.main.transform.position = new Vector3(playerGO.transform.position.x,playerGO.transform.position.y,-10);
 		if (angle != 0) 
 		{
 			if(!isStartDefending)
