@@ -10,13 +10,16 @@ public class ShieldControl2D : MonoBehaviour {
 	public GameObject directionShield;
 	public float reflectTime = 0.5f;
 	public float angle = 0;
-	//public GameObject shieldmeshBack;
+	public float bashTime = 0.3f;
+	public bool isBashing = false;
 	
 	//public bool startClock = false;
 
 	private bool isStartDefending;
+	private bool isStartbashing;
 	private float lastTime;
 	private float defendStartTime;
+	private float bashStartTime;
 	private GameObject playerGO ;
 
 	// Use this for initialization
@@ -31,7 +34,7 @@ public class ShieldControl2D : MonoBehaviour {
 		directionShield.SetActive (false);
 		playerGO = GameObject.Find("HeroCharacter2D");//GameManager.Instance.player;
 
-		isStartDefending = false;
+		isStartDefending = isStartbashing=false;
 		lastTime = 0;
 	}
 	
@@ -52,9 +55,20 @@ public class ShieldControl2D : MonoBehaviour {
 			}
 		}
 
-		if(shieldEquip ){
-			playerGO.GetComponent<RaycastCharacterController2D>().movement.walkSpeed = 10;
-			playerGO.GetComponent<RaycastCharacterController2D>().movement.runSpeed = 10f;
+		if(isBashing )
+		{
+			if(!isStartbashing)
+			{
+				bashStartTime = Time.time;
+				isStartbashing = true;
+				playerGO.GetComponent<RaycastCharacterController2D>().movement.walkSpeed *= 100.0f;
+			}
+			if(Time.time - bashStartTime >= bashTime)
+			{
+				isBashing = false;
+				playerGO.GetComponent<RaycastCharacterController2D>().movement.walkSpeed /= 100.0f;
+				isStartbashing = false;
+			}
 		}
 		
 		

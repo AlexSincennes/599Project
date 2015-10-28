@@ -679,6 +679,7 @@ public class RaycastCharacterController : MonoBehaviour
 				break;
 			}
 		}
+		//ash!!!!
 		int dashcheck = 0;
 		for (int i = 0; i < sides.Length; i++) {
 			RaycastHit hitSides;
