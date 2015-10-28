@@ -32,7 +32,7 @@ public class SlowBlock : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-	if (other.tag == "Player") {
+	if (other.CompareTag("Player")) {
 			obj = other.gameObject;
 			temp = 1;
 			Speed = obj.GetComponentInChildren<RaycastCharacterController2D>().movement.runSpeed;
