@@ -36,6 +36,6 @@ public class PauseMenu : MonoBehaviour {
 			GameManager.Instance.curTimes++;
 	}
 	public void Exit(){
-		Application.Quit();
+		Application.LoadLevel(0);
 	}
 }

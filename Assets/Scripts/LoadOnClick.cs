@@ -7,7 +7,7 @@ public class LoadOnClick : MonoBehaviour {
 
 	public void LoadScene(int level)
 	{
-		Application.LoadLevel (GameManager.Instance.loadlev);
+		Application.LoadLevel (level);
 		loadingImage.SetActive (true);
 		if(level == 2)
 		GameManager.Instance.curTimes++;

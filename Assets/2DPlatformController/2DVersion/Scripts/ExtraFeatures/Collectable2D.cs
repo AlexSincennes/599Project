@@ -34,11 +34,11 @@ public class Collectable2D : Platform2D {
 			if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 	}
-	/*override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
 		//if (particles != null) particles.Play ();
 
 		Destroy (this.gameObject);
 		//myRenderer.GetComponent<BoxCollider2D>().enabled = false;
 
-	}*/
+	}
 }
