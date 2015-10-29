@@ -89,8 +89,9 @@ public class BulletTest_P : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) 
 	{
 		//Debug.Log (myRigid.velocity.magnitude +"lala");
-		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1) 
+		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1 && shooter.name != "Shield") 
 		{
+			//Debug.Log(shooter.name);
 			//player = other.gameObject;
 			//if(spawnpoint!=null)
 				//spawn = spawnpoint.transform.position;
