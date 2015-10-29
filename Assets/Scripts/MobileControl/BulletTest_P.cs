@@ -129,7 +129,12 @@ public class BulletTest_P : MonoBehaviour {
 			Destroy(transform.parent.gameObject);
 		}
 
-
+		if (other.gameObject.tag == "Terrain") 
+		{
+			transform.GetComponent<Rigidbody2D>().velocity =Vector2.zero;
+			transform.GetComponent<Rigidbody2D>().isKinematic = true;
+			transform.GetComponent<BoxCollider2D>().enabled = false;
+		}
 	}
 
 

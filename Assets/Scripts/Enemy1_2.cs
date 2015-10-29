@@ -26,6 +26,7 @@ public class Enemy1_2 : MonoBehaviour {
 	public Transform player = null;
 	
 	private Animation myAni;
+	public float[] angle0 = { -2f, -2.5f };
 	// Use this for initialization
 	void Start () {
 		if(player == null) {
@@ -71,6 +72,13 @@ public class Enemy1_2 : MonoBehaviour {
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
 				temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
 				temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
+				temp.transform.GetComponentInChildren<BulletTest_P>().ifHardCodeAngle = true;
+				temp.transform.GetComponentInChildren<BulletTest_P>().angleHardCode = angle0[0];
+				temp = (GameObject) Instantiate( Bullet, Bow.position-new Vector3(0,0.2f,0),Bullet.transform.rotation );
+				temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
+				temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
+				temp.transform.GetComponentInChildren<BulletTest_P>().ifHardCodeAngle = true;
+				temp.transform.GetComponentInChildren<BulletTest_P>().angleHardCode = angle0[1];
 				lastAttackTime = Time.time;
 			}
 			

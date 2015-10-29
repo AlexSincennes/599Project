@@ -1093,6 +1093,9 @@ MonoBehaviour:
   state: 1
   moveLeft: 0
   player: {fileID: 0}
+  angle0:
+  - -.00999999978
+  - -.00999999978
 --- !u!137 &13747078
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1259,6 +1262,14 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
+    - target: {fileID: 0}
+      propertyPath: angle0.Array.data[0]
+      value: -.00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: angle0.Array.data[1]
+      value: -.00999999978
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176750}
