@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public int curLevel;
+	public int loadlev;
 	public int curTimes;
 	public Vector3 spawnPointPos = Vector3.zero;
 	public GameObject player;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
 	void Awake()
 	{
+		loadlev = 1;
 		if (_instance != null && _instance != this)
 		{
 			Destroy(gameObject);

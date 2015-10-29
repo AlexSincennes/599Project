@@ -7,9 +7,15 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/TestScenes/main_menu.unity
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/main_test_scene1.unity
   - enabled: 0
     path: Assets/Scenes/TestScenes/WhitBoard-Level.unity
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/main_test_scene1.unity
+  - enabled: 0
     path: Assets/Scenes/EndlessScenes/ControlTest.unity
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/main_menu.unity
+  - enabled: 1
+    path: Assets/Scenes/EndlessScenes/Tutorial.unity
+  - enabled: 1
+    path: Assets/Scenes/EndlessScenes/RandomGeneration.unity

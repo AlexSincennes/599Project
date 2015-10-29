@@ -30,7 +30,8 @@ public class VictoryW : Platform2D {
 
 	}
 	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
-		Time.timeScale = 0;
+		GameManager.Instance.loadlev = 2;
+		Application.LoadLevel (2);
 		passLabel.SetActive (true);
 	}
 }

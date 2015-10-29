@@ -27,8 +27,10 @@ public class SlowBlock : Platform2D {
 			}
 		} else if (temp == 2) {
 			if(Time.time > r){
-				obj.movement.walkSpeed = Speed;
-				obj.movement.runSpeed = Speed;
+				print ("Yippie");
+				Destroy(this.gameObject);
+				obj.movement.walkSpeed = 10;
+				obj.movement.runSpeed = 10;
 				temp = 0;
 			}
 		}
@@ -36,7 +38,6 @@ public class SlowBlock : Platform2D {
 	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
 		temp = 1;
 		obj = character;
-		Speed = character.movement.runSpeed;
 		Destroy (this.GetComponent<BoxCollider2D> ());
 	}
 }

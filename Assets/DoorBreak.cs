@@ -20,7 +20,8 @@ public class DoorBreak : Platform2D {
 		}
 	}
 	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
-		if (character.characterInput.check == 2) {
+		print (character.characterInput.check);
+		if (character.characterInput.check == 0) {
 			Destroy(this.gameObject);
 		}
 	}

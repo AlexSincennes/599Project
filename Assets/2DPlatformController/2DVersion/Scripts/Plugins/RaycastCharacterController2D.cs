@@ -959,20 +959,23 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					Platform2D platform = hitFeet.collider.gameObject.GetComponent<Platform2D> ();
 					if (platform != null && feetCollider.distance >= hitFeet.fraction * (feetCollider.distance + slopes.slopeLookAhead)) {
 						platform.DoAction (feetCollider, this);
-						Transform parentPlatform = platform.ParentOnStand (this);
-						if (parentPlatform != null) {
-							// Normal parenting (moving platforms etc)
-							myParent = platform;
-							if (myTransform.parent != parentPlatform) {
-								myTransform.parent = parentPlatform;
+						if (hitFeet.collider != null)
+						{
+							Transform parentPlatform = platform.ParentOnStand (this);
+							if (parentPlatform != null) {
+								// Normal parenting (moving platforms etc)
+								myParent = platform;
+								if (myTransform.parent != parentPlatform) {
+									myTransform.parent = parentPlatform;
+								}
+								hitGameObject = hitFeet.collider.gameObject;
 							}
-							hitGameObject = hitFeet.collider.gameObject;
-						}
-						// Special case for the top of a ladder
-						if (platform is TopStepPlatform2D) {
-							hasHitFeet = true;
-							maxForce = force;
-							hitGameObject = hitLadder.collider.gameObject;
+							// Special case for the top of a ladder
+							if (platform is TopStepPlatform2D) {
+								hasHitFeet = true;
+								maxForce = force;
+								hitGameObject = hitLadder.collider.gameObject;
+							}
 						}
 					}
 
@@ -1138,19 +1141,21 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					if (platform != null) {
 						platform.DoAction (headCollider, this);
 					}
-					if (force < -1 * movement.skinSize && force < maxForce) {
-						hasHitHead = true;
-						maxForce = force;
+					if (hitHead.collider != null){
+						if (force < -1 * movement.skinSize && force < maxForce) {
+							hasHitHead = true;
+							maxForce = force;
+						}
 					}
 				}
 			}
 			
-			if (hasHitHead) {
+			/*if (hasHitHead) {
 				jumpHeldTimer = jump.jumpHeldTime;
 				myTransform.Translate (0.0f, maxForce, 0.0f, Space.World);		
 				if (velocity.y > 0.0f)
 					velocity.y = 0.0f;
-			}
+			}*/
 			if (!isClimbing) {
 				ApplyGravity ();
 			} 

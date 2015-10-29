@@ -20,7 +20,7 @@ public class Collectable2D : Platform2D {
 	public ParticleSystem particles;
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Destroy (this.gameObject);
+		//Destroy (this.gameObject);
 		HitBox2D collector = other.gameObject.GetComponent<HitBox2D>();
 		if (collector != null) {
 			collector.Collect(this);
@@ -34,11 +34,11 @@ public class Collectable2D : Platform2D {
 			if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 	}
-	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+	/*override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
 		//if (particles != null) particles.Play ();
 
 		Destroy (this.gameObject);
 		//myRenderer.GetComponent<BoxCollider2D>().enabled = false;
 
-	}
+	}*/
 }
