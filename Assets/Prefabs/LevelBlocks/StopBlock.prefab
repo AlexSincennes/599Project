@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498202}
+  - 114: {fileID: 11469706}
   m_Layer: 0
   m_Name: StopBlock
   m_TagString: Untagged
@@ -125,6 +126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4311aaeec57864ea5fdadc8680086b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11469706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd65be11a88966418a3608b685c6303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
 --- !u!212 &21265292
 SpriteRenderer:
   m_ObjectHideFlags: 1

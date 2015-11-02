@@ -15,7 +15,7 @@ public class SwipeTest : MonoBehaviour {
 		EasyTouch.On_Swipe += On_Swipe;
 		EasyTouch.On_SwipeEnd += On_SwipeEnd;		
 
-		EasyTouch.On_SimpleTap += On_SimpleTap;
+		EasyTouch.On_TouchStart += On_SimpleTap;
 
 	}
 	
@@ -33,7 +33,7 @@ public class SwipeTest : MonoBehaviour {
 		EasyTouch.On_Swipe -= On_Swipe;
 		EasyTouch.On_SwipeEnd -= On_SwipeEnd;	
 
-		EasyTouch.On_SimpleTap -= On_SimpleTap;	
+		EasyTouch.On_TouchStart -= On_SimpleTap;	
 
 
 	}
@@ -74,7 +74,9 @@ public class SwipeTest : MonoBehaviour {
 
 	private void On_SimpleTap( Gesture gesture)
 	{
-		Hero.GetComponent<SimpleCharacterInput> ().jump = true;
+		Debug.Log (Screen.width);
+		if(gesture.position.x < Screen.width * 0.3f)
+			Hero.GetComponent<SimpleCharacterInput> ().jump = true;
 
 	}
 

@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461382}
+  - 114: {fileID: 11472736}
   m_Layer: 0
   m_Name: PitFall
   m_TagString: Untagged
@@ -60,7 +61,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 461382}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &461382
 Transform:
   m_ObjectHideFlags: 1
@@ -71,8 +72,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 439130}
   - {fileID: 487810}
+  - {fileID: 439130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &487810
@@ -86,7 +87,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 461382}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!61 &6175668
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -113,6 +114,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11472736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd65be11a88966418a3608b685c6303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
 --- !u!212 &21249580
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -182,7 +195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name

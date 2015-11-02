@@ -323,6 +323,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449752}
+  - 114: {fileID: 11407786}
   m_Layer: 0
   m_Name: RangedEnemy_Above
   m_TagString: Untagged
@@ -564,7 +565,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136266}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 1.98000002, y: 6.73000002, z: 0}
+  m_LocalPosition: {x: 2, y: 6.73000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 443250}
@@ -994,6 +995,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11407786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd65be11a88966418a3608b685c6303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
 --- !u!114 &11424706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1167,7 +1180,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Material

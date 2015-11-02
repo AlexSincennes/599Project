@@ -410,6 +410,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450724}
+  - 114: {fileID: 11477580}
   m_Layer: 0
   m_Name: RangedEnemy_Front
   m_TagString: Untagged
@@ -999,6 +1000,18 @@ MonoBehaviour:
   angle0:
   - -.699999988
   - -1.29999995
+--- !u!114 &11477580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd65be11a88966418a3608b685c6303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 15
 --- !u!114 &11493150
 MonoBehaviour:
   m_ObjectHideFlags: 1
