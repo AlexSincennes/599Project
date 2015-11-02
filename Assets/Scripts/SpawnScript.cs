@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
 	 
+	public int firstObjectIndex = 0;	//The first object to be spawned
 	public GameObject[] obj;
 	public float[] weights;
 
@@ -15,8 +16,11 @@ public class SpawnScript : MonoBehaviour {
 	private Vector3 lastPosition;
 
 	// Use this for initialization
-	void Start () {
+	void Start (){ 
+		objIndex = firstObjectIndex;
 		Spawn (0f);
+		spawned = true;
+		travelDist = 0f;
 		lastPosition = transform.position;
 	}
 
@@ -30,8 +34,6 @@ public class SpawnScript : MonoBehaviour {
 				spawnDist = obj[objIndex].GetComponent<PrefabLength>().Length / 2.0f;
 				spawned = false;
 				travelDist = offset;
-			} else {
-				lastPosition = transform.position;
 			}
 		} else {
 			//Spawn a level block after distance traveled >= spawnDistance;
@@ -39,18 +41,16 @@ public class SpawnScript : MonoBehaviour {
 				offset = travelDist - spawnDist;
 				Spawn (offset);
 				spawned = true;
-				travelDist = 0f;
-			} else {
-				lastPosition = transform.position;
+				travelDist = offset;
 			}
 		}
+		lastPosition = transform.position;
 	}
 
 	void Spawn(float offset){
 		Vector3 spawnPos = transform.position - new Vector3(offset, 0, 0);
 		Instantiate(obj[objIndex], spawnPos, Quaternion.identity);
-		travelDist = 0f;
 		//Set the genDist so that a new object is "generated" after traveling half the length of the spawned prefab
-		genDist = obj [objIndex].GetComponent<PrefabLength> ().Length / 2.0f;
+		genDist = obj[objIndex].GetComponent<PrefabLength>().Length / 2.0f;
 	}
 }
