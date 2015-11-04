@@ -76,7 +76,7 @@ public class BulletTest_P : MonoBehaviour {
 		{
 			Destroy(this.transform.parent.gameObject);
 		}
-        if (myRigid.velocity.magnitude < 10) return;
+        if (myRigid.velocity.magnitude < 0.2f) return;
         transform.eulerAngles = new Vector3(0, 0, Mathf.Acos(oriSpeed.y/oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
         oriSpeed = myRigid.velocity;
         transform.eulerAngles = new Vector3(0, 0, -Mathf.Acos(oriSpeed.y / oriSpeed.magnitude) * Mathf.Sign(oriSpeed.x) * Mathf.Rad2Deg);
@@ -88,8 +88,9 @@ public class BulletTest_P : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) 
 	{
-		//Debug.Log (myRigid.velocity.magnitude +"lala");
-		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1 && shooter.name != "Shield") 
+
+
+		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 1 && (shooter == null || shooter.name != "Shield")) 
 		{
 			//Debug.Log(shooter.name);
 			//player = other.gameObject;
@@ -98,11 +99,10 @@ public class BulletTest_P : MonoBehaviour {
 			//Debug.Log("lala");
 			HitBox_2D health = other.gameObject.GetComponent<HitBox_2D>();
 			if (health != null) health.Damage(1);
-
-
-
 		}
-		if (other.gameObject.tag == "Shield" && shooter.name != "Shield") {
+
+
+		if (other.gameObject.tag == "Shield" && (shooter == null || shooter.name != "Shield")) {
 			//Debug.Log (other.transform.name +"------------hahaha" + shooter.name );
 			ShieldControl2D temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldControl2D>();
 			//other.transform.parent.gameObject.GetComponentInChildren<ShieldTest>().reflectItem = this.transform.parent.gameObject;

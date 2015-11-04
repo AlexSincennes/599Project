@@ -15,7 +15,8 @@ public class SetUpPhysics2D : MonoBehaviour {
 	public float timeScale = 1.2f;
 
 	public int[] ignoreColliderLayers = new int[]{2};
-		
+
+
 	// Use this for initialization
 	void Start () {
 		Physics2D.gravity = new Vector3(0.0f, gravity, 0.0f);
@@ -27,7 +28,10 @@ public class SetUpPhysics2D : MonoBehaviour {
 			Physics2D.IgnoreLayerCollision(character.passThroughLayer, i);
 			Physics2D.IgnoreLayerCollision(character.climableLayer, i);
 		}
-		
+
+
+
+
 		Time.timeScale = timeScale;
 	}
 }

@@ -885,7 +885,7 @@ MonoBehaviour:
   gravity: -20
   character: {fileID: 1423333371}
   timeScale: 1.20000005
-  ignoreColliderLayers: 02000000
+  ignoreColliderLayers: 0200000000000000
 --- !u!4 &943272341
 Transform:
   m_ObjectHideFlags: 0
@@ -1535,7 +1535,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: weights.Array.data[7]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: obj.Array.data[7]
@@ -1551,11 +1551,11 @@ Prefab:
       objectReference: {fileID: 191750, guid: cf3e64ff3880b0246b21bc6075f77891, type: 2}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: weights.Array.data[8]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: weights.Array.data[9]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: obj.Array.data[10]
