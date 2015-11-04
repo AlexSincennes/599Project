@@ -49,7 +49,7 @@ public class HitBox_2D : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log (other.gameObject.tag );
+		//Debug.Log (other.gameObject.tag );
 	}
 
 	public void Die()

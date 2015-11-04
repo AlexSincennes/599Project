@@ -29,7 +29,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459782}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
