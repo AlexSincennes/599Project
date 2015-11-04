@@ -12,6 +12,7 @@ TagManager:
   - Spawn
   - Death
   - Collect
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - l14
   - l15
   - Coin
-  - 
+  - Ghost
   - 
   - 
   - 
