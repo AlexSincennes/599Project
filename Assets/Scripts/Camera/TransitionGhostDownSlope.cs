@@ -8,7 +8,7 @@ public class TransitionGhostDownSlope : MonoBehaviour {
 
 	void Start(){
 		//Calculate the angle of descent in radians
-		transAngleRads = Mathf.Atan (transform.parent.GetComponentInParent<PrefabAttributes>().Height / transform.parent.GetComponentInParent<PrefabAttributes>().Length);
+		transAngleRads = Mathf.Atan2 (-transform.parent.GetComponentInParent<PrefabAttributes>().Height, transform.parent.GetComponentInParent<PrefabAttributes>().Length);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -22,7 +22,7 @@ public class TransitionGhostDownSlope : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.CompareTag ("Ghost")) {
-			float yOffset = (startY - transform.parent.GetComponentInParent<PrefabAttributes>().Height) - other.transform.position.y;
+			float yOffset = startY - transform.parent.GetComponentInParent<PrefabAttributes>().Height - other.transform.position.y;
 			if (yOffset != 0.0f) {
 				other.transform.Translate(Vector3.up * yOffset);
 			}

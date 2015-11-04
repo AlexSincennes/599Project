@@ -20,8 +20,10 @@ public class GhostMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(Vector3.right * movementSpeedX * Time.deltaTime + Vector3.down * movementSpeedY * Time.deltaTime);
-		//Check if the player is too far ahead or behind the ghost.  Adjust speed of the player as necessary
+		transform.Translate(Vector3.right * movementSpeedX * Time.deltaTime + Vector3.up * movementSpeedY * Time.deltaTime);
+		//Check if the player is too behind or ahead of the ghost.  Adjust speed of the player as necessary
+		if (player.transform.position.x < this.transform.position.x) {
 
+		}
 	}
 }

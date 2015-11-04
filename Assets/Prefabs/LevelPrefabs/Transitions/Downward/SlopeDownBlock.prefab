@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6187056}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777dc77e0eb785645bb41cf7387015c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpTransition: 0
   Length: 30
   Height: 7.5
 --- !u!212 &21277840
@@ -223,6 +224,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Terrain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

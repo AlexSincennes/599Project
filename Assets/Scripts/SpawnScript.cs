@@ -25,8 +25,8 @@ public class SpawnScript : MonoBehaviour {
 	private float xOffset;			//Offset x-position used for perfect placement of prefabs
 	private float yOffset = 0f;		//Offset y-position used for placing prefabs at the right height
 	private float milestoneXOffset; //Offset x-position used for perfect calculation of next milestone
-	private float totalTravelDist = 0f;
-	private float nextMilestone;
+	public float totalTravelDist = 0f;
+	public float nextMilestone;
 	private Vector3 lastPosition;
 
 	// Use this for initialization
@@ -36,8 +36,8 @@ public class SpawnScript : MonoBehaviour {
 		Spawn(basicObj, objIndex, 0f);
 		spawned = true;
 		travelDist = 0f;
-		totalTravelDist = 0f;
 		nextMilestone = totalTravelDist + milestoneFreq;
+		totalTravelDist = 35f;	//The spawner starts 35 units away from the player
 		lastPosition = transform.position;
 	}
 
