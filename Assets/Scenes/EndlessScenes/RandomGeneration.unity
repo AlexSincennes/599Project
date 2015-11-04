@@ -1106,7 +1106,7 @@ MonoBehaviour:
   gravity: -20
   character: {fileID: 1423333371}
   timeScale: 1.20000005
-  ignoreColliderLayers: 0200000000000000
+  ignoreColliderLayers: 02000000
 --- !u!4 &943272341
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1234282289}
   player: {fileID: 1423333369}
+  playerSlowed: 0
   startMovementSpeed: 7
   maxMovementSpeed: 20
   currentMovementSpeed: 0
@@ -1838,7 +1839,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: transObj.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: basicObj.Array.size
@@ -1846,7 +1847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: transWeights.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: basicWeights.Array.size
@@ -1998,7 +1999,7 @@ Prefab:
       objectReference: {fileID: 177284, guid: 24ab0bdc73b0c7a4da87000929534907, type: 2}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: transWeights.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: transWeights.Array.data[1]
@@ -2128,6 +2129,14 @@ Prefab:
       propertyPath: ghostTransform
       value: 
       objectReference: {fileID: 1038608734}
+    - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
+      propertyPath: transObj.Array.data[4]
+      value: 
+      objectReference: {fileID: 177284, guid: cbf3e0b8ab37f5a4da7b798fa661442c, type: 2}
+    - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
+      propertyPath: transWeights.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
   m_IsPrefabParent: 0
@@ -2367,6 +2376,10 @@ Prefab:
     - target: {fileID: 11438710, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
       propertyPath: wall.wallJumpSpeed.y
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130916, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
