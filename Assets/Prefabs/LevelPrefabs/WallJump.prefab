@@ -29,7 +29,7 @@ GameObject:
   - 61: {fileID: 6174474}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Terrain
+  m_TagString: WALLJUMP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - 61: {fileID: 6118868}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Terrain
+  m_TagString: WALLJUMP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: WALLJUMP
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177284}

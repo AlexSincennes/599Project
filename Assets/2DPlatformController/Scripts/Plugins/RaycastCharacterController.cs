@@ -169,6 +169,7 @@ public class RaycastCharacterController : MonoBehaviour
 	
 	public float targetSlope;
 	public Transform h1;
+	public GameObject Hero;
 	#endregion
 	
 	#region events

@@ -54,8 +54,11 @@ public class HeroAnimator2D : MonoBehaviour {
 		CheckDirection ();
 		// targetRotation = targetRotation * 
 		//transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, targetRotation.eulerAngles.y, 0.0f);
-
-		transform.localRotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);		
+		//Ash's Code
+		if (((controller.State == CharacterState.AIRBORNE) && (controller.monty == 1)) || ((controller.State == CharacterState.FALLING) && (controller.monty == 1)) || ((controller.State == CharacterState.WALL_SLIDING) && (controller.monty == 1))) {
+		} else {
+			transform.localRotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);		
+		}
 		//transform.rotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);
 		// transform.localRotation = Quaternion.Euler (Quaternion.Inverse(transform.parent.rotation).eulerAngles.z, result.eulerAngles.y, 0.0f);
 	}
@@ -104,6 +107,8 @@ public class HeroAnimator2D : MonoBehaviour {
 	protected void Idle (CharacterState previousState) {
 		GetComponent<Animation>().CrossFade ("idle");
 		CheckDirection();
+		if (controller.monty == 1)
+			controller.monty = 0;
 	}
 	
 	protected void Walk ()

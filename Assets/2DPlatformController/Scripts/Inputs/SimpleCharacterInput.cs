@@ -16,6 +16,7 @@ public class SimpleCharacterInput : RaycastCharacterInput
 	/// If true dropping from a passthrough platform requires user to press down and then jump.
 	/// </summary>
 	public bool jumpAndDownForDrop;
+	public bool move = true;
 	public bool jump = false;
 
 	private int movingDirection;
@@ -41,10 +42,10 @@ public class SimpleCharacterInput : RaycastCharacterInput
 		y = 0;
 
 		//Force Forward Motion
-		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)|| true) {
+		if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)|| move) {
 			x = 0.5f;
 			movingDirection = 1;
-		} else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) {
+		} else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)|| !move) {
 			x = -0.5f;
 			movingDirection = -1;
 		} else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A)){

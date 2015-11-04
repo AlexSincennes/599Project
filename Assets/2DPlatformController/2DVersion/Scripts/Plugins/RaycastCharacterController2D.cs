@@ -102,8 +102,12 @@ public class RaycastCharacterController2D : MonoBehaviour {
 	/// WARNING: If this is too large your character can fall through the ground, or move through small platforms.
 	/// </summary>
 	public static float maxFrameTime = 0.033f;
-	
-	
+
+	//Ash's Code Wall Jump Variables
+	public int dir;
+	public int monty;
+	public Transform h1;
+	public GameObject Hero;
 	#region private members
 	
 	
@@ -159,7 +163,10 @@ public class RaycastCharacterController2D : MonoBehaviour {
 	private string currentWallTag = null;
 	
 	public float targetSlope;
-	
+
+	//Ash's Wall Slide Vars
+	private int volt = 0;
+	private bool coll = true;
 	#endregion
 	
 	#region events
@@ -441,7 +448,51 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			}
 		}	
 	}
-	
+
+	void Update(){
+		//Ash's Code
+		for (int i = 0; i < sides.Length; i++) {
+			RaycastHit2D hitSides;
+			hitSides = sides [i].GetCollision (1 << backgroundLayer, 0.5f);
+			if (hitSides.collider != null) {
+				if (hitSides.distance <= sides [i].distance + movement.skinSize) {
+					Platform2D platform = hitSides.collider.gameObject.GetComponent<Platform2D> ();
+					if(platform !=null){
+						if(platform.CompareTag("Collect")){
+						platform.Collect ();
+							coll = false;
+						}
+					}
+				}
+			}
+		}
+		foreach (RaycastCollider2D headCollider in headColliders) {
+			RaycastHit2D hitHead = headCollider.GetCollision (1 << backgroundLayer);
+			if (hitHead.collider != null) {
+				// Action on headbut
+				Platform2D platform = hitHead.collider.gameObject.GetComponent<Platform2D> ();
+				if (platform != null) {
+					if (platform.CompareTag ("Collect")) {
+						platform.Collect ();
+						coll = false;
+					}
+				}
+			}
+		}
+		foreach (RaycastCollider2D feetCollider in feetColliders) {
+			RaycastHit2D hitfeet = feetCollider.GetCollision (1 << backgroundLayer);
+			if (hitfeet.collider != null) {
+				// Action on headbut
+				Platform2D platform = hitfeet.collider.gameObject.GetComponent<Platform2D> ();
+				if (platform != null) {
+					if (platform.CompareTag ("Collect")) {
+						platform.Collect ();
+						coll = false;
+					}
+				}
+			}
+		}
+	}
 	/// <summary>
 	/// Do the movement. This is done in LateUpdate so other objects can alter the character in Update.
 	/// </summary>
@@ -695,9 +746,11 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					
 					/// Update wall slide
 					if ((wall.canWallSlide || wall.canWallJump) && !grounded) {
-						if ((sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])) { 
+						if ((sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])&& (hitsides2D.collider.CompareTag("WALLJUMP"))) { //Changed Ash's Code
 							if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance + wall.wallSlideAdditionalDistance) {
 								wallSlideCount++;
+
+								if(wallSlideCount==1) volt = 1;
 								wallSlideDirection = sides[i].direction;
 								if (sides [i] == highestSideColliders [1]) {
 									actualWallCollider = highestSideColliders [1]; 
@@ -710,19 +763,28 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					
 					// Check for platforms, but only if we are within collider distance + skinSize
 					if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance + movement.skinSize) {
+
 						Platform2D platform = hitsides2D.collider.gameObject.GetComponent<Platform2D> ();
 						if (platform != null) {
-							platform.DoAction (sides [i], this);
+							//print ("Normal Collision");
+							if(platform.tag != "Collect"){
+								platform.DoAction (sides [i], this);
+								coll = true;
+							}
 						}
 					}
 				}
 				
 				// Stop movement, but only if we are within collider distance
-				if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance) {
-					float tmpForceSide = (hitsides2D.normal * (sides [i].distance - hitsides2D.fraction * (sides[i].distance + additionalDistance))).x;
-					if (tmpForceSide > Mathf.Abs (forceSide) || tmpForceSide * -1 > Mathf.Abs (forceSide)) {
-						forceSide = tmpForceSide;
-						//	TODO Remove this after adequate testing break;
+				if((wallSlideCount < 1)&&(coll))
+				{
+					if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance) {
+
+						float tmpForceSide = (hitsides2D.normal * (sides [i].distance - hitsides2D.fraction * (sides[i].distance + additionalDistance))).x;
+						if (tmpForceSide > Mathf.Abs (forceSide) || tmpForceSide * -1 > Mathf.Abs (forceSide)) {
+							forceSide = tmpForceSide;
+							//	TODO Remove this after adequate testing break;
+						}
 					}
 				}
 			}
@@ -805,7 +867,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 		}
 		
 		// Check for wall slide
-		if (wallSlideCount > 0 && velocity.y <= 0.0f) {
+		if (wallSlideCount > 0) {
 			isWallHolding = true;
 			bool stopWallSlide = true;
 			RaycastHit2D hit = actualWallCollider.GetCollision(1<<backgroundLayer, wall.edgeDetectionOffset.x);
@@ -818,10 +880,12 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				stopWallSlide = false;
 			}
 			if (wall.wallJumpTag != null && wall.wallJumpTag != "" && currentWallTag != wall.wallJumpTag) stopWallSlide = true;
-			if (!stopWallSlide && wall.canWallSlide && ((wallSlideDirection == RC_Direction.RIGHT && characterInput.x > 0) || (wallSlideDirection == RC_Direction.LEFT && characterInput.x < 0))) {
+			//Ash's Code
+			if (!stopWallSlide && wall.canWallSlide){ //&& ((wallSlideDirection == RC_Direction.RIGHT && characterInput.x > 0) || (wallSlideDirection == RC_Direction.LEFT && characterInput.x < 0))) {
 				// Support sliding on moving platforms
-				actualWallCollider.GetCollision(1<< backgroundLayer, 0.1f);
+				//actualWallCollider.GetCollision(1<< backgroundLayer, 0.1f);
 				isWallSliding = true;
+				//print ("Olla");
 				State = CharacterState.WALL_SLIDING;
 				// Handle moving platforms
 				if (hit.collider != null) {
@@ -867,6 +931,8 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				State = CharacterState.SLIDING;
 			} else {
 				State = CharacterState.IDLE;
+				volt = 0;
+				Hero.GetComponent<SimpleCharacterInput> ().move = true;
 			}
 		} 
 		
@@ -958,7 +1024,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				if (hitFeet.collider != null) {
 					Platform2D platform = hitFeet.collider.gameObject.GetComponent<Platform2D> ();
 					if (platform != null && feetCollider.distance >= hitFeet.fraction * (feetCollider.distance + slopes.slopeLookAhead)) {
-						platform.DoAction (feetCollider, this);
+						if(platform.tag != "Collect"){ platform.DoAction (feetCollider, this);coll = true;}
 						if (hitFeet.collider != null)
 						{
 							Transform parentPlatform = platform.ParentOnStand (this);
@@ -1056,7 +1122,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				startedClimbing = false;
 			}
 			
-			if (hasHitFeet) {
+			if ((hasHitFeet)) {
 				dismounting = null;
 				if ((myParent == null || !myParent.overrideY)) {
 					if ((myParent is LadderCollider2D && ((LadderCollider2D)myParent).control.ShouldPlayLedgeClimb (this))) {
@@ -1076,7 +1142,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 						myTransform.Translate (0.0f, maxForce, 0.0f, Space.World);	
 					}
 				}
-				if (velocity.y < 0.0f) velocity.y = 0.0f;
+				if ((velocity.y < 0.0f)) velocity.y = 0.0f;
 				if (myParent != null && hitGameObject != myParent.gameObject) { // && !(myParent is Rope)) {
 					Unparent ();
 				}
@@ -1139,7 +1205,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					// Action on headbut
 					Platform2D platform = hitHead.collider.gameObject.GetComponent<Platform2D> ();
 					if (platform != null) {
-						platform.DoAction (headCollider, this);
+						if(platform.tag != "Collect"){platform.DoAction (headCollider, this);coll = true;}
 					}
 					if (hitHead.collider != null){
 						if (force < -1 * movement.skinSize && force < maxForce) {
@@ -1150,12 +1216,12 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				}
 			}
 			
-			/*if (hasHitHead) {
+			if ((hasHitHead)&&(coll)) {
 				jumpHeldTimer = jump.jumpHeldTime;
 				myTransform.Translate (0.0f, maxForce, 0.0f, Space.World);		
 				if (velocity.y > 0.0f)
 					velocity.y = 0.0f;
-			}*/
+			}
 			if (!isClimbing) {
 				ApplyGravity ();
 			} 
@@ -1252,9 +1318,14 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			}
 			// "Hard" wall jump also works for easy wall jump
 			if (wallJumpTimer > 0.0f) {
-				if ((hasPressedJumpForWallJump && ((wallJumpDirection == RC_Direction.LEFT && characterInput.x > 0) || (wallJumpDirection == RC_Direction.RIGHT && characterInput.x < 0)))
+				//Ash's Code
+
+				if ((characterInput.jumpButtonDown) && (isWallSliding)){
+					Hero.GetComponent<SimpleCharacterInput> ().move = !Hero.GetComponent<SimpleCharacterInput> ().move;
+					//print ("WallJumping");
+				/*if ((hasPressedJumpForWallJump && ((wallJumpDirection == RC_Direction.LEFT && characterInput.x > 0) || (wallJumpDirection == RC_Direction.RIGHT && characterInput.x < 0)))
 				    
-				    || (hasPressedDirectionForWallJump && characterInput.jumpButtonDown)) {
+				    || (hasPressedDirectionForWallJump && characterInput.jumpButtonDown)) {*/
 					Unparent();
 					startedClimbing = false;
 					velocity.y = wall.wallJumpSpeed.y;
@@ -1266,8 +1337,8 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					State = CharacterState.WALL_JUMPING;
 					if (wall.wallJumpOnlyInOppositeDirection) {
 						oppositeDirectionTimer = wall.oppositeDirectionTime;
-						if (wallJumpDirection == RC_Direction.LEFT)  velocity.x = wall.wallJumpSpeed.x;
-						else if (wallJumpDirection == RC_Direction.RIGHT)  velocity.x =  -1 * wall.wallJumpSpeed.x;
+						if (wallJumpDirection == RC_Direction.LEFT)  dir = 1;
+						else if (wallJumpDirection == RC_Direction.RIGHT)  dir = -1;
 					}
 				} else if (!hasPressedJumpForWallJump && characterInput.jumpButtonDown ) {
 					hasPressedJumpForWallJump = true;
@@ -1286,6 +1357,19 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			// Animations
 			if ((!IsGrounded (groundedLookAhead, false) && !hasHitFeet) || jumpButtonTimer > 0.0f) {
 				State = CharacterState.AIRBORNE;
+				//Ash's Code
+				if(dir == 1){
+
+					h1.Rotate(new Vector3(0,1,0),180);
+					//directionChecker.UpdateDirection(this);
+					monty = 1;
+					dir =0;
+				}else if (dir == -1){
+					h1.Rotate(new Vector3(0,1,0),180);
+					//directionChecker.UpdateDirection(this);
+					monty = 1;
+					dir =0;
+				}
 			}
 			
 			if (velocity.y < jump.fallVelocity) {

@@ -10,26 +10,9 @@ public class VictoryW : Platform2D {
 		passLabel.SetActive (false);
 
 	}
-	
-	//// Update is called once per frame
-	void Update () {
-
-		
-		}
-
-
-
-
-	void OnTriggerEnter(Collider other)
-	{
-
-
-		GameManager.Instance.player.GetComponent<RaycastCharacterController> ().controllerActive = false;
-
-		passLabel.SetActive (true);
-
+	void Update() {
 	}
-	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+	override public void Collect() {
 		GameManager.Instance.loadlev = 2;
 		Application.LoadLevel (2);
 		passLabel.SetActive (true);

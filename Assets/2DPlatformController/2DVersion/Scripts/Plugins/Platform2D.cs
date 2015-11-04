@@ -71,6 +71,10 @@ public class Platform2D : MonoBehaviour {
 		// Do nothing
 	}
 
+	virtual public void Collect() {
+		// Do nothing
+	}
+
 	/// <summary>
 	/// Does this platform want to have this platform become the characters parent. Used for moving platforms.
 	/// </summary>
