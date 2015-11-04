@@ -44,7 +44,7 @@ GameObject:
   - 212: {fileID: 21267750}
   - 61: {fileID: 6173008}
   - 114: {fileID: 11443558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SlowingBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,6 +236,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Length
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

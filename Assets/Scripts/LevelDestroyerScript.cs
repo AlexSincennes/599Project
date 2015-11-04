@@ -4,7 +4,7 @@ using System.Collections;
 public class LevelDestroyerScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log (other.gameObject.tag);
+		//Debug.Log (other.gameObject.tag);
 
 		if (other.tag != "Player") {
 			if (other.gameObject.transform.parent) {
