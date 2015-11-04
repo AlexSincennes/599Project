@@ -932,6 +932,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			} else {
 				State = CharacterState.IDLE;
 				volt = 0;
+				if(Hero!= null)
 				Hero.GetComponent<SimpleCharacterInput> ().move = true;
 			}
 		} 
