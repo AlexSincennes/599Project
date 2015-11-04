@@ -21,8 +21,10 @@ public class Collectable2D : Platform2D {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		//Destroy (this.gameObject);
-		HitBox2D collector = other.gameObject.GetComponent<HitBox2D>();
+		GameObject.Find("BashPlane").GetComponent<BashManager>().curMeter += 100;
+		HitBox_2D collector = other.gameObject.GetComponent<HitBox_2D>();
 		if (collector != null) {
+			//Debug.Log ("lalalaal");
 			collector.Collect(this);
 			if (particles != null) particles.Play ();
 			// You could destroy but here we are just going to turn off rendering and collision
@@ -33,12 +35,5 @@ public class Collectable2D : Platform2D {
 			GetComponent<Collider2D>().enabled = false;
 			if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().isKinematic = true;
 		}
-	}
-	override public void Collect() {
-		//if (particles != null) particles.Play ();
-		myRenderer.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-		Destroy (this.gameObject);
-		//myRenderer.GetComponent<BoxCollider2D>().enabled = false;
-
 	}
 }

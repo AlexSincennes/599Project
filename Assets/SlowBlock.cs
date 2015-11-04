@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SlowBlock : Platform2D {
-	private RaycastCharacterController2D obj;
+	private GameObject obj;
 	public float delay;
 	public float SlowSpeed;
 	private float Speed;
@@ -21,23 +21,27 @@ public class SlowBlock : Platform2D {
 			t = Time.time;
 			r = t + delay;
 			if (obj != null) {
-				obj.movement.walkSpeed = SlowSpeed;
-				obj.movement.runSpeed = SlowSpeed;
+				obj.GetComponentInParent<RaycastCharacterController2D>().movement.walkSpeed = SlowSpeed;
+				obj.GetComponentInParent<RaycastCharacterController2D>().movement.runSpeed = SlowSpeed;
 				temp = 2;
 			}
 		} else if (temp == 2) {
+			if(Time.time > 2.0){
+				Destroy (this.GetComponent<SpriteRenderer> ());
+			}
 			if(Time.time > r){
-				print ("Yippie");
 				Destroy(this.gameObject);
-				obj.movement.walkSpeed = 10;
-				obj.movement.runSpeed = 10;
+				obj.GetComponentInParent<RaycastCharacterController2D>().movement.walkSpeed = 10;
+				obj.GetComponentInParent<RaycastCharacterController2D>().movement.runSpeed = 10;
 				temp = 0;
 			}
 		}
 	}
-	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+	void OnTriggerEnter2D(Collider2D other) {
+
 		temp = 1;
-		obj = character;
+		obj = other.gameObject;
 		Destroy (this.GetComponent<BoxCollider2D> ());
 	}
+
 }

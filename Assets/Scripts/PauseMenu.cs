@@ -31,7 +31,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Restart(){
-		Application.LoadLevel (GameManager.Instance.loadlev);
+		Application.LoadLevel (Application.loadedLevel);
 		if(Application.loadedLevel == 2)
 			GameManager.Instance.curTimes++;
 	}

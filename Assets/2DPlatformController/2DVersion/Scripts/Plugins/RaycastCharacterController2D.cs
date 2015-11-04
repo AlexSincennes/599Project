@@ -166,7 +166,6 @@ public class RaycastCharacterController2D : MonoBehaviour {
 
 	//Ash's Wall Slide Vars
 	private int volt = 0;
-	private bool coll = true;
 	#endregion
 	
 	#region events
@@ -448,51 +447,6 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			}
 		}	
 	}
-
-	void Update(){
-		//Ash's Code
-		for (int i = 0; i < sides.Length; i++) {
-			RaycastHit2D hitSides;
-			hitSides = sides [i].GetCollision (1 << backgroundLayer, 0.5f);
-			if (hitSides.collider != null) {
-				if (hitSides.distance <= sides [i].distance + movement.skinSize) {
-					Platform2D platform = hitSides.collider.gameObject.GetComponent<Platform2D> ();
-					if(platform !=null){
-						if(platform.CompareTag("Collect")){
-						platform.Collect ();
-							coll = false;
-						}
-					}
-				}
-			}
-		}
-		foreach (RaycastCollider2D headCollider in headColliders) {
-			RaycastHit2D hitHead = headCollider.GetCollision (1 << backgroundLayer);
-			if (hitHead.collider != null) {
-				// Action on headbut
-				Platform2D platform = hitHead.collider.gameObject.GetComponent<Platform2D> ();
-				if (platform != null) {
-					if (platform.CompareTag ("Collect")) {
-						platform.Collect ();
-						coll = false;
-					}
-				}
-			}
-		}
-		foreach (RaycastCollider2D feetCollider in feetColliders) {
-			RaycastHit2D hitfeet = feetCollider.GetCollision (1 << backgroundLayer);
-			if (hitfeet.collider != null) {
-				// Action on headbut
-				Platform2D platform = hitfeet.collider.gameObject.GetComponent<Platform2D> ();
-				if (platform != null) {
-					if (platform.CompareTag ("Collect")) {
-						platform.Collect ();
-						coll = false;
-					}
-				}
-			}
-		}
-	}
 	/// <summary>
 	/// Do the movement. This is done in LateUpdate so other objects can alter the character in Update.
 	/// </summary>
@@ -767,17 +721,15 @@ public class RaycastCharacterController2D : MonoBehaviour {
 						Platform2D platform = hitsides2D.collider.gameObject.GetComponent<Platform2D> ();
 						if (platform != null) {
 							//print ("Normal Collision");
-							if(platform.tag != "Collect"){
 								platform.DoAction (sides [i], this);
-								coll = true;
-							}
 						}
 					}
 				}
 				
 				// Stop movement, but only if we are within collider distance
-				if((wallSlideCount < 1)&&(coll))
+				if((wallSlideCount < 1))
 				{
+					//print("boolean");
 					if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance) {
 
 						float tmpForceSide = (hitsides2D.normal * (sides [i].distance - hitsides2D.fraction * (sides[i].distance + additionalDistance))).x;
@@ -1025,7 +977,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				if (hitFeet.collider != null) {
 					Platform2D platform = hitFeet.collider.gameObject.GetComponent<Platform2D> ();
 					if (platform != null && feetCollider.distance >= hitFeet.fraction * (feetCollider.distance + slopes.slopeLookAhead)) {
-						if(platform.tag != "Collect"){ platform.DoAction (feetCollider, this);coll = true;}
+						platform.DoAction (feetCollider, this);
 						if (hitFeet.collider != null)
 						{
 							Transform parentPlatform = platform.ParentOnStand (this);
@@ -1206,7 +1158,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					// Action on headbut
 					Platform2D platform = hitHead.collider.gameObject.GetComponent<Platform2D> ();
 					if (platform != null) {
-						if(platform.tag != "Collect"){platform.DoAction (headCollider, this);coll = true;}
+						platform.DoAction (headCollider, this);
 					}
 					if (hitHead.collider != null){
 						if (force < -1 * movement.skinSize && force < maxForce) {
@@ -1217,7 +1169,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 				}
 			}
 			
-			if ((hasHitHead)&&(coll)) {
+			if ((hasHitHead)) {
 				jumpHeldTimer = jump.jumpHeldTime;
 				myTransform.Translate (0.0f, maxForce, 0.0f, Space.World);		
 				if (velocity.y > 0.0f)

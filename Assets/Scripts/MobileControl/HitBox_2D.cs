@@ -26,8 +26,8 @@ public class HitBox_2D : MonoBehaviour {
 		//GameManager.Instance.player.GetComponent<RaycastCharacterController>().Stun (1f);
 	}
 
-	public virtual void Collect (Collectable collectable) {
-		Debug.Log ("Collect "+ collectable.transform.parent.name+" !!!!!!!!!!");
+	public virtual void Collect (Collectable2D collectable) {
+		//Debug.Log ("Collect "+ collectable.transform.parent.name+" !!!!!!!!!!");
 		//bashManager.UpdateBashMeter (10.0f);
 	}
 

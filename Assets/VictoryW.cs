@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VictoryW : Platform2D {
+public class VictoryW : MonoBehaviour {
 	public GameObject passLabel;
 
 
@@ -10,11 +10,10 @@ public class VictoryW : Platform2D {
 		passLabel.SetActive (false);
 
 	}
-	void Update() {
-	}
-	override public void Collect() {
-		GameManager.Instance.loadlev = 2;
-		Application.LoadLevel (2);
+
+	void OnTriggerEnter2D(Collider2D other) {
+		GameManager.Instance.loadlev = 1;
+		Application.LoadLevel (1);
 		passLabel.SetActive (true);
 	}
 }
