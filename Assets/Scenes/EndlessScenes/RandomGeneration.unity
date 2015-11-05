@@ -1046,7 +1046,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 4.5999999
+  aspectRatio: 4.625
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 16a2d4ace59bac64dbcf4085964b38eb, type: 2}
@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1423333369}
   playerSlowed: 0
-  startMovementSpeed: 7
+  startMovementSpeed: 8.5
   maxMovementSpeed: 20
   currentMovementSpeed: 0
   movementSpeedX: 10
@@ -2403,7 +2403,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1394640116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -428, y: -286, z: 0}
+  m_LocalPosition: {x: -429, y: -286, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1671165912}
