@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class GhostMovement : MonoBehaviour {
-
-	public GameObject spawner;	//This needs to be here so that the transitions can adjust the spawner's offsets
+	
 	public GameObject player;
 
 	public bool playerSlowed = false;
