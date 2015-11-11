@@ -17,6 +17,7 @@ public class ShieldControl2D : MonoBehaviour {
 
 	private bool isStartDefending;
 	private bool isStartbashing;
+	public bool isStartShield;
 	private float lastTime;
 	private float defendStartTime;
 	private float bashStartTime;
@@ -34,13 +35,13 @@ public class ShieldControl2D : MonoBehaviour {
 		directionShield.SetActive (false);
 		playerGO = GameObject.Find("Character2D");//GameManager.Instance.player;
 
-		isStartDefending = isStartbashing=false;
+		isStartDefending = isStartbashing=isStartShield=false;
 		lastTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (angle != 0) 
+		if (isStartShield) //angle != 0
 		{
 			if(!isStartDefending)
 			{
@@ -49,7 +50,8 @@ public class ShieldControl2D : MonoBehaviour {
 			}
 			if(Time.time - defendStartTime >= reflectTime)
 			{
-				angle = 0;
+				//angle = 0;
+				isStartShield = false;
 				isStartDefending = false;
 			}
 		}
@@ -75,7 +77,7 @@ public class ShieldControl2D : MonoBehaviour {
 		if(shieldEquip)
 		{
 
-			if(angle== 0)
+			if(!isStartShield)//angle== 0
 			{
 				shieldmesh.SetActive(true);
 				directionShield.SetActive (false);
