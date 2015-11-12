@@ -25,6 +25,8 @@ public class SwimmingCharacterInput : RaycastCharacterInput
 	{
 		
 		if (Input.GetKey (KeyCode.R)) {
+			/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+			obj.transform.parent = null;*/
 			Application.LoadLevel (0);
 		}
 		

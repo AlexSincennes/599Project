@@ -7,6 +7,8 @@ public class EndlessRunnerCameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (follow == null)
+			follow = GameObject.FindGameObjectWithTag ("Ghost").transform;
 		transform.position = new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z);
 		//transform.position = Vector3.SmoothDamp (transform.position, new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z), ref velocity, 0.05f);
 	}

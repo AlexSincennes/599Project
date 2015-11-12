@@ -21,6 +21,8 @@ public class PlayerDeath : Platform2D {
 		print ("Working");
 		if (other.gameObject.tag == "Player") 
 		{
+			/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+			obj.transform.parent = null;*/
 			Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = other.transform.parent.position;
 			if(Application.loadedLevel == 2)
@@ -30,6 +32,8 @@ public class PlayerDeath : Platform2D {
 
 	}
 	override public void DoAction(RaycastCollider2D collider, RaycastCharacterController2D character) {
+		/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+		obj.transform.parent = null;*/
 		Application.LoadLevel(Application.loadedLevel);
 		//GameManager.Instance.deathPos = other.transform.parent.position;
 		if(Application.loadedLevel == 2)

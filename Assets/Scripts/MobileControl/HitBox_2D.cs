@@ -17,6 +17,8 @@ public class HitBox_2D : MonoBehaviour {
 	public virtual void Damage(int amount) {
 		//simplehealth.Damage(amount);
 		//Debug.Log ("dada");
+		/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+		obj.transform.parent = null;*/
 		Application.LoadLevel(Application.loadedLevel);
 		
 		//GameManager.Instance.deathPos = transform.parent.position;

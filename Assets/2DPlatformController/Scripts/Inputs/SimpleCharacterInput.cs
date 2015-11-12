@@ -28,7 +28,8 @@ public class SimpleCharacterInput : RaycastCharacterInput
 			//GameManager.Instance.deathPos = GameObject.Find("HeroCharacter").transform.position;
 			if(Application.loadedLevel == 2)
 			GameManager.Instance.curTimes++;
-
+			/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+			obj.transform.parent = null;*/
 			Application.LoadLevel(0);
 		}
 		

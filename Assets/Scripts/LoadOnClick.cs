@@ -7,6 +7,8 @@ public class LoadOnClick : MonoBehaviour {
 
 	public void LoadScene(int level)
 	{
+		/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
+		obj.transform.parent = null;*/
 		Application.LoadLevel (level);
 		loadingImage.SetActive (true);
 		if(level == 2)
