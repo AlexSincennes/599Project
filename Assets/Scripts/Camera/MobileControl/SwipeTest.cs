@@ -8,7 +8,8 @@ public class SwipeTest : MonoBehaviour {
 	//public Text swipeText;
 	public GameObject Hero;
 	public ShieldControl2D sc; 
-
+	private bool isdefend = false;
+	private Vector3 swipStartPos;
 	// Subscribe to events
 	void OnEnable(){
 		EasyTouch.On_SwipeStart += On_SwipeStart;
@@ -37,12 +38,12 @@ public class SwipeTest : MonoBehaviour {
 
 
 	}
-	
-
 
 	// At the swipe beginning 
 	private void On_SwipeStart( Gesture gesture){
 		//swipeText.text = "You start a swipe";
+		swipStartPos = gesture.GetTouchToWorldPoint(5);
+		isdefend = true;
 	}
 	
 	// During the swipe
@@ -51,17 +52,33 @@ public class SwipeTest : MonoBehaviour {
 		// the world coordinate from touch for z=5
 		Vector3 position = gesture.GetTouchToWorldPoint(5);
 		trail.transform.position = position;
+		//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
+		float dis = Vector3.Distance (swipStartPos, position);
+		if (dis > 2 && isdefend) 
+		{
+			isdefend = false;
+			float angles = gesture.GetSwipeOrDragAngle();
+			Debug.Log("angle:" + angles);
+			if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
+			{
+				Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
+			} else 
+			{
+				sc.angle = angles;
+				sc.isStartShield = true;
+			}
+
+		}
 		
 	}
 	
 	// At the swipe end 
 	private void On_SwipeEnd(Gesture gesture){
-		
+		isdefend = true;
 		// Get the swipe angle
+		/*
 		float angles = gesture.GetSwipeOrDragAngle();
-		//swipeText.text = "Last swipe : " + gesture.swipe.ToString() + " /  vector : " + gesture.swipeVector.normalized + " / angle : " + angles.ToString("f2");
-		//Debug.Log ("s1");
-		//Hero.transform.eulerAngles = new Vector3 (0,angles,0);
+
 		if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
 		{
 			Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
@@ -69,7 +86,8 @@ public class SwipeTest : MonoBehaviour {
 		{
 			sc.angle = angles;
 		}
-
+		*/
+	
 	}
 
 	private void On_SimpleTap( Gesture gesture)

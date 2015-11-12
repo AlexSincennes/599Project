@@ -29,11 +29,12 @@ public class Swipe : MonoBehaviour {
 		EasyTouch.On_Swipe -= On_Swipe;
 		EasyTouch.On_SwipeEnd -= On_SwipeEnd;	
 	}
-	
+
 
 	// At the swipe beginning 
 	private void On_SwipeStart( Gesture gesture){
 		swipeText.text = "You start a swipe";
+
 	}
 	
 	// During the swipe
