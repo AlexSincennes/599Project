@@ -7,9 +7,7 @@ public class BulletTest_P : MonoBehaviour {
 	//private Vector3 targetposion;
 	//private bool isLeft = false;
 	public int i=0;
-	public static GameObject spawnpoint = null;
-	public static GameObject player = null;
-	public static Vector3 spawn;
+	
 	public Transform enemy;
 	public float speed=5;
 	private Vector3 oriSpeed;

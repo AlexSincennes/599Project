@@ -70,8 +70,16 @@ public class Enemy1_2 : MonoBehaviour {
 			if(Time.time - lastAttackTime > attackRate)
 			{ 
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
-				temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
-				temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
+				if(temp.transform.GetComponentInChildren<BulletTest_P>())
+				{
+					temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
+					temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
+				}else if(temp.transform.GetComponentInChildren<BulletTest_Homing>())
+				{
+					temp.transform.GetComponentInChildren<BulletTest_Homing>().shooter = this.transform;
+					temp.transform.GetComponentInChildren<BulletTest_Homing>().target = player;
+				}
+
 				/*
 				temp.transform.GetComponentInChildren<BulletTest_P>().ifHardCodeAngle = true;
 				temp.transform.GetComponentInChildren<BulletTest_P>().angleHardCode = angle0[0];
