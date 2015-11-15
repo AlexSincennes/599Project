@@ -44,6 +44,7 @@ public class SwipeTest : MonoBehaviour {
 		//swipeText.text = "You start a swipe";
 		swipStartPos = gesture.GetTouchToWorldPoint(5);
 		isdefend = true;
+
 	}
 	
 	// During the swipe
@@ -56,6 +57,7 @@ public class SwipeTest : MonoBehaviour {
 		float dis = Vector3.Distance (swipStartPos, position);
 		if (dis > 2 && isdefend) 
 		{
+			sc.defendStartTime = Time.time;
 			isdefend = false;
 			float angles = gesture.GetSwipeOrDragAngle();
 			Debug.Log("angle:" + angles);

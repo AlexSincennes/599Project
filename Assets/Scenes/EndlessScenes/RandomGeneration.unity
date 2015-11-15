@@ -2209,7 +2209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: basicWeights.Array.data[7]
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: basicWeights.Array.data[8]

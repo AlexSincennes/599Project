@@ -19,7 +19,7 @@ public class ShieldControl2D : MonoBehaviour {
 	private bool isStartbashing;
 	public bool isStartShield;
 	private float lastTime;
-	private float defendStartTime;
+	public float defendStartTime;
 	private float bashStartTime;
 	private GameObject playerGO ;
 
