@@ -4,13 +4,19 @@ using System.Collections;
 public class LoadOnClick : MonoBehaviour {
 
 	public GameObject loadingImage;
-
+    private GameObject CastUI;
 	public void LoadScene(int level)
 	{
-		/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
-		obj.transform.parent = null;*/
+       
 		Application.LoadLevel (level);
 		loadingImage.SetActive (true);
+        CastUI = GameObject.FindGameObjectWithTag("CastUI");
+        CastUI.GetComponent<PauseMenu>().enabled = true;
+        CastUI.GetComponent<Canvas>().enabled = false;
+        CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
+        CastUI.GetComponent<Canvas>().enabled = false;
+        CastUI = GameObject.FindGameObjectWithTag("Camera");
+        CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = true;
 		if(level == 2)
 		GameManager.Instance.curTimes++;
 		GameManager.Instance.curLevel = level;

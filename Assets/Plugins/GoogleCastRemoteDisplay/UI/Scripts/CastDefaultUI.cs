@@ -101,6 +101,9 @@ namespace Google.Cast.RemoteDisplay.UI {
      * If a default UI already exists, destroy the new one.
      */
     void Awake() {
+		if (instance == null) {
+				inst = false;
+			}
       if (inst) {
         Debug.LogWarning("CastDefaultUI: Duplicate UI controller found - destroying.");
         DestroyImmediate(gameObject);

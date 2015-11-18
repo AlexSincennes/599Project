@@ -18,19 +18,23 @@ public class SimpleCharacterInput : RaycastCharacterInput
 	public bool jumpAndDownForDrop;
 	public bool move = true;
 	public bool jump = false;
-
+    private GameObject CastUI;
 	private int movingDirection;
 
 
 	void Update ()
 	{
 		if (Input.GetKey(KeyCode.R)) {
-			//GameManager.Instance.deathPos = GameObject.Find("HeroCharacter").transform.position;
 			if(Application.loadedLevel == 2)
 			GameManager.Instance.curTimes++;
-			/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
-			obj.transform.parent = null;*/
+            CastUI = GameObject.FindGameObjectWithTag("CastUI");
+            CastUI.GetComponent<PauseMenu>().enabled = false;
+            CastUI = GameObject.FindGameObjectWithTag("PauseUI");
+            if (CastUI != null)
+                CastUI.SetActive(false);
 			Application.LoadLevel(0);
+            CastUI = GameObject.FindGameObjectWithTag("Camera");
+            CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = false;
 		}
 		
 		jumpButtonHeld = false;

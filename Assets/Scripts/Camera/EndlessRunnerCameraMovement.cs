@@ -5,7 +5,7 @@ public class EndlessRunnerCameraMovement : MonoBehaviour {
 
 	public Transform follow;
 
-	private Vector3 velocity = Vector3.zero;
+	private Vector3 velocity = Vector3.zero;	
 
 	//private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManager;
 	//private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManagerScript;
