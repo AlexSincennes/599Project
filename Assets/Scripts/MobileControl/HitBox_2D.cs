@@ -62,7 +62,15 @@ public class HitBox_2D : MonoBehaviour {
 
 	public void Die()
 	{
-		Application.LoadLevel(Application.loadedLevel);
+        Time.timeScale = 0;
+        Score = GameObject.Find("ScoreScreen/Value").GetComponent<Text>();
+        ScoreScreen = GameObject.Find("Score");
+        ScoreScreen.GetComponent<Canvas>().enabled = true;
+        BashPlane = GameObject.Find("BashPlane");
+        int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
+        if (curmeter > PlayerPrefs.GetInt("HighScore"))
+            PlayerPrefs.SetInt("HighScore", curmeter);
+        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
 
 	}
 
