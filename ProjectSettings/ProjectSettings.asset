@@ -80,7 +80,7 @@ PlayerSettings:
   virtualRealitySupported: 0
   productGUID: 3d40e51e6fb0e2c4a8068733f5e242a3
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 9
+  AndroidMinSdkVersion: 19
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -128,7 +128,7 @@ PlayerSettings:
   AndroidKeyaliasName: 
   AndroidTVCompatibility: 0
   AndroidIsGame: 0
-  androidEnableBanner: 0
+  androidEnableBanner: 1
   m_AndroidBanners:
   - width: 320
     height: 180

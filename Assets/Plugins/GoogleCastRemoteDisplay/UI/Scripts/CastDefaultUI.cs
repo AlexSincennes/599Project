@@ -253,7 +253,7 @@ namespace Google.Cast.RemoteDisplay.UI {
      */
     public void OnCastButtonTapped() {
       HideAll();
-      darkMask.SetActive(true);
+      //darkMask.SetActive(true);
       if (isCasting) {
         CastDevice selectedDevice = CastRemoteDisplayManager.GetInstance().GetSelectedCastDevice();
         if (selectedDevice != null) {
