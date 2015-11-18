@@ -11,17 +11,14 @@ public class EndlessRunnerCameraMovement : MonoBehaviour {
 	private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManagerScript;
 
 	void Start(){
-		audioListener = this.GetComponentInChildren<AudioListener> ();
 		remoteDisplayManager = (Google.Cast.RemoteDisplay.CastRemoteDisplayManager)GameObject.FindObjectOfType(typeof(Google.Cast.RemoteDisplay.CastRemoteDisplayManager));
 		remoteDisplayManagerScript = remoteDisplayManager.GetComponent<Google.Cast.RemoteDisplay.CastRemoteDisplayManager>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (remoteDisplayManagerScript.IsCasting() && audioListener.enabled) {
-			audioListener.enabled = false;
-		} else if (!remoteDisplayManagerScript.IsCasting() && !audioListener.enabled) {
-			audioListener.enabled = true;
+		if (remoteDisplayManagerScript.IsCasting()) {
+		} else if (!remoteDisplayManagerScript.IsCasting()) {
 		}
 
 		if (follow == null)

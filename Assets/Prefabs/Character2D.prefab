@@ -821,7 +821,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.41999996, y: .419999987, z: 0}
+  m_LocalPosition: {x: -5, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459788}
@@ -939,9 +939,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .600000024}
+  m_Offset: {x: 0, y: .75}
   serializedVersion: 2
-  m_Radius: .5
+  m_Radius: .600000024
 --- !u!61 &6130916
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -950,11 +950,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 105086}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 2}
 --- !u!111 &11138178
 Animation:
   m_ObjectHideFlags: 1
@@ -1025,12 +1025,12 @@ MonoBehaviour:
     ignoreAnglesLessThan: 0
   headColliders:
   - transform: {fileID: 495846}
-    offset: {x: -.199999809, y: .24999997, z: 0}
+    offset: {x: -.199999809, y: .25, z: 0}
     distance: .800000191
     direction: 0
     ignoreAnglesLessThan: 0
   - transform: {fileID: 495846}
-    offset: {x: .300000191, y: .24999997, z: 0}
+    offset: {x: .300000191, y: .25, z: 0}
     distance: .800000191
     direction: 0
     ignoreAnglesLessThan: 0
@@ -1066,8 +1066,8 @@ MonoBehaviour:
     direction: 2
     ignoreAnglesLessThan: 0
   movement:
-    walkSpeed: 3
-    runSpeed: 5.5
+    walkSpeed: 10
+    runSpeed: 0
     movementStyle: 0
     jumpAtRunSpeed: 0
     acceleration: 110
@@ -1076,7 +1076,7 @@ MonoBehaviour:
     skinSize: .00100000005
   jump:
     canDoubleJump: 0
-    jumpVelocity: 12.5
+    jumpVelocity: 15
     doubleJumpVelocity: 9
     jumpTimer: .200000003
     jumpHeldTime: .25
@@ -1088,22 +1088,22 @@ MonoBehaviour:
     canWallJump: 1
     canWallSlide: 1
     easyWallJump: 0
-    wallJumpOnlyInOppositeDirection: 0
-    wallSlideGravityFactor: .5
-    oppositeDirectionTime: .5
-    wallSlideAdditionalDistance: .0500000007
-    wallJumpTime: .330000013
+    wallJumpOnlyInOppositeDirection: 1
+    wallSlideGravityFactor: .100000001
+    oppositeDirectionTime: .200000003
+    wallSlideAdditionalDistance: 2
+    wallJumpTime: 10
     edgeDetectionOffset: {x: .0500000007, y: .550000012}
     wallJumpTag: 
-    wallJumpSpeed: {x: 3, y: 12.5}
+    wallJumpSpeed: {x: 3, y: 18}
   slopes:
-    allowSlopes: 0
+    allowSlopes: 1
     slopeLookAhead: .5
     rotationSpeed: .25
     maxRotation: 45
   climbing:
-    autoStick: 1
-    allowClimbing: 1
+    autoStick: 0
+    allowClimbing: 0
     speed: 2.5
     horizontalSpeed: 1.5
     collidersRequired: 3
@@ -1113,9 +1113,9 @@ MonoBehaviour:
     climbTopDownAnimationTime: 1.33000004
     climbOffset: {x: .949999988, y: 1.92999995, z: 0}
   ledgeHanging:
-    canLedgeHang: 1
-    grabOnlyInFacingDirection: 1
-    autoGrab: 1
+    canLedgeHang: 0
+    grabOnlyInFacingDirection: 0
+    autoGrab: 0
     autoGrabDistance: .150000006
     edgeDetectionOffset: {x: .100000001, y: .400000006}
     jumpOnlyInOppositeDirection: 1
@@ -1129,8 +1129,8 @@ MonoBehaviour:
     climbOffset: {x: .949999988, y: 1.92999995, z: 0}
     ledgeDropTime: .150000006
   crouch:
-    canCrouch: 1
-    canCrouchSlide: 1
+    canCrouch: 0
+    canCrouchSlide: 0
     canCrouchJump: 0
     minVelocityForSlide: 3
     minVelocityForStopSlide: 1.75
@@ -1140,13 +1140,13 @@ MonoBehaviour:
     ignoredSideCollidersHigherThan: 0
     headDetectionDistance: 0
   swimming:
-    canSwim: 1
+    canSwim: 0
     swimStrokeAcceleration: {x: 0, y: 0}
     maxYSpeed: 0
     gravityOverride: 0
     waterResistance: {x: 0, y: 0}
     swimStrokeTime: 0
-    canRun: 1
+    canRun: 0
   stun: 0
   backgroundLayer: 0
   passThroughLayer: 8
@@ -1157,6 +1157,10 @@ MonoBehaviour:
   maxSpeedForIdle: .100000001
   characterInput: {fileID: 11441954}
   directionChecker: {fileID: 11464748}
+  dir: 0
+  monty: 0
+  h1: {fileID: 459788}
+  Hero: {fileID: 126006}
   targetSlope: 0
 --- !u!114 &11440618
 MonoBehaviour:
@@ -1197,6 +1201,7 @@ MonoBehaviour:
   shieldT: 0
   alwaysRun: 0
   jumpAndDownForDrop: 0
+  move: 1
   jump: 0
 --- !u!114 &11464748
 MonoBehaviour:
@@ -1225,10 +1230,13 @@ MonoBehaviour:
   shieldEquip: 1
   shieldmesh: {fileID: 199838}
   directionShield: {fileID: 105086}
-  reflectTime: .5
+  reflectTime: 1
   angle: 0
   bashTime: .300000012
   isBashing: 0
+  swipeAngle: 0
+  isStartShield: 0
+  defendStartTime: 0
 --- !u!137 &13791980
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ public class ShieldControl2D : MonoBehaviour {
 	public float angle = 0;
 	public float bashTime = 0.3f;
 	public bool isBashing = false;
-	
+	public float swipeAngle;
 	//public bool startClock = false;
 
 	private bool isStartDefending;

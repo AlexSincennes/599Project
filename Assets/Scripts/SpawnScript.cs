@@ -37,7 +37,6 @@ public class SpawnScript : MonoBehaviour {
 	void Update(){
 		if (ghostTransform == null) {
 			ghostTransform = GameObject.FindGameObjectWithTag ("Ghost").transform;
-
 		}
 		/*if (follow == null)
 			follow = GameObject.FindGameObjectWithTag ("Camera").transform;
