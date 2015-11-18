@@ -6,20 +6,20 @@ public class EndlessRunnerCameraMovement : MonoBehaviour {
 	public Transform follow;
 
 	private Vector3 velocity = Vector3.zero;
-	private AudioListener audioListener;
-	private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManager;
-	private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManagerScript;
+
+	//private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManager;
+	//private Google.Cast.RemoteDisplay.CastRemoteDisplayManager remoteDisplayManagerScript;
 
 	void Start(){
-		remoteDisplayManager = (Google.Cast.RemoteDisplay.CastRemoteDisplayManager)GameObject.FindObjectOfType(typeof(Google.Cast.RemoteDisplay.CastRemoteDisplayManager));
-		remoteDisplayManagerScript = remoteDisplayManager.GetComponent<Google.Cast.RemoteDisplay.CastRemoteDisplayManager>();
+		//remoteDisplayManager = (Google.Cast.RemoteDisplay.CastRemoteDisplayManager)GameObject.FindObjectOfType(typeof(Google.Cast.RemoteDisplay.CastRemoteDisplayManager));
+		//remoteDisplayManagerScript = remoteDisplayManager.GetComponent<Google.Cast.RemoteDisplay.CastRemoteDisplayManager>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (remoteDisplayManagerScript.IsCasting()) {
-		} else if (!remoteDisplayManagerScript.IsCasting()) {
-		}
+		//if (remoteDisplayManagerScript.IsCasting()) {
+		//} else if (!remoteDisplayManagerScript.IsCasting()) {
+		//}
 
 		if (follow == null)
 			follow = GameObject.FindGameObjectWithTag("Ghost").transform;

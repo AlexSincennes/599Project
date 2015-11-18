@@ -6,6 +6,7 @@ public class SpawnScript : MonoBehaviour {
 	public int firstObjectIndex = 0;	//The first object to be spawned
 	public float milestoneFreq = 0f;	//The frequency at which a milestone(transition) should spawn
 										// set to 0 to not have spawn any transitions
+	public float startSpawnerDist = 355f;	//The world x position at which to start the spawner
 	public GameObject[] basicObj;
 	public float[] basicWeights;
 	public GameObject[] transObj;
@@ -18,19 +19,23 @@ public class SpawnScript : MonoBehaviour {
 	private int objIndex;
 	private bool spawned = false;	//False when a prefab index has been generated but not yet spawned
 	private bool transition = false;//False while the next prefab to be generated is not a transition
-	private float spawnDist = 0f;	//Distance to travel until spawning object
-	private float genDist = 0f;		//Distance to travel until generating new object
-	private float travelDist = 0f;	//Distance traveled since last reset
-	private float totalTravelDist = 0f;
-	private float xOffset;			//Offset x-position used for perfect placement of prefabs
+	private bool started = false;	//Used by the tutorial level to determine when the spawner has started spawning
+	public float spawnDist = 0f;	//Distance to travel until spawning object
+	public float genDist = 0f;		//Distance to travel until generating new object
+	public float travelDist = 0f;	//Distance traveled since last reset
+	public float totalTravelDist = 0f;
+	public float xOffset = 0f;			//Offset x-position used for perfect placement of prefabs
 	private float yOffset = 0f;		//Offset y-position used for placing prefabs at the right height
 	private float milestoneXOffset; //Offset x-position used for perfect calculation of next milestone
 	private float nextMilestone;	//Location at which to spawn a milestone transition
 	private Vector3 lastPosition;
 
 	// Use this for initialization
-	void Start (){ 
-		InitSpawner();
+	void Start (){
+		//Delay initializing the spawner if the loaded level is the tutorial level
+		if (Application.loadedLevel != 2) {
+			InitSpawner();
+		}
 	}
 
 	void Update(){
@@ -38,7 +43,12 @@ public class SpawnScript : MonoBehaviour {
 			ghostTransform = GameObject.FindGameObjectWithTag ("Ghost").transform;
 		}
 		totalTravelDist += transform.position.x - lastPosition.x;
-		if (Application.loadedLevel != 2 || transform.position.x > 350) {
+		if (Application.loadedLevel != 2 || totalTravelDist > startSpawnerDist) {
+			if(!started && Application.loadedLevel == 2){
+				xOffset = startSpawnerDist - totalTravelDist;
+				InitSpawner();
+				started = true;
+			}
 			travelDist += transform.position.x - lastPosition.x;
 			if (yOffset != 0) {
 				//Get the current y position of the ghost, compare it to the inital y position
@@ -49,16 +59,18 @@ public class SpawnScript : MonoBehaviour {
 			//If the last thing that happened was spawning 
 			if (spawned) {
 				if (travelDist >= genDist) {
-					xOffset = genDist - travelDist;
+					xOffset = genDist - travelDist;					
 					if (nextMilestone > 0 && totalTravelDist >= nextMilestone) {
 						//Generate an index of a transitional prefab
 						objIndex = RandFuncs.Sample (transWeights);
+						//Get the length of the transition prefab
+						float transPrefabLength = transObj [objIndex].GetComponent<PrefabAttributes> ().Length;
 						//Divide the length of the prefab in half to spawn after traveling that distance
-						spawnDist = transObj [objIndex].GetComponent<PrefabAttributes> ().Length / 2.0f;
+						spawnDist = transPrefabLength / 2.0f;
 
 						//Set the distance at which the next milestone should spawn
 						milestoneXOffset = nextMilestone - totalTravelDist;
-						nextMilestone = totalTravelDist + milestoneFreq + milestoneXOffset + transObj [objIndex].GetComponent<PrefabAttributes> ().Length;
+						nextMilestone = totalTravelDist + milestoneFreq + milestoneXOffset + transPrefabLength;
 						transition = true;
 					} else {
 						//Generate a random prefab index to spawn later
@@ -74,12 +86,15 @@ public class SpawnScript : MonoBehaviour {
 				if (travelDist >= spawnDist) {
 					xOffset = spawnDist - travelDist;
 					if (transition) {
+						//Get the attributes of the transition prefab
+						PrefabAttributes transPrefabAttributes = transObj [objIndex].GetComponent<PrefabAttributes> ();
+						//Spawn the transition object
 						Spawn (transObj, objIndex, xOffset);
 						transition = false;
-						if (transObj [objIndex].GetComponent<PrefabAttributes> ().UpTransition) {
-							yOffset = transObj [objIndex].GetComponent<PrefabAttributes> ().Height;
+						if (transPrefabAttributes.UpTransition) {
+							yOffset = transPrefabAttributes.Height;
 						} else {
-							yOffset = -transObj [objIndex].GetComponent<PrefabAttributes> ().Height;
+							yOffset = -transPrefabAttributes.Height;
 						}
 						//Capture the initial y position of the ghost to calculate the yOffset for spawning
 						initialGhostYPos = ghostTransform.position.y;
@@ -96,22 +111,16 @@ public class SpawnScript : MonoBehaviour {
 	}
 
 	void InitSpawner(){
-		if (Application.loadedLevel != 2) {
-			objIndex = firstObjectIndex;
-			//Spawn the first prefab
-			Spawn (basicObj, objIndex, 0f);
-			spawned = true;
-			travelDist = 0f;
-			nextMilestone = totalTravelDist + milestoneFreq;
-			totalTravelDist = 35f;	//The spawner starts 35 units away from the player
-			lastPosition = transform.position;
-		} else {
-			nextMilestone = 350.0f + milestoneFreq;
-		}
+		//Spawn the first prefab
+		Spawn (basicObj, firstObjectIndex, xOffset);
+		spawned = true;
+		travelDist = -xOffset;
+		nextMilestone = totalTravelDist + milestoneFreq;
+		lastPosition = transform.position;
 	}
 
-	void Spawn(GameObject[] obj, int spawnIndex, float xOffset){
-		Vector3 spawnPos = transform.position + new Vector3(xOffset, yOffset, 0);
+	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
+		Vector3 spawnPos = transform.position + new Vector3(spawnXOffset, yOffset, 0);
 		Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
 		//Set the genDist so that a new object is "generated" after traveling half the length of the spawned prefab
 		genDist = obj[spawnIndex].GetComponent<PrefabAttributes>().Length / 2.0f;
