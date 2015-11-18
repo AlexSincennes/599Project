@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EndlessRunnerCameraMovement : MonoBehaviour {
 	private Vector3 velocity = Vector3.zero;
-	public Transform follow;
+	private Transform follow;
 	
 	// Update is called once per frame
 	void Update () {

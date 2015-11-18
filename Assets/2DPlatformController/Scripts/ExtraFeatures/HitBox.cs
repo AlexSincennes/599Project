@@ -37,8 +37,6 @@ public class HitBox : MonoBehaviour {
 		//Debug.Log (other.gameObject.tag );
 		if (other.gameObject.tag == "Enemy") 
 		{
-			GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
-			obj.transform.parent = null;
 			Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = transform.parent.position;
 			if(Application.loadedLevel == 2)

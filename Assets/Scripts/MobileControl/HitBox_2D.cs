@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 /// <summary>
 /// A hit box takes damage and passes it to a health component for processing.
 /// This allows you to easily move the damage points or alternatively attach
@@ -10,17 +10,23 @@ using System.Collections;
 /// doesn't do anything. You could sue this to grant powers, increment counters, etc.
 /// </summary>
 public class HitBox_2D : MonoBehaviour {
-
+    private Text Score;
+    private GameObject ScoreScreen;
+    private GameObject BashPlane;
 	//public SimpleHealth simplehealth;
 	//public BashManager bashManager;
 
 	public virtual void Damage(int amount) {
-		//simplehealth.Damage(amount);
-		//Debug.Log ("dada");
-		/*GameObject obj = GameObject.FindGameObjectWithTag ("Spawner");
-		obj.transform.parent = null;*/
-		Application.LoadLevel(Application.loadedLevel);
-		
+        Time.timeScale = 0;
+        Score = GameObject.Find("ScoreScreen/Value").GetComponent<Text>();
+        ScoreScreen = GameObject.Find("Score");
+        ScoreScreen.GetComponent<Canvas>().enabled = true;
+        BashPlane = GameObject.Find("BashPlane");
+        int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
+        if(curmeter > PlayerPrefs.GetInt("HighScore"))
+            PlayerPrefs.SetInt("HighScore",curmeter);
+        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+		//Application.LoadLevel(Application.loadedLevel);
 		//GameManager.Instance.deathPos = transform.parent.position;
 		//if(Application.loadedLevel == 2)
 		//GameManager.Instance.curTimes++;
@@ -57,8 +63,7 @@ public class HitBox_2D : MonoBehaviour {
 	public void Die()
 	{
 		Application.LoadLevel(Application.loadedLevel);
-		//if(Application.loadedLevel == 2)
-			//GameManager.Instance.curTimes++;
+
 	}
 
 

@@ -17,6 +17,9 @@ TagManager:
   - PauseUI
   - Camera
   - Spawner
+  - RemoteUI
+  - MainCamUI
+  - Score
   layers:
   - Default
   - TransparentFX
@@ -38,8 +41,8 @@ TagManager:
   - Ghost
   - 
   - 
-  - 
-  - 
+  - Remote UI
+  - MainCamUI
   - 
   - 
   - 

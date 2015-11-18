@@ -54,6 +54,8 @@ namespace Google.Cast.RemoteDisplay {
       }
       set {
         // Needed because the unity editor can call this multiple times.
+				if(value == null)
+					value = GameObject.FindGameObjectWithTag("Camera").GetComponent<Camera>();
         if (value == remoteDisplayCamera) {
           return;
         }
