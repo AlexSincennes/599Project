@@ -25,6 +25,7 @@ GameObject:
   - 4: {fileID: 418824}
   - 212: {fileID: 21246470}
   - 61: {fileID: 6168184}
+  - 61: {fileID: 6127938}
   m_Layer: 0
   m_Name: LeftPlatform
   m_TagString: Terrain
@@ -242,6 +243,7 @@ GameObject:
   - 4: {fileID: 411998}
   - 212: {fileID: 21267418}
   - 61: {fileID: 6167926}
+  - 61: {fileID: 6118372}
   m_Layer: 0
   m_Name: MidPlatform
   m_TagString: Terrain
@@ -446,6 +448,7 @@ GameObject:
   - 4: {fileID: 435372}
   - 212: {fileID: 21292398}
   - 61: {fileID: 6152006}
+  - 61: {fileID: 6106372}
   m_Layer: 0
   m_Name: RightPlatform
   m_TagString: Terrain
@@ -957,6 +960,45 @@ BoxCollider2D:
   m_Offset: {x: 0, y: .75}
   serializedVersion: 2
   m_Size: {x: .479999989, y: 1.36000001}
+--- !u!61 &6106372
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190252}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+--- !u!61 &6118372
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144248}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+--- !u!61 &6127938
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104834}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!61 &6129760
 BoxCollider2D:
   m_ObjectHideFlags: 1
