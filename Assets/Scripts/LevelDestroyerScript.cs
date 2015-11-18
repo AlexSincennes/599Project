@@ -2,12 +2,7 @@
 using System.Collections;
 
 public class LevelDestroyerScript : MonoBehaviour {
-	public Transform follow;
-	void Update(){
-		if (follow == null)
-			follow = GameObject.FindGameObjectWithTag ("Camera").transform;
-		transform.position = new Vector3 (follow.position.x - 40.0f, follow.position.y - 0.5f, 0.0f);
-	}
+	
 	void OnTriggerEnter2D(Collider2D other){
 		//Debug.Log (other.gameObject.tag);
 

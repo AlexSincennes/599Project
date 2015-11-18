@@ -31,14 +31,7 @@ public class SpawnScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start (){ 
-		objIndex = firstObjectIndex;
-		//Spawn the first prefab
-		Spawn(basicObj, objIndex, 0f);
-		spawned = true;
-		travelDist = 0f;
-		nextMilestone = totalTravelDist + milestoneFreq;
-		totalTravelDist = 35f;	//The spawner starts 35 units away from the player
-		lastPosition = transform.position;
+		InitSpawner();
 	}
 
 	void Update(){
@@ -107,6 +100,17 @@ public class SpawnScript : MonoBehaviour {
 				travelDist = -xOffset;
 			}
 		}
+		lastPosition = transform.position;
+	}
+
+	void InitSpawner(){
+		objIndex = firstObjectIndex;
+		//Spawn the first prefab
+		Spawn(basicObj, objIndex, 0f);
+		spawned = true;
+		travelDist = 0f;
+		nextMilestone = totalTravelDist + milestoneFreq;
+		totalTravelDist = 35f;	//The spawner starts 35 units away from the player
 		lastPosition = transform.position;
 	}
 
