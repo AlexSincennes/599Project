@@ -991,7 +991,7 @@ MonoBehaviour:
   startPosition: {x: 224, y: -1.5, z: 0}
   Speed: 0
   RotateSpeed: 0
-  Bullet: {fileID: 142398, guid: 336e690ad85892549905eefe763a1252, type: 2}
+  Bullet: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
   Bow: {fileID: 423196}
   attackRate: 2
   state: 1
@@ -1142,7 +1142,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Bullet
       value: 
-      objectReference: {fileID: 142398, guid: 336e690ad85892549905eefe763a1252, type: 2}
+      objectReference: {fileID: 142398, guid: 336383c329422954e8226897565686f9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191750}

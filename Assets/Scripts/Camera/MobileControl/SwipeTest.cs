@@ -49,28 +49,33 @@ public class SwipeTest : MonoBehaviour {
 	
 	// During the swipe
 	private void On_Swipe(Gesture gesture){
-		
 		// the world coordinate from touch for z=5
-		Vector3 position = gesture.GetTouchToWorldPoint(5);
-		trail.transform.position = position;
-		//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
-		float dis = Vector3.Distance (swipStartPos, position);
-		if (dis > 2 && isdefend) 
+		if (gesture.position.x > Screen.width * 0.3f) 
 		{
-			sc.defendStartTime = Time.time;
-			isdefend = false;
-			float angles = gesture.GetSwipeOrDragAngle();
-			Debug.Log("angle:" + angles);
-			if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
-			{
-				Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
-			} else 
-			{
-				sc.angle = angles;
-				sc.isStartShield = true;
-			}
+			Vector3 position = gesture.GetTouchToWorldPoint(5);
+			trail.transform.position = position;
 
+			//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
+			float dis = Vector3.Distance (swipStartPos, position);
+			if (dis > 1 && isdefend) 
+			{
+				sc.defendStartTime = Time.time;
+				isdefend = false;
+				float angles = gesture.GetSwipeOrDragAngle();
+				Debug.Log("angle:" + angles);
+				if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
+				{
+					Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
+				} else 
+				{
+					sc.angle = angles;
+					sc.isStartShield = true;
+				}
+				
+			}
 		}
+
+
 		
 	}
 	

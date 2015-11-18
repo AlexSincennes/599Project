@@ -21,6 +21,8 @@ public class BulletTest_P : MonoBehaviour {
 	public float angleKeepShooting=0;
 	public float angleHardCode = 0;
 	private float time;
+	public float deflectBuffer = 38;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -147,5 +149,43 @@ public class BulletTest_P : MonoBehaviour {
 		}
 	}
 	
-	
+	void OnTriggerEnter2D(Collider2D other) 
+	{
+		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 0.2f && (shooter == null || shooter.name != "Shield")) 
+		{
+
+			HitBox_2D health = other.gameObject.GetComponent<HitBox_2D>();
+			if (health != null) health.Damage(1);
+		}
+
+		if (other.gameObject.tag == "Shield" && (shooter == null || shooter.name != "Shield")) {
+			ShieldControl2D temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldControl2D>();
+			if(temp.shieldEquip )
+			{
+				Debug.Log(transform.eulerAngles.z);
+				//Debug.Log(Mathf.Abs(transform.eulerAngles.z -90 - other.transform.parent.GetComponent<ShieldControl2D>().swipeAngle));
+
+				if( temp.angle > transform.eulerAngles.z -90-deflectBuffer && temp.angle < transform.eulerAngles.z -90+deflectBuffer
+				   )
+				{
+					myRigid.velocity = -oriSpeed+new Vector3(0.5f/ time, 0, 0);
+					shooter = other.transform;
+				}
+
+			}			
+		}
+
+		if (other.gameObject.tag == "Enemy" && shooter.name == "Shield") 
+		{
+			Destroy(other.transform.parent.gameObject);
+			Destroy(transform.parent.gameObject);
+		}
+
+		if (other.gameObject.tag == "Terrain") 
+		{
+			transform.GetComponent<Rigidbody2D>().velocity =Vector2.zero;
+			transform.GetComponent<Rigidbody2D>().isKinematic = true;
+			transform.GetComponent<BoxCollider2D>().enabled = false;
+		}
+	}
 }
