@@ -11,9 +11,15 @@ public class ScoreScreen : MonoBehaviour {
 
     public void MainMenu()
     {
-        CastUI = GameObject.FindGameObjectWithTag("CastUI");
-        if (CastUI != null)
-            CastUI.GetComponent<PauseMenu>().enabled = false;
+
+		CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
+		if(CastUI!= null)
+			CastUI.GetComponent<Canvas>().enabled = true;
+		CastUI = GameObject.FindGameObjectWithTag("CastUI");
+        if (CastUI != null) {
+			CastUI.GetComponent<Canvas> ().enabled = true;
+			CastUI.GetComponent<PauseMenu> ().enabled = false;
+		}
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
             CastUI.SetActive(false);
