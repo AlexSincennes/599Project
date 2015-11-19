@@ -20,11 +20,11 @@ public class SpawnScript : MonoBehaviour {
 	private bool spawned = false;	//False when a prefab index has been generated but not yet spawned
 	private bool transition = false;//False while the next prefab to be generated is not a transition
 	private bool started = false;	//Used by the tutorial level to determine when the spawner has started spawning
-	public float spawnDist = 0f;	//Distance to travel until spawning object
-	public float genDist = 0f;		//Distance to travel until generating new object
-	public float travelDist = 0f;	//Distance traveled since last reset
-	public float totalTravelDist = 0f;
-	public float xOffset = 0f;			//Offset x-position used for perfect placement of prefabs
+	private float spawnDist = 0f;	//Distance to travel until spawning object
+	private float genDist = 0f;		//Distance to travel until generating new object
+	private float travelDist = 0f;	//Distance traveled since last reset
+	private float totalTravelDist = 0f;
+	private float xOffset = 0f;			//Offset x-position used for perfect placement of prefabs
 	private float yOffset = 0f;		//Offset y-position used for placing prefabs at the right height
 	private float milestoneXOffset; //Offset x-position used for perfect calculation of next milestone
 	private float nextMilestone;	//Location at which to spawn a milestone transition
