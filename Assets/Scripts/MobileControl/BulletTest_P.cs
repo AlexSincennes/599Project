@@ -164,9 +164,8 @@ public class BulletTest_P : MonoBehaviour {
 			{
 				Debug.Log(transform.eulerAngles.z);
 				//Debug.Log(Mathf.Abs(transform.eulerAngles.z -90 - other.transform.parent.GetComponent<ShieldControl2D>().swipeAngle));
-
-				if( temp.angle > transform.eulerAngles.z -90-deflectBuffer && temp.angle < transform.eulerAngles.z -90+deflectBuffer
-				   )
+				float angle = temp.angle < 0? (360.0f + temp.angle): temp.angle;
+				if( angle > transform.eulerAngles.z -90-deflectBuffer && angle < transform.eulerAngles.z -90+deflectBuffer)
 				{
 					myRigid.velocity = -oriSpeed+new Vector3(0.5f/ time, 0, 0);
 					shooter = other.transform;
