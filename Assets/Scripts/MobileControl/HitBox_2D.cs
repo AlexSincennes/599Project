@@ -13,6 +13,7 @@ public class HitBox_2D : MonoBehaviour {
     private Text Score;
     private GameObject ScoreScreen;
     private GameObject BashPlane;
+    private GameObject PauseUI;
 	//public SimpleHealth simplehealth;
 	//public BashManager bashManager;
 
@@ -21,6 +22,10 @@ public class HitBox_2D : MonoBehaviour {
         Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
         ScoreScreen = GameObject.Find("Score");
         ScoreScreen.GetComponent<Canvas>().enabled = true;
+
+        ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
+        ScoreScreen.GetComponent<Canvas>().enabled = true;
+
         BashPlane = GameObject.Find("BashPlane");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
         if(curmeter > PlayerPrefs.GetInt("HighScore"))
@@ -28,6 +33,11 @@ public class HitBox_2D : MonoBehaviour {
         Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
 		Score.text = "Your Score : " + curmeter.ToString();
+        PauseUI = GameObject.FindGameObjectWithTag("CastUI");
+        if (PauseUI != null)
+        {
+            PauseUI.GetComponent<PauseMenu>().scoreui = true;
+        }
 		//Application.LoadLevel(Application.loadedLevel);
 		//GameManager.Instance.deathPos = transform.parent.position;
 		//if(Application.loadedLevel == 2)
@@ -68,6 +78,8 @@ public class HitBox_2D : MonoBehaviour {
         Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
         ScoreScreen = GameObject.Find("Score");
         ScoreScreen.GetComponent<Canvas>().enabled = true;
+        ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
+        ScoreScreen.GetComponent<Canvas>().enabled = true; 
         BashPlane = GameObject.Find("BashPlane");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
         if (curmeter > PlayerPrefs.GetInt("HighScore"))
@@ -75,6 +87,11 @@ public class HitBox_2D : MonoBehaviour {
         Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
 		Score.text = "Your Score : " + curmeter.ToString ();
+        PauseUI = GameObject.FindGameObjectWithTag("CastUI");
+        if (PauseUI != null)
+        {
+            PauseUI.GetComponent<PauseMenu>().scoreui = true;
+        }
 	}
 
 

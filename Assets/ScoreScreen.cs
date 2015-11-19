@@ -4,7 +4,6 @@ using System.Collections;
 public class ScoreScreen : MonoBehaviour {
     private GameObject CastUI;
 	private SpawnScript spawner;
-
 	void Start(){
 		spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
 	}
@@ -19,6 +18,7 @@ public class ScoreScreen : MonoBehaviour {
         if (CastUI != null) {
 			CastUI.GetComponent<Canvas> ().enabled = true;
 			CastUI.GetComponent<PauseMenu> ().enabled = false;
+            CastUI.GetComponent<PauseMenu>().scoreui = false;
 		}
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
@@ -31,6 +31,18 @@ public class ScoreScreen : MonoBehaviour {
     }
 
 	public void Restart(){
+        CastUI = GameObject.FindGameObjectWithTag("CastUI");
+        if (CastUI != null)
+        {
+            CastUI.GetComponent<PauseMenu>().scoreui = false;
+		}
+        CastUI = GameObject.FindGameObjectWithTag("PauseUI");
+        if (CastUI != null)
+            CastUI.SetActive(false);
+        CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
+        if (CastUI != null)
+            CastUI.GetComponent<Canvas>().enabled = false;
+		
 		if (spawner != null && Application.loadedLevel == 2) {
 			if (spawner.isStarted ()) {
 				Application.LoadLevel (1);
