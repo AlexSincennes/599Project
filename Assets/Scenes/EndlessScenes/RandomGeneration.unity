@@ -858,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1423333369}
   playerSlowed: 0
-  startMovementSpeed: 8.5
+  startMovementSpeed: 7
   maxMovementSpeed: 20
   currentMovementSpeed: 0
   movementSpeedX: 10
