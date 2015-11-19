@@ -47,7 +47,6 @@ public class SpawnScript : MonoBehaviour {
 			if(!started && Application.loadedLevel == 2){
 				xOffset = startSpawnerDist - totalTravelDist;
 				InitSpawner();
-				started = true;
 			}
 			travelDist += transform.position.x - lastPosition.x;
 			if (yOffset != 0) {
@@ -117,6 +116,7 @@ public class SpawnScript : MonoBehaviour {
 		travelDist = -xOffset;
 		nextMilestone = totalTravelDist + milestoneFreq;
 		lastPosition = transform.position;
+		started = true;
 	}
 
 	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
@@ -124,5 +124,9 @@ public class SpawnScript : MonoBehaviour {
 		Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
 		//Set the genDist so that a new object is "generated" after traveling half the length of the spawned prefab
 		genDist = obj[spawnIndex].GetComponent<PrefabAttributes>().Length / 2.0f;
+	}
+
+	public bool isStarted(){
+		return started;
 	}
 }

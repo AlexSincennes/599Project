@@ -18,7 +18,7 @@ public class HitBox_2D : MonoBehaviour {
 
 	public virtual void Damage(int amount) {
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/Value").GetComponent<Text>();
+        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
         ScoreScreen = GameObject.Find("Score");
         ScoreScreen.GetComponent<Canvas>().enabled = true;
         BashPlane = GameObject.Find("BashPlane");
@@ -26,6 +26,8 @@ public class HitBox_2D : MonoBehaviour {
         if(curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore",curmeter);
         Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
+		Score.text = "Your Score : " + curmeter.ToString();
 		//Application.LoadLevel(Application.loadedLevel);
 		//GameManager.Instance.deathPos = transform.parent.position;
 		//if(Application.loadedLevel == 2)
@@ -63,7 +65,7 @@ public class HitBox_2D : MonoBehaviour {
 	public void Die()
 	{
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/Value").GetComponent<Text>();
+        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
         ScoreScreen = GameObject.Find("Score");
         ScoreScreen.GetComponent<Canvas>().enabled = true;
         BashPlane = GameObject.Find("BashPlane");
@@ -71,7 +73,8 @@ public class HitBox_2D : MonoBehaviour {
         if (curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore", curmeter);
         Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
-
+		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
+		Score.text = "Your Score : " + curmeter.ToString ();
 	}
 
 

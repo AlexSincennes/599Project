@@ -3,6 +3,12 @@ using System.Collections;
 
 public class ScoreScreen : MonoBehaviour {
     private GameObject CastUI;
+	private SpawnScript spawner;
+
+	void Start(){
+		spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
+	}
+
     public void MainMenu()
     {
         CastUI = GameObject.FindGameObjectWithTag("CastUI");
@@ -17,6 +23,19 @@ public class ScoreScreen : MonoBehaviour {
         Application.LoadLevel(0);
 
     }
+
+	public void Restart(){
+		if (spawner != null && Application.loadedLevel == 2) {
+			if (spawner.isStarted ()) {
+				Application.LoadLevel (1);
+			} else {
+				Application.LoadLevel (Application.loadedLevel);
+			}
+		} else {
+			Application.LoadLevel (Application.loadedLevel);
+		}
+	}
+
     public void Exit()
     {
         Application.Quit();
