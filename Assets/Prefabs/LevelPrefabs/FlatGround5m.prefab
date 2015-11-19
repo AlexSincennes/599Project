@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 477466}
   - 212: {fileID: 21246768}
   - 61: {fileID: 6112546}
+  - 61: {fileID: 6162936}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Terrain
@@ -71,6 +72,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!61 &6162936
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131692}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &11447134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777dc77e0eb785645bb41cf7387015c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpTransition: 0
   Length: 5
   Height: 0
 --- !u!212 &21246768

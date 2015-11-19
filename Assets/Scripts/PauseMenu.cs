@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour {
 	private GameObject CastUI;
     private GameObject RUI;
 	private bool paused = false;
-
+    public bool scoreui = false;
 	// Update is called once per frame
 	void Update () {
 		if (CastUI == null)
@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour {
 			PauseUI = GameObject.FindGameObjectWithTag ("PauseUI");
         if (RUI == null)
             RUI = GameObject.FindGameObjectWithTag("RemoteUI");
-		if(Input.GetButtonDown("Pause")){
+		if(Input.GetButtonDown("Pause") && !scoreui){
 			paused = !paused;
             PauseSC();
 		}

@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777dc77e0eb785645bb41cf7387015c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpTransition: 0
   Length: 30
   Height: 7.5
 --- !u!212 &21226076
