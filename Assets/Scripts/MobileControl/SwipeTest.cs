@@ -62,7 +62,7 @@ public class SwipeTest : MonoBehaviour {
 				sc.defendStartTime = Time.time;
 				isdefend = false;
 				float angles = gesture.GetSwipeOrDragAngle();
-				Debug.Log("angle:" + angles);
+				Debug.Log("Swipe Angle: " + angles);
 				if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
 				{
 					Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
