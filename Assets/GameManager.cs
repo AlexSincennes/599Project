@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 		get { return _instance; }
 	}
 
+    public bool CastEnabled = false;
 	public int curLevel;
 	public int loadlev;
 	public int curTimes;
