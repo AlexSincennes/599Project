@@ -1955,6 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02519d4e1d2abf74292a4bc2d6ee32d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CastEnabled: 0
   curLevel: 0
   loadlev: 0
   curTimes: 0

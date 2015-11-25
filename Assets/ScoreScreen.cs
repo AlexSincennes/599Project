@@ -42,7 +42,7 @@ public class ScoreScreen : MonoBehaviour {
         CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (CastUI != null)
             CastUI.GetComponent<Canvas>().enabled = false;
-		
+        
 		if (spawner != null && Application.loadedLevel == 2) {
 			if (spawner.isStarted ()) {
 				Application.LoadLevel (1);

@@ -10,6 +10,7 @@ public class CastCam : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Caster = GameObject.Find("CastRemoteDisplayManager");
+        GameManager.Instance.CastEnabled = false;
     }
 	
 	// Update is called once per frame
