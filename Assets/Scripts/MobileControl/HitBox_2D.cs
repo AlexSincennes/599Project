@@ -24,7 +24,8 @@ public class HitBox_2D : MonoBehaviour {
         ScoreScreen.GetComponent<Canvas>().enabled = true;
 
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
-        ScoreScreen.GetComponent<Canvas>().enabled = true;
+		if(ScoreScreen != null)
+        	ScoreScreen.GetComponent<Canvas>().enabled = true;
 
         BashPlane = GameObject.Find("BashPlane");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
@@ -79,7 +80,8 @@ public class HitBox_2D : MonoBehaviour {
         ScoreScreen = GameObject.Find("Score");
         ScoreScreen.GetComponent<Canvas>().enabled = true;
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
-        ScoreScreen.GetComponent<Canvas>().enabled = true; 
+		if(ScoreScreen != null)
+        	ScoreScreen.GetComponent<Canvas>().enabled = true; 
         BashPlane = GameObject.Find("BashPlane");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
         if (curmeter > PlayerPrefs.GetInt("HighScore"))

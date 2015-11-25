@@ -162,10 +162,19 @@ public class BulletTest_P : MonoBehaviour {
 			ShieldControl2D temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldControl2D>();
 			if(temp.shieldEquip )
 			{
-				Debug.Log(transform.eulerAngles.z);
+				Debug.Log("Bullet Transform Angle: " + transform.eulerAngles.z);
 				//Debug.Log(Mathf.Abs(transform.eulerAngles.z -90 - other.transform.parent.GetComponent<ShieldControl2D>().swipeAngle));
 				float angle = temp.angle < 0? (360.0f + temp.angle): temp.angle;
-				if( angle > transform.eulerAngles.z -90-deflectBuffer && angle < transform.eulerAngles.z -90+deflectBuffer)
+				Debug.Log("Shield Testing Angle: " + angle);
+				float lowerBound = transform.eulerAngles.z - 90 - deflectBuffer;
+				float upperBound = transform.eulerAngles.z - 90 + deflectBuffer;
+				if(lowerBound < 0){
+					lowerBound += 360.0f;
+					upperBound += 360.0f;
+				}
+
+				Debug.Log("Bounds: " + lowerBound + "-" + upperBound);
+				if( angle > lowerBound && angle < upperBound || (upperBound > 360 && angle > lowerBound - 360.0f && angle < upperBound - 360.0f))
 				{
 					myRigid.velocity = -oriSpeed+new Vector3(0.5f/ time, 0, 0);
 					shooter = other.transform;

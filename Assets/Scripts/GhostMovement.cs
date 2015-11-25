@@ -6,10 +6,11 @@ public class GhostMovement : MonoBehaviour {
 	public GameObject player;
 
 	public bool playerSlowed = false;
-
+	
+	public float currentMovementSpeed;
+	public float acceleration = 0.5f;
 	public float startMovementSpeed = 7f;
 	public float maxMovementSpeed = 30f;
-	public float currentMovementSpeed;
 	public float movementSpeedX;
 	public float movementSpeedY = 0f;
 
