@@ -1455,6 +1455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02519d4e1d2abf74292a4bc2d6ee32d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CastEnabled: 0
   curLevel: 0
   loadlev: 0
   curTimes: 0
@@ -2828,9 +2829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 784874831}
   playerSlowed: 0
+  currentMovementSpeed: 0
+  acceleration: .5
   startMovementSpeed: 7
   maxMovementSpeed: 20
-  currentMovementSpeed: 0
   movementSpeedX: 10
   movementSpeedY: 0
 --- !u!50 &1715179069
@@ -3173,6 +3175,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22354430, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 156100, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 156100, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481408, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 116714, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3484,6 +3502,10 @@ Prefab:
     - target: {fileID: 450812, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
+      propertyPath: startSpawnerDist
+      value: 355
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}

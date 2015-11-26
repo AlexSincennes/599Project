@@ -19,9 +19,9 @@ public class HitBox_2D : MonoBehaviour {
 
 	public virtual void Damage(int amount) {
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
-        ScoreScreen = GameObject.Find("Score");
-        ScoreScreen.GetComponent<Canvas>().enabled = true;
+        Score = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").transform.FindChild("HighScore").GetComponent<Text>();
+		ScoreScreen = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").gameObject;
+		ScoreScreen.SetActive (true);
 
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
 		if(ScoreScreen != null)
@@ -76,9 +76,10 @@ public class HitBox_2D : MonoBehaviour {
 	public void Die()
 	{
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
-        ScoreScreen = GameObject.Find("Score");
-        ScoreScreen.GetComponent<Canvas>().enabled = true;
+		Score = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").transform.FindChild("HighScore").GetComponent<Text>();
+		ScoreScreen = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").gameObject;
+		ScoreScreen.SetActive (true);
+
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
 		if(ScoreScreen != null)
         	ScoreScreen.GetComponent<Canvas>().enabled = true; 
