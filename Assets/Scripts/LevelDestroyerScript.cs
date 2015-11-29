@@ -12,9 +12,12 @@ public class LevelDestroyerScript : MonoBehaviour {
 			} else {
 				Destroy (other.gameObject);
 			}
-		} else {
-			HitBox_2D collector = other.gameObject.GetComponent<HitBox_2D> ();
-			collector.Die ();
+		} 
+		else {
+			if(other.tag == "Player"){
+				HitBox_2D collector = other.gameObject.GetComponent<HitBox_2D> ();
+				collector.Die ();
+			}
 		}
 	}
 }

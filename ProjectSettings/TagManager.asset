@@ -21,6 +21,7 @@ TagManager:
   - MainCamUI
   - Score
   - TutorialUI
+  - DetectionArea
   layers:
   - Default
   - TransparentFX
