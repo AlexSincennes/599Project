@@ -861,7 +861,7 @@ MonoBehaviour:
   currentMovementSpeed: 0
   acceleration: .5
   startMovementSpeed: 7
-  maxMovementSpeed: 12
+  maxMovementSpeed: 10
   movementSpeedX: 10
   movementSpeedY: 0
 --- !u!61 &1038608736
@@ -1430,6 +1430,10 @@ Prefab:
     - target: {fileID: 450812, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484102, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c38e3b49a0d07fc4aadcbfa7159929c8, type: 2}
