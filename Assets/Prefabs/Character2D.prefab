@@ -752,7 +752,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 459788}
   - 111: {fileID: 11138178}
-  - 95: {fileID: 9509740}
   - 114: {fileID: 11440618}
   - 50: {fileID: 5058558}
   - 58: {fileID: 5856784}
@@ -1311,7 +1310,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140544}
-  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1877,23 +1876,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126006}
   m_Enabled: 1
---- !u!95 &9509740
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184368}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!111 &11138178
 Animation:
   m_ObjectHideFlags: 1
@@ -1906,9 +1888,9 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 4f899596df610482bbf745132cfdaccf, type: 3}
   - {fileID: 7400000, guid: cbbd93ee97d434798b731825d84e06a6, type: 2}
-  - {fileID: 7400000, guid: 993a9de9e2c3b4eb08fbd94bfb5f9577, type: 3}
+  - {fileID: 7400000, guid: 0faa56c74ddd243eaa836083909f9c3d, type: 2}
   - {fileID: 7400000, guid: 54f6c7224ac154ecc988b793abe25b52, type: 3}
-  - {fileID: 7400000, guid: e5ef37435244b43df9913742196cfd3d, type: 3}
+  - {fileID: 7400000, guid: 353d4d415ebfd4b25874e8103edf7f0e, type: 2}
   - {fileID: 7400000, guid: 993a9de9e2c3b4eb08fbd94bfb5f9577, type: 3}
   - {fileID: 7400000, guid: c998e0287daab4a6e9e1abc370f73791, type: 3}
   - {fileID: 7400000, guid: 6c07648c891114321ac9478bffe676f0, type: 3}
@@ -1917,7 +1899,7 @@ Animation:
   - {fileID: 7400000, guid: 496d137b87d6d4b0bb9b98d2f960bd34, type: 3}
   - {fileID: 7400000, guid: b50d90ab2b7da4114b4ccb09e8fafbb5, type: 3}
   - {fileID: 7400000, guid: 45e3760ce9a9c424385e1c51ae0d5f89, type: 3}
-  - {fileID: 7400000, guid: 59922544f851b4a88a6b6bfb16954e4a, type: 3}
+  - {fileID: 7400000, guid: 846ea9ee82cfd45168a6e6b38a94a51b, type: 2}
   - {fileID: 7400002, guid: f6f234b66846b427d8205cc677b09216, type: 3}
   - {fileID: 7400000, guid: c57b86845bfca42f79a7f109e239d730, type: 3}
   - {fileID: 7400000, guid: 6c59d643ab5b741e29e17cc8851da6eb, type: 3}

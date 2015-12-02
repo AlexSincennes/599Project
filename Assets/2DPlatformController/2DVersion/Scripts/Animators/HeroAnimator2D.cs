@@ -26,8 +26,8 @@ public class HeroAnimator2D : MonoBehaviour {
 		// Set all animations to loop
    		GetComponent<Animation>().wrapMode = WrapMode.Loop;
    		// except a few
-		if (GetComponent<Animation>()["jump"] != null) {
-   			GetComponent<Animation>()["jump"].wrapMode = WrapMode.Once;
+		if (GetComponent<Animation>()["Diokles_Jump"] != null) {
+			GetComponent<Animation>()["Diokles_Jump"].wrapMode = WrapMode.Once;
 		}
 		if (GetComponent<Animation>() ["slide3"] != null) {
 			GetComponent<Animation>()["slide3"].wrapMode = WrapMode.Once;
@@ -51,14 +51,14 @@ public class HeroAnimator2D : MonoBehaviour {
 	}
 
 	void Update() {
-		CheckDirection ();
+		//CheckDirection ();
 		// targetRotation = targetRotation * 
 		//transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, targetRotation.eulerAngles.y, 0.0f);
 		//Ash's Code
-		if (((controller.State == CharacterState.AIRBORNE) && (controller.monty == 1)) || ((controller.State == CharacterState.FALLING) && (controller.monty == 1)) || ((controller.State == CharacterState.WALL_SLIDING) && (controller.monty == 1))) {
+		/*if (((controller.State == CharacterState.WALL_JUMPING) && (controller.monty == 1)) || ((controller.State == CharacterState.FALLING) && (controller.monty == 1)) || ((controller.State == CharacterState.WALL_SLIDING) && (controller.monty == 1))) {
 		} else {
-			transform.localRotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);		
-		}
+			transform.localRotation = targetRotation;		
+		}*/
 		//transform.rotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);
 		// transform.localRotation = Quaternion.Euler (Quaternion.Inverse(transform.parent.rotation).eulerAngles.z, result.eulerAngles.y, 0.0f);
 	}
@@ -84,7 +84,7 @@ public class HeroAnimator2D : MonoBehaviour {
 			case CharacterState.AIRBORNE: Airborne(); break;	
 			case CharacterState.FALLING: Fall(); break;	
 			case CharacterState.DOUBLE_JUMPING: Jump(); break;	
-			case CharacterState.WALL_JUMPING: Jump(); break;	
+			case CharacterState.WALL_JUMPING: WallJump(); break;	
 			case CharacterState.HOLDING: Hold(previousState); break;	
 			case CharacterState.CLIMBING: Climb(); break;	
 			case CharacterState.CLIMB_TOP_OF_LADDER_UP: ClimbTopUp(); break;	
@@ -106,7 +106,7 @@ public class HeroAnimator2D : MonoBehaviour {
 	
 	protected void Idle (CharacterState previousState) {
 		GetComponent<Animation>().CrossFade ("idle");
-		CheckDirection();
+		//CheckDirection();
 		if (controller.monty == 1)
 			controller.monty = 0;
 	}
@@ -118,7 +118,7 @@ public class HeroAnimator2D : MonoBehaviour {
 		} else {
 			GetComponent<Animation>().CrossFade("fall");
 		}
-		CheckDirection();
+		//CheckDirection();
 	}
 
 	protected void Run ()
@@ -128,7 +128,7 @@ public class HeroAnimator2D : MonoBehaviour {
 		} else {
 			GetComponent<Animation>().CrossFade("fall");
 		}
-		CheckDirection();
+		//CheckDirection();
 	}
 
 	protected void Slide ()
@@ -138,23 +138,29 @@ public class HeroAnimator2D : MonoBehaviour {
 		} else {
 			GetComponent<Animation>().CrossFade("fall");
 		}
-		CheckDirection();
+		//CheckDirection();
 	}
 
 	protected void Jump() {
-		GetComponent<Animation>().CrossFade("jump");
-		CheckDirection();
+		GetComponent<Animation>().CrossFade("Diokles_Jump");
+		//CheckDirection();
+	}
+	
+	protected void WallJump() {
+		GetComponent<Animation>().Play("Diokles_Jump");
+		transform.Rotate(Vector3.up, 180.0f);
+		//CheckDirection();
 	}
 
 	protected void Airborne() {
-		GetComponent<Animation>().CrossFade("airborne");
-		CheckDirection();
+		GetComponent<Animation>().Play("Diokles_Airborne");
+		//CheckDirection();
 	}
 
 
 	protected void Fall() {
 		GetComponent<Animation>().CrossFade("fall");
-		CheckDirection();
+		//CheckDirection();
 	}
 	
 	protected void Hold(CharacterState previousState) {
@@ -208,7 +214,7 @@ public class HeroAnimator2D : MonoBehaviour {
 	}
 	
 	protected void WallSlide() {
-		GetComponent<Animation>().CrossFade("wallslide");
+		GetComponent<Animation>().Play("Diokles_Wallslide");
 	}
 	
 	protected void Crouch() {
@@ -240,6 +246,7 @@ public class HeroAnimator2D : MonoBehaviour {
 	}
 
 	protected void CheckDirection() {
+		/*
 		// Rope states
 		if (currentState == CharacterState.ROPE_HANGING ||
 		    currentState == CharacterState.ROPE_CLIMBING || 
@@ -258,15 +265,16 @@ public class HeroAnimator2D : MonoBehaviour {
 		   		 currentState ==  CharacterState.HOLDING ) {
 			targetRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, -90.0f, 0.0f);
 		}
-
 		// Directional states
-		else {
+		else 
+		{
 			// You might need to switch 270 and 90 for other values depending on orientation of your model
 			if (controller.CurrentDirection > 0 ) {
-				targetRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, 90.0f, 0.0f);
+				targetRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, 0.0f, 0.0f);
 			} else if (controller.CurrentDirection < 0) {
-				targetRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, -90.0f, 0.0f);
+				targetRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, -180.0f, 0.0f);
 			}
 		}
+		*/
 	}
 }
