@@ -10,6 +10,21 @@ public class PauseMenu : MonoBehaviour {
 	private bool paused = false;
     public bool scoreui = false;
 	// Update is called once per frame
+    private static bool instance = false;
+    private void Awake()
+    {
+        if (instance == false)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = true;
+
+        }
+        else
+        {
+            DestroyImmediate(this.gameObject);
+        }
+
+    }
 	void Update () {
 		if (CastUI == null)
 			CastUI = GameObject.FindGameObjectWithTag ("CastUI");
@@ -17,7 +32,7 @@ public class PauseMenu : MonoBehaviour {
 			PauseUI = GameObject.FindGameObjectWithTag ("PauseUI");
         if (RUI == null)
             RUI = GameObject.FindGameObjectWithTag("RemoteUI");
-		if(Input.GetButtonDown("Pause") && !scoreui){
+		if(Input.GetButtonDown("Pause") && !scoreui && Application.loadedLevel != 0){
 			paused = !paused;
             PauseSC();
 		}
@@ -41,12 +56,14 @@ public class PauseMenu : MonoBehaviour {
         PauseSC();
         RUI.GetComponent<Canvas>().enabled = true;
         CastUI.GetComponent<Canvas>().enabled = true;
-        CastUI = GameObject.FindGameObjectWithTag("CastUI");
+        CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
         CastUI.GetComponent<PauseMenu>().enabled = false;
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
             CastUI.SetActive(false);
         CastUI = GameObject.FindGameObjectWithTag("Camera");
+        CastUI.transform.position = new Vector3(0.0f,2.5f,-10.0f);
+
         CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = false;
         CastUI = null;  
 	}
