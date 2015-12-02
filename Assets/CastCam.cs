@@ -28,7 +28,19 @@ public class CastCam : MonoBehaviour {
         else if (Caster != null && !Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && GameManager.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
-            MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default") | 1 << LayerMask.NameToLayer("TransparentFX") | 1 << LayerMask.NameToLayer("IgnoreRaycast") | 1 << LayerMask.NameToLayer("Water") | 1 << LayerMask.NameToLayer("passthrough") | 1 << LayerMask.NameToLayer("l12") | 1 << LayerMask.NameToLayer("Checkpoint") | 1 << LayerMask.NameToLayer("enemybody") | 1 << LayerMask.NameToLayer("door") | 1 << LayerMask.NameToLayer("shield") | 1 << LayerMask.NameToLayer("bullet") | 1 << LayerMask.NameToLayer("detectionarea");
+            MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default") 
+				| 1 << LayerMask.NameToLayer("TransparentFX") 
+					| 1 << LayerMask.NameToLayer("IgnoreRaycast") 
+					| 1 << LayerMask.NameToLayer("Water") 
+					| 1 << LayerMask.NameToLayer("passthrough") 
+					| 1 << LayerMask.NameToLayer("l12") 
+					| 1 << LayerMask.NameToLayer("Checkpoint") 
+					| 1 << LayerMask.NameToLayer("enemybody") 
+					| 1 << LayerMask.NameToLayer("door") 
+					| 1 << LayerMask.NameToLayer("shield") 
+					| 1 << LayerMask.NameToLayer("bullet") 
+					| 1 << LayerMask.NameToLayer("detectionarea")
+					| 1 << LayerMask.NameToLayer("Destroyers");
             GameManager.Instance.CastEnabled = false;
         }
 	}
