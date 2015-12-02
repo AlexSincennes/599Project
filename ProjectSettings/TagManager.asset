@@ -57,6 +57,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Shield
+    uniqueID: 1041132615
+    locked: 0
   - name: LeftArm
     uniqueID: 1102900365
     locked: 0
