@@ -12,13 +12,15 @@ public class ScoreScreen : MonoBehaviour {
     {
 
 		CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
-		if(CastUI!= null)
-			CastUI.GetComponent<Canvas>().enabled = true;
+        if (CastUI != null)
+        {
+            CastUI.GetComponent<Canvas>().enabled = false;
+            CastUI.GetComponent<PauseMenu>().enabled = false;
+            CastUI.GetComponent<PauseMenu>().scoreui = false;
+        }
 		CastUI = GameObject.FindGameObjectWithTag("CastUI");
         if (CastUI != null) {
 			CastUI.GetComponent<Canvas> ().enabled = true;
-			CastUI.GetComponent<PauseMenu> ().enabled = false;
-            CastUI.GetComponent<PauseMenu>().scoreui = false;
 		}
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
@@ -31,7 +33,7 @@ public class ScoreScreen : MonoBehaviour {
     }
 
 	public void Restart(){
-        CastUI = GameObject.FindGameObjectWithTag("CastUI");
+        CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (CastUI != null)
         {
             CastUI.GetComponent<PauseMenu>().scoreui = false;
@@ -39,9 +41,7 @@ public class ScoreScreen : MonoBehaviour {
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
             CastUI.SetActive(false);
-        CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
-        if (CastUI != null)
-            CastUI.GetComponent<Canvas>().enabled = false;
+
         
 		if (spawner != null && Application.loadedLevel == 2) {
 			if (spawner.isStarted ()) {

@@ -16,7 +16,7 @@ public class BashManager : MonoBehaviour {
 		bashValueUI = GameObject.Find ("ScoreCalculator/Value").GetComponent<Text> ();
 		curMeter = 0;
 		tim = 0;
-		bashValueUI.text = "Distanse Survived : " + curMeter.ToString ();
+		bashValueUI.text = "Distance Survived : " + curMeter.ToString ();
 		tim = Time.timeSinceLevelLoad + delay;
 	}
 	
@@ -27,7 +27,7 @@ public class BashManager : MonoBehaviour {
 
 			curMeter += score;
 			//print (score);
-            bashValueUI.text = "Distanse Survived : " + curMeter.ToString();
+            bashValueUI.text = "Distance Survived : " + curMeter.ToString();
 			tim = Time.timeSinceLevelLoad + delay;
 		}
 	}

@@ -22,8 +22,13 @@ public class CastCam : MonoBehaviour {
         if (Caster != null && Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && !GameManager.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
-            MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI");
+            MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI") | 1 << LayerMask.NameToLayer("UIadd");
+             
             GameManager.Instance.CastEnabled = true;
+            RemoteCam = GameObject.Find("JumpTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0.5f;
+            RemoteCam = GameObject.Find("BlockTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
         else if (Caster != null && !Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && GameManager.Instance.CastEnabled)
         {
@@ -42,6 +47,10 @@ public class CastCam : MonoBehaviour {
 					| 1 << LayerMask.NameToLayer("detectionarea")
 					| 1 << LayerMask.NameToLayer("Destroyers")
                     | 1 << LayerMask.NameToLayer("UI");
+            RemoteCam = GameObject.Find("JumpTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
+            RemoteCam = GameObject.Find("BlockTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
             GameManager.Instance.CastEnabled = false;
         }
 	}
