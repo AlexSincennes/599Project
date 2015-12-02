@@ -114,7 +114,7 @@ public class HeroAnimator2D : MonoBehaviour {
 	protected void Walk ()
 	{
 		if (playWalkAnimationsWhileSwimming || !controller.IsSwimming) {
-			GetComponent<Animation>().CrossFade ("run");
+			GetComponent<Animation>().CrossFade ("Diokles_Run");
 		} else {
 			GetComponent<Animation>().CrossFade("fall");
 		}
@@ -124,7 +124,7 @@ public class HeroAnimator2D : MonoBehaviour {
 	protected void Run ()
 	{
 		if (playWalkAnimationsWhileSwimming || !controller.IsSwimming) {
-			GetComponent<Animation>().CrossFade ("run");
+			GetComponent<Animation>().CrossFade ("Diokles_Run");
 		} else {
 			GetComponent<Animation>().CrossFade("fall");
 		}

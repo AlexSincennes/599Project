@@ -10,6 +10,9 @@ public class SwipeTest : MonoBehaviour {
 	public ShieldControl2D sc; 
 	private bool isdefend = false;
 	private Vector3 swipStartPos;
+	
+	public AudioClip jumpSound;
+	
 	// Subscribe to events
 	void OnEnable(){
 		EasyTouch.On_SwipeStart += On_SwipeStart;
@@ -101,7 +104,10 @@ public class SwipeTest : MonoBehaviour {
 	{
 		//Debug.Log (Screen.width);
 		if(gesture.position.x < Screen.width * 0.3f)
+		{
 			Hero.GetComponent<SimpleCharacterInput> ().jump = true;
+			GetComponent<AudioSource>().PlayOneShot(jumpSound);
+		}
 
 	}
 

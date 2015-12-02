@@ -7,6 +7,8 @@ public class Enemy1_2 : MonoBehaviour {
 	public const int IDLE = 3;
 	public const int GETHIT = 4;
 	
+	public AudioClip arrowFireSound;
+	
 	public float attackDis;
 	public float patrolDis;
 	public Vector3 targetPosition;
@@ -70,6 +72,8 @@ public class Enemy1_2 : MonoBehaviour {
 			if(Time.time - lastAttackTime > attackRate)
 			{ 
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
+				// Play sound
+				GetComponent<AudioSource>().PlayOneShot(arrowFireSound);
 				if(temp.transform.GetComponentInChildren<BulletTest_P>())
 				{
 					temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;

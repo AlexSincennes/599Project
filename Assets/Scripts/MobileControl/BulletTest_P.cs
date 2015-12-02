@@ -9,6 +9,7 @@ public class BulletTest_P : MonoBehaviour {
 	public int i=0;
 	
 	public Transform enemy;
+	public AudioClip reflectSound;
 	public float speed=5;
 	private Vector3 oriSpeed;
 	private Rigidbody2D myRigid;
@@ -178,6 +179,9 @@ public class BulletTest_P : MonoBehaviour {
 				{
 					myRigid.velocity = -oriSpeed+new Vector3(0.5f/ time, 0, 0);
 					shooter = other.transform;
+					
+					// play sound
+					GetComponent<AudioSource>().PlayOneShot(reflectSound);
 				}
 
 			}			
