@@ -22,7 +22,7 @@ public class CastCam : MonoBehaviour {
         if (Caster != null && Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && !GameManager.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
-            MainCam.GetComponent<Camera>().cullingMask = 0;
+            MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI");
             GameManager.Instance.CastEnabled = true;
         }
         else if (Caster != null && !Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && GameManager.Instance.CastEnabled)
@@ -40,7 +40,8 @@ public class CastCam : MonoBehaviour {
 					| 1 << LayerMask.NameToLayer("shield") 
 					| 1 << LayerMask.NameToLayer("bullet") 
 					| 1 << LayerMask.NameToLayer("detectionarea")
-					| 1 << LayerMask.NameToLayer("Destroyers");
+					| 1 << LayerMask.NameToLayer("Destroyers")
+                    | 1 << LayerMask.NameToLayer("UI");
             GameManager.Instance.CastEnabled = false;
         }
 	}

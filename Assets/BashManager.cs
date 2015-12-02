@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BashManager : MonoBehaviour {
 
-	private UILabel bashValueUI;
+    private Text bashValueUI;
 	private string bashValueString;
 	public int curMeter;
 	private GameObject Hero;
@@ -12,10 +13,10 @@ public class BashManager : MonoBehaviour {
 	public int score;
 	// Use this for initialization
 	void Start () {
-		bashValueUI = GameObject.Find ("ShieldBashMeter/Value").GetComponent<UILabel> ();
+		bashValueUI = GameObject.Find ("ScoreCalculator/Value").GetComponent<Text> ();
 		curMeter = 0;
 		tim = 0;
-		bashValueUI.text = curMeter.ToString ();
+		bashValueUI.text = "Distanse Survived : " + curMeter.ToString ();
 		tim = Time.timeSinceLevelLoad + delay;
 	}
 	
@@ -26,7 +27,7 @@ public class BashManager : MonoBehaviour {
 
 			curMeter += score;
 			//print (score);
-			bashValueUI.text = curMeter.ToString ();
+            bashValueUI.text = "Distanse Survived : " + curMeter.ToString();
 			tim = Time.timeSinceLevelLoad + delay;
 		}
 	}
