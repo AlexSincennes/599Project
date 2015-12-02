@@ -5,6 +5,7 @@ using System.Collections;
 public class GlowOutline : MonoBehaviour {
 	
 	public float fadeTime = 1f;
+	public float minAlpha = 0f;
 	public float maxAlpha = 45f;
 	
 	private bool fadingIn = false;
@@ -13,6 +14,8 @@ public class GlowOutline : MonoBehaviour {
 
 	void Start(){
 		outline = GetComponent<Outline> ();
+		minAlpha = (minAlpha > maxAlpha) ? maxAlpha : (minAlpha < 0) ? 0 : (minAlpha > 255) ? 255 : minAlpha;
+		maxAlpha = (maxAlpha < minAlpha) ? minAlpha : (maxAlpha < 0) ? 0 : (maxAlpha > 255) ? 255 : maxAlpha;
 		fadingIn = true;
 	}
 
@@ -21,7 +24,7 @@ public class GlowOutline : MonoBehaviour {
 		//If it's in the process of fading in
 		if (fadingIn) {
 			float temp = outline.effectColor.a;
-			temp += Time.deltaTime/fadeTime * maxAlpha/255f;
+			temp += Time.deltaTime/fadeTime * (maxAlpha - minAlpha)/255f;
 			outline.effectColor = new Color(outline.effectColor.r, outline.effectColor.g, outline.effectColor.b, temp);
 			//Check if done fading
 			if(temp > maxAlpha/255f){
@@ -31,10 +34,10 @@ public class GlowOutline : MonoBehaviour {
 		}
 		else if(fadingOut){
 			float temp = outline.effectColor.a;
-			temp -= Time.deltaTime/fadeTime * maxAlpha/255f;
+			temp -= Time.deltaTime/fadeTime * (maxAlpha - minAlpha)/255f;
 			outline.effectColor = new Color(outline.effectColor.r, outline.effectColor.g, outline.effectColor.b, temp);
 			//Check if done fading
-			if(temp < 0){
+			if(temp < minAlpha/255f){
 				fadingOut = false;
 				fadingIn = true;
 			}
