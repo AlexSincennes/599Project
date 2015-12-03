@@ -15,11 +15,18 @@ public class CastCam : MonoBehaviour {
 	private SpawnScript Spawner;
 	// Use this for initialization
 	void Start () {
-        Caster = GameObject.Find("CastRemoteDisplayManager").GetComponent<CastRemoteDisplayManager>();
-		Spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
-		JumpTutorialCG = GameObject.Find("JumpTutorialUI").GetComponent<CanvasGroup>();
-		BlockTutorialCG = GameObject.Find ("BlockTutorialUI").GetComponent<CanvasGroup>();
-        GameManager.Instance.CastEnabled = false;
+		try
+		{
+	        Caster = GameObject.Find("CastRemoteDisplayManager").GetComponent<CastRemoteDisplayManager>();
+			Spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
+			JumpTutorialCG = GameObject.Find("JumpTutorialUI").GetComponent<CanvasGroup>();
+			BlockTutorialCG = GameObject.Find ("BlockTutorialUI").GetComponent<CanvasGroup>();
+			GameManager.Instance.CastEnabled = false;	
+		}
+		catch
+		{
+			this.enabled = false;
+		}
     }
 	
 	// Update is called once per frame
