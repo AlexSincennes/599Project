@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject PauseUI;
 	private GameObject CastUI;
     private GameObject RUI;
+    private GameObject RemoteCam;
+
 	private bool paused = false;
     public bool scoreui = false;
 	// Update is called once per frame
@@ -44,6 +46,8 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Restart(){
+        RemoteCam = GameObject.FindGameObjectWithTag("Camera");
+        RemoteCam.transform.parent = null;
 		Application.LoadLevel (Application.loadedLevel);
         paused = !paused;
         PauseSC();
@@ -62,9 +66,8 @@ public class PauseMenu : MonoBehaviour {
         if (CastUI != null)
             CastUI.SetActive(false);
         CastUI = GameObject.FindGameObjectWithTag("Camera");
+        CastUI.transform.parent = null;
         CastUI.transform.position = new Vector3(0.0f,2.5f,-10.0f);
-
-        CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = false;
         CastUI = null;  
 	}
 

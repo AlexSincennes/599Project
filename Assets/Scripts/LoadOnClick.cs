@@ -17,7 +17,6 @@ public class LoadOnClick : MonoBehaviour {
         CastUI.GetComponent<Canvas>().enabled = false;
         
         CastUI = GameObject.FindGameObjectWithTag("Camera");
-        CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = true;
 		if(level == 2)
 		GameManager.Instance.curTimes++;
 		GameManager.Instance.curLevel = level;
