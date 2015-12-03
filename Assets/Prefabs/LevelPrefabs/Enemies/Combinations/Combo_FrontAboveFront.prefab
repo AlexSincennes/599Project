@@ -2994,6 +2994,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 458838}
   - 114: {fileID: 11450082}
+  - 82: {fileID: 8296548}
   m_Layer: 31
   m_Name: FrontArrowEnemy2D
   m_TagString: Enemy
@@ -3442,6 +3443,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 425654}
   - 114: {fileID: 11480124}
+  - 82: {fileID: 8241588}
   m_Layer: 31
   m_Name: AboveArrowEnemy2D
   m_TagString: Enemy
@@ -3628,6 +3630,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 482200}
   - 114: {fileID: 11429328}
+  - 82: {fileID: 8225950}
   m_Layer: 31
   m_Name: FrontArrowEnemy2D
   m_TagString: Enemy
@@ -8770,6 +8773,213 @@ BoxCollider2D:
   m_Offset: {x: 0, y: .75}
   serializedVersion: 2
   m_Size: {x: 1, y: 1.60000002}
+--- !u!82 &8225950
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181080}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8241588
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177324}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8296548
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166272}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!108 &10842774
 Light:
   m_ObjectHideFlags: 1
@@ -9044,7 +9254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 0}
+  arrowFireSound: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -9096,7 +9306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 0}
+  arrowFireSound: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -9246,7 +9456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 0}
+  arrowFireSound: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -11754,6 +11964,10 @@ Prefab:
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: arrowFireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155874}

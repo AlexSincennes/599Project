@@ -101,7 +101,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 	/// less apparent. Static so it is the same across all components.
 	/// WARNING: If this is too large your character can fall through the ground, or move through small platforms.
 	/// </summary>
-	public static float maxFrameTime = 0.033f;
+	public static float maxFrameTime = 0.3f;
 
 	//Ash's Code Wall Jump Variables
 	public int dir;

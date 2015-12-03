@@ -335,6 +335,14 @@ Prefab:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 22354430, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1544503981
+      objectReference: {fileID: 0}
+    - target: {fileID: 116714, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
   m_IsPrefabParent: 0
@@ -724,15 +732,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
+  near clip plane: .100000001
+  far clip plane: 20
   field of view: 60
   orthographic: 1
   orthographic size: 6.25
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4291756031
+    m_Bits: 2076770285
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
