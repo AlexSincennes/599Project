@@ -1597,6 +1597,7 @@ MonoBehaviour:
   trail: {fileID: 96930903}
   Hero: {fileID: 784874831}
   sc: {fileID: 1070596378}
+  jumpSound: {fileID: 0}
 --- !u!4 &1241258105
 Transform:
   m_ObjectHideFlags: 0
@@ -2066,6 +2067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c735a8264fe3f3949b0bbadcda084af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIfadeTime: 1
 --- !u!4 &1533564548
 Transform:
   m_ObjectHideFlags: 0
