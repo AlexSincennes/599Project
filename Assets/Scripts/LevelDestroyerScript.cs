@@ -6,12 +6,16 @@ public class LevelDestroyerScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		//Debug.Log (other.gameObject.tag);
 
-		if (other.tag != "Player") {
-			if (other.gameObject.transform.parent) {
-				Destroy (other.gameObject.transform.parent.gameObject);
-			} else {
-				Destroy (other.gameObject);
-			}
+		if (other.tag == "Terrain")
+		{
+			GameObject curr = other.gameObject;
+			while (curr.transform.parent != null && 
+			       curr.transform.parent.name != "StartPlatform" &&
+			       curr.transform.parent.name != "PrefabContainer")
+			{
+				curr = curr.gameObject.transform.parent.gameObject;
+			} 
+			curr.SetActive(false);
 		} 
 		else {
 			if(other.tag == "Player"){

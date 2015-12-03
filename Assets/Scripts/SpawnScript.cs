@@ -29,9 +29,12 @@ public class SpawnScript : MonoBehaviour {
 	private float milestoneXOffset; //Offset x-position used for perfect calculation of next milestone
 	private float nextMilestone;	//Location at which to spawn a milestone transition
 	private Vector3 lastPosition;
+	
+	private GameObject prefabContainer;
 
 	// Use this for initialization
 	void Start (){
+		prefabContainer = new GameObject("PrefabContainer");
 		//Delay initializing the spawner if the loaded level is the tutorial level
 		if (Application.loadedLevel != 2) {
 			InitSpawner();
@@ -121,7 +124,20 @@ public class SpawnScript : MonoBehaviour {
 
 	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
 		Vector3 spawnPos = transform.position + new Vector3(spawnXOffset, yOffset, 0);
-		Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
+		Transform prefabTransform = prefabContainer.transform.FindChild(obj[spawnIndex].name + "(Clone)");
+		if (prefabTransform != null && !prefabTransform.gameObject.active)
+		{
+			GameObject prefab = prefabTransform.gameObject;
+			prefab.SetActive(true);
+			prefab.transform.position = spawnPos;
+			// TODO(sot): reset prefab
+			Debug.Log ("DEBUG TIM");
+		}
+		else
+		{
+			GameObject go = (GameObject)Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
+			go.transform.parent = prefabContainer.transform;
+		}
 		//Set the genDist so that a new object is "generated" after traveling half the length of the spawned prefab
 		genDist = obj[spawnIndex].GetComponent<PrefabAttributes>().Length / 2.0f;
 	}

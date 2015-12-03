@@ -398,7 +398,7 @@ GameObject:
   - 114: {fileID: 11442330}
   m_Layer: 0
   m_Name: RangedEnemy_Below
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1589,6 +1589,10 @@ Prefab:
       propertyPath: arrowFireSound
       value: 
       objectReference: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176750}
