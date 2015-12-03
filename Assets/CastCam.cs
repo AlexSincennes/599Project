@@ -3,13 +3,22 @@ using System.Collections;
 using Google.Cast.RemoteDisplay;
 
 public class CastCam : MonoBehaviour {
-    private GameObject Caster;
+	
+	public float UIfadeTime = 1.0f;
+
+    private CastRemoteDisplayManager Caster;
     private static bool CastEnabled = false;
     private GameObject MainCam;
     private GameObject RemoteCam;
+	private CanvasGroup JumpTutorialCG;
+	private CanvasGroup BlockTutorialCG;
+	private SpawnScript Spawner;
 	// Use this for initialization
 	void Start () {
-        Caster = GameObject.Find("CastRemoteDisplayManager");
+        Caster = GameObject.Find("CastRemoteDisplayManager").GetComponent<CastRemoteDisplayManager>();
+		Spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
+		JumpTutorialCG = GameObject.Find("JumpTutorialUI").GetComponent<CanvasGroup>();
+		BlockTutorialCG = GameObject.Find ("BlockTutorialUI").GetComponent<CanvasGroup>();
         GameManager.Instance.CastEnabled = false;
     }
 	
@@ -17,20 +26,16 @@ public class CastCam : MonoBehaviour {
 	void Update () {
         if (Caster == null)
         {
-            Caster = GameObject.Find("CastRemoteDisplayManager");
+            Caster = GameObject.Find("CastRemoteDisplayManager").GetComponent<CastRemoteDisplayManager>();
         }
-        if (Caster != null && Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && !GameManager.Instance.CastEnabled)
+        if (Caster != null && Caster.IsCasting() && !GameManager.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI") | 1 << LayerMask.NameToLayer("UIadd");
              
             GameManager.Instance.CastEnabled = true;
-            RemoteCam = GameObject.Find("JumpTutorialUI");
-            RemoteCam.GetComponent<CanvasGroup>().alpha = 0.5f;
-            RemoteCam = GameObject.Find("BlockTutorialUI");
-            RemoteCam.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
-        else if (Caster != null && !Caster.GetComponent<CastRemoteDisplayManager>().IsCasting() && GameManager.Instance.CastEnabled)
+        else if (Caster != null && !Caster.IsCasting() && GameManager.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default") 
@@ -53,5 +58,18 @@ public class CastCam : MonoBehaviour {
             RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
             GameManager.Instance.CastEnabled = false;
         }
+		//Fade in the buttons after the spawner starts
+		if (Caster != null && Caster.IsCasting () && Spawner.isStarted () && !JumpTutorialCG.alpha.Equals (1.0f) && !BlockTutorialCG.alpha.Equals (1.0f)) {
+			/*
+			if (JumpTutorialCG.transform.parent.gameObject.layer.Equals (LayerMask.NameToLayer("UI"))){
+				JumpTutorialCG.transform.parent.gameObject.layer = LayerMask.NameToLayer("UIadd");
+				BlockTutorialCG.transform.parent.gameObject.layer = LayerMask.NameToLayer("UIadd");
+			}
+			*/
+			var temp = JumpTutorialCG.alpha;
+			temp += Time.deltaTime / UIfadeTime;
+			JumpTutorialCG.alpha = temp;
+			BlockTutorialCG.alpha = temp;
+		}
 	}
 }

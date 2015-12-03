@@ -27,6 +27,7 @@ public class TutorialUIFade : MonoBehaviour {
 			//Check if done fading
 			if(temp < 0){
 				fadingOut = false;
+				CG.transform.gameObject.layer = LayerMask.NameToLayer("UIadd");
 			}
 		}
 	}

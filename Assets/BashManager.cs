@@ -13,10 +13,10 @@ public class BashManager : MonoBehaviour {
 	public int score;
 	// Use this for initialization
 	void Start () {
-		bashValueUI = GameObject.Find ("ScoreCalculator/Value").GetComponent<Text> ();
+		bashValueUI = GameObject.Find ("ScoreCalculator/Score").GetComponent<Text> ();
 		curMeter = 0;
 		tim = 0;
-		bashValueUI.text = "Distance Survived : " + curMeter.ToString ();
+		bashValueUI.text = curMeter.ToString ();
 		tim = Time.timeSinceLevelLoad + delay;
 	}
 	
@@ -27,7 +27,7 @@ public class BashManager : MonoBehaviour {
 
 			curMeter += score;
 			//print (score);
-            bashValueUI.text = "Distance Survived : " + curMeter.ToString();
+            bashValueUI.text = curMeter.ToString();
 			tim = Time.timeSinceLevelLoad + delay;
 		}
 	}
