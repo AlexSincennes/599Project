@@ -22,8 +22,8 @@ public class EndlessRunnerCameraMovement : MonoBehaviour {
 		//}
 
 		if (follow == null)
-			follow = GameObject.FindGameObjectWithTag("Ghost").transform;
-		transform.position = new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z);
-		//transform.position = Vector3.SmoothDamp (transform.position, new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z), ref velocity, 0.05f);
+			follow = GameObject.FindGameObjectWithTag("Respawn").transform;
+		//transform.position = new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z);
+		transform.position = Vector3.SmoothDamp (transform.position, new Vector3 (follow.position.x + 5.0f, follow.position.y + 2.0f, this.transform.position.z), ref velocity, 0.05f);
 	}
 }

@@ -90,7 +90,7 @@ public class HitBox_2D : MonoBehaviour {
         Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
 		Score.text = "Your Score : " + curmeter.ToString ();
-        PauseUI = GameObject.FindGameObjectWithTag("CastUI");
+        PauseUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (PauseUI != null)
         {
             PauseUI.GetComponent<PauseMenu>().scoreui = true;

@@ -4,8 +4,10 @@ using System.Collections;
 public class ScoreScreen : MonoBehaviour {
     private GameObject CastUI;
 	private SpawnScript spawner;
+    private GameObject RemoteCam;
 	void Start(){
 		spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
+        RemoteCam = GameObject.FindGameObjectWithTag("Camera");
 	}
 
     public void MainMenu()
@@ -27,7 +29,10 @@ public class ScoreScreen : MonoBehaviour {
             CastUI.SetActive(false);
         CastUI = GameObject.FindGameObjectWithTag("Camera");
         if (CastUI != null)
-            CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = false;
+        {
+            CastUI.transform.parent = null;
+            CastUI.transform.position = new Vector3(0.0f, 2.5f, -10.0f);
+        }
         Application.LoadLevel(0);
 
     }
@@ -42,7 +47,12 @@ public class ScoreScreen : MonoBehaviour {
         if (CastUI != null)
             CastUI.SetActive(false);
 
-        
+        CastUI = GameObject.FindGameObjectWithTag("Camera");
+        if (CastUI != null)
+        {
+            CastUI.transform.parent = null;
+            CastUI.transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
+        }
 		if (spawner != null && Application.loadedLevel == 2) {
 			if (spawner.isStarted ()) {
 				Application.LoadLevel (1);
