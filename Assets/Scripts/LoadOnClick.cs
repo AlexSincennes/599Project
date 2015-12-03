@@ -11,10 +11,11 @@ public class LoadOnClick : MonoBehaviour {
 		Application.LoadLevel (level);
 		loadingImage.SetActive (true);
         CastUI = GameObject.FindGameObjectWithTag("CastUI");
-        CastUI.GetComponent<PauseMenu>().enabled = true;
         CastUI.GetComponent<Canvas>().enabled = false;
         CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
+        CastUI.GetComponent<PauseMenu>().enabled = true;
         CastUI.GetComponent<Canvas>().enabled = false;
+        
         CastUI = GameObject.FindGameObjectWithTag("Camera");
         CastUI.GetComponent<EndlessRunnerCameraMovement>().enabled = true;
 		if(level == 2)

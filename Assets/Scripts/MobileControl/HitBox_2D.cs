@@ -19,22 +19,22 @@ public class HitBox_2D : MonoBehaviour {
 
 	public virtual void Damage(int amount) {
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
-        ScoreScreen = GameObject.Find("Score");
-        ScoreScreen.GetComponent<Canvas>().enabled = true;
+        Score = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").transform.FindChild("HighScore").GetComponent<Text>();
+		ScoreScreen = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").gameObject;
+		ScoreScreen.SetActive (true);
 
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
 		if(ScoreScreen != null)
         	ScoreScreen.GetComponent<Canvas>().enabled = true;
 
-        BashPlane = GameObject.Find("BashPlane");
+        BashPlane = GameObject.Find("ScoreCalculator");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
         if(curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore",curmeter);
-        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+        Score.text = PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
-		Score.text = "Your Score : " + curmeter.ToString();
-        PauseUI = GameObject.FindGameObjectWithTag("CastUI");
+		Score.text = curmeter.ToString();
+        PauseUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (PauseUI != null)
         {
             PauseUI.GetComponent<PauseMenu>().scoreui = true;
@@ -76,20 +76,21 @@ public class HitBox_2D : MonoBehaviour {
 	public void Die()
 	{
         Time.timeScale = 0;
-        Score = GameObject.Find("ScoreScreen/HighScore").GetComponent<Text>();
-        ScoreScreen = GameObject.Find("Score");
-        ScoreScreen.GetComponent<Canvas>().enabled = true;
+		Score = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").transform.FindChild("HighScore").GetComponent<Text>();
+		ScoreScreen = GameObject.Find("Canvas").transform.FindChild("ScoreScreen").gameObject;
+		ScoreScreen.SetActive (true);
+
         ScoreScreen = GameObject.FindGameObjectWithTag("RemoteUI");
 		if(ScoreScreen != null)
-        	ScoreScreen.GetComponent<Canvas>().enabled = true; 
-        BashPlane = GameObject.Find("BashPlane");
+        	ScoreScreen.GetComponent<Canvas>().enabled = true;
+        BashPlane = GameObject.Find("ScoreCalculator");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
         if (curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore", curmeter);
-        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+        Score.text = PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
-		Score.text = "Your Score : " + curmeter.ToString ();
-        PauseUI = GameObject.FindGameObjectWithTag("CastUI");
+		Score.text = curmeter.ToString ();
+        PauseUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (PauseUI != null)
         {
             PauseUI.GetComponent<PauseMenu>().scoreui = true;
