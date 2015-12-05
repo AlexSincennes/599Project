@@ -4,7 +4,7 @@ using System.Collections;
 public class TipPatternManager : MonoBehaviour {
 
 	public int curCombo;
-	public UI2DSprite TipSprite;
+	public SpriteRenderer TipSprite;
 	public Sprite[] comboPattern;
 	public float showingTime = 1.0f;
 
@@ -33,7 +33,7 @@ public class TipPatternManager : MonoBehaviour {
 		isShowing = true;
 		startTime = Time.time;
 		this.curCombo = curCombo;
-		TipSprite.sprite2D = comboPattern [curCombo];
+		TipSprite.sprite = comboPattern [curCombo];
 		TipSprite.gameObject.SetActive (true);
 	}
 

@@ -3,9 +3,10 @@ using System.Collections;
 
 public class ShowTipPattern : MonoBehaviour {
 	TipPatternManager tpm;
+	public int curCombo;
 	// Use this for initialization
 	void Start () {
-		tpm = GameObject.Find("UI Root").GetComponentInChildren<TipPatternManager>();
+		tpm = GameObject.Find("Ghost/Main Camera").GetComponentInChildren<TipPatternManager>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,7 @@ public class ShowTipPattern : MonoBehaviour {
 		if (other.gameObject.tag == "Player") 
 		{
 			//manager
-			tpm.setTrue(1);
+			tpm.setTrue(curCombo);
 		}
 	}
 

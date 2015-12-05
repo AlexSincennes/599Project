@@ -896,7 +896,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454822, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecf7bd90037d3472baa247be7ccd7de2, type: 2}
@@ -1237,7 +1237,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 434812, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
       propertyPath: remoteDisplayCamera
