@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22437706}
   - 222: {fileID: 22272016}
   - 114: {fileID: 11400010}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: JUMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 222: {fileID: 22260636}
   - 114: {fileID: 11401458}
   - 225: {fileID: 22557232}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: JumpTutorialUI
   m_TagString: TutorialUI
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - 224: {fileID: 22474158}
   - 222: {fileID: 22229514}
   - 114: {fileID: 11484336}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: HereTo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - 224: {fileID: 22451912}
   - 222: {fileID: 22293400}
   - 114: {fileID: 11448090}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: SWIPE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - 224: {fileID: 22409802}
   - 222: {fileID: 22296142}
   - 114: {fileID: 11421280}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: WALLJUMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - 222: {fileID: 22237670}
   - 114: {fileID: 11489326}
   - 225: {fileID: 22512196}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: WallJumpTutorialUI
   m_TagString: TutorialUI
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - 224: {fileID: 22493636}
   - 222: {fileID: 22281822}
   - 114: {fileID: 11449788}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: HereTo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - 224: {fileID: 22473088}
   - 222: {fileID: 22217336}
   - 114: {fileID: 11408120}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: BLOCK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,8 +342,8 @@ GameObject:
   - 223: {fileID: 22336054}
   - 114: {fileID: 11454082}
   - 114: {fileID: 11456382}
-  m_Layer: 9
-  m_Name: Tutorial Menu
+  m_Layer: 5
+  m_Name: TutorialMenu
   m_TagString: TutorialUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ GameObject:
   - 224: {fileID: 22482774}
   - 222: {fileID: 22243020}
   - 114: {fileID: 11476862}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: TAP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - 224: {fileID: 22449826}
   - 222: {fileID: 22235286}
   - 114: {fileID: 11434120}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: HereTo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - 224: {fileID: 22476678}
   - 222: {fileID: 22241288}
   - 114: {fileID: 11440206}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: TAP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - 222: {fileID: 22241306}
   - 114: {fileID: 11406764}
   - 225: {fileID: 22574822}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: BlockTutorialUI
   m_TagString: TutorialUI
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .720588207, g: .648675561, b: .0688797385, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: fde5b8316a5a1c14785d87b7e36581f3, type: 3}
     m_FontSize: 4
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 1
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .720588207, g: .648675561, b: .0688797385, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: fde5b8316a5a1c14785d87b7e36581f3, type: 3}
     m_FontSize: 10
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .720588207, g: .648675561, b: .0688797385, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: fde5b8316a5a1c14785d87b7e36581f3, type: 3}
     m_FontSize: 4
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: .131034613, a: 1}
+  m_Color: {r: .720588207, g: .648675561, b: .0688797385, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: fde5b8316a5a1c14785d87b7e36581f3, type: 3}
     m_FontSize: 10
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: .131034613, a: 1}
+  m_Color: {r: .720588207, g: .648675561, b: .0688797385, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: fde5b8316a5a1c14785d87b7e36581f3, type: 3}
     m_FontSize: 8
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 1
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .625, g: .647977948, b: .647977948, a: 1}
+    m_HighlightedColor: {r: .849695742, g: 1, b: .161764681, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -1181,7 +1181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0123456789
+  m_Text: 9876543210
 --- !u!114 &11469808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .625, g: .647977948, b: .647977948, a: 1}
+    m_HighlightedColor: {r: .849695742, g: 1, b: .161764681, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .625, g: .647977948, b: .647977948, a: 1}
+    m_HighlightedColor: {r: .849695742, g: 1, b: .161764681, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 1
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -1895,7 +1895,7 @@ RectTransform:
   m_LocalScale: {x: .75, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22466412}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 20, y: 10}
@@ -1929,9 +1929,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22412220}
-  - {fileID: 22455330}
-  - {fileID: 22429674}
   - {fileID: 22479238}
+  - {fileID: 22429674}
+  - {fileID: 22455330}
   - {fileID: 22499422}
   - {fileID: 22424376}
   - {fileID: 22447750}
@@ -2004,7 +2004,7 @@ RectTransform:
   m_LocalScale: {x: .75, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22466412}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 20, y: 25}

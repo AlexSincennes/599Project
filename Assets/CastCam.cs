@@ -60,12 +60,12 @@ public class CastCam : MonoBehaviour {
         }
 		//Fade in the buttons after the spawner starts
 		if (Caster != null && Caster.IsCasting () && Spawner.isStarted () && !JumpTutorialCG.alpha.Equals (1.0f) && !BlockTutorialCG.alpha.Equals (1.0f)) {
-			/*
+
 			if (JumpTutorialCG.transform.parent.gameObject.layer.Equals (LayerMask.NameToLayer("UI"))){
 				JumpTutorialCG.transform.parent.gameObject.layer = LayerMask.NameToLayer("UIadd");
 				BlockTutorialCG.transform.parent.gameObject.layer = LayerMask.NameToLayer("UIadd");
 			}
-			*/
+
 			var temp = JumpTutorialCG.alpha;
 			temp += Time.deltaTime / UIfadeTime;
 			JumpTutorialCG.alpha = temp;
