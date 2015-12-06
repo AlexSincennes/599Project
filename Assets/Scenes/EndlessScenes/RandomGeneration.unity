@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!82 &181584928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ Transform:
   - {fileID: 1333104269}
   - {fileID: 384233402}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &743867069
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &943272339
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &1005700643
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +687,7 @@ GameObject:
   - 20: {fileID: 1082193881}
   - 124: {fileID: 1082193879}
   - 92: {fileID: 1082193880}
+  - 81: {fileID: 1082193878}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -707,6 +708,13 @@ Transform:
   - {fileID: 365176877}
   m_Father: {fileID: 1316740739}
   m_RootOrder: 0
+--- !u!81 &1082193878
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1082193876}
+  m_Enabled: 1
 --- !u!124 &1082193879
 Behaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +835,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!4 &1139026304 stripped
 Transform:
   m_PrefabParentObject: {fileID: 492788, guid: 9d8c607238e13e74aaeb8b49ba56b731, type: 2}
@@ -1021,16 +1029,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586116023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02519d4e1d2abf74292a4bc2d6ee32d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b56dd66fe8397b04382878dd8f8b8d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CastEnabled: 0
-  curLevel: 0
-  loadlev: 0
-  curTimes: 0
   spawnPointPos: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
-  isCutScene: 0
+  player: {fileID: 1423333369}
+  ghost: {fileID: 1995526578}
+  UIcanvas: {fileID: 1618576251}
+  MainCamera: {fileID: 1082193876}
+  RemoteCamera: {fileID: 0}
   haveShield: 0
 --- !u!4 &1586116025
 Transform:
@@ -1044,6 +1052,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1618576251 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 156100, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
+  m_PrefabInternal: {fileID: 374326162}
 --- !u!1 &1628166555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1099,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
 --- !u!1001 &1782012279
 Prefab:
   m_ObjectHideFlags: 0
@@ -1254,7 +1266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
 --- !u!1001 &1995526577
 Prefab:
   m_ObjectHideFlags: 0
@@ -1292,7 +1304,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479028, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: player
@@ -1328,19 +1340,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462760, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 493948, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 418872, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 457120, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: basicWeights.Array.data[7]
