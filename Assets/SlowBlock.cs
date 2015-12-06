@@ -52,7 +52,7 @@ public class SlowBlock : Platform2D {
 			storedSpeed = obj.movement.walkSpeed;
 		}
 
-		ghost = GameObject.FindGameObjectWithTag ("Ghost").GetComponent<GhostMovement>();
+		ghost = GameManagerRG.Instance.ghost.GetComponent<GhostMovement>();
 	}
 
 }

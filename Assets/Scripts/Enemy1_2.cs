@@ -32,7 +32,7 @@ public class Enemy1_2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(player == null) {
-			player = GameObject.FindGameObjectWithTag("Player").transform;
+			player = GameManagerRG.Instance.player.transform;
 		}
         walkingSpeed = Speed;
 		myAni = transform.GetComponentInChildren<Animation> ();

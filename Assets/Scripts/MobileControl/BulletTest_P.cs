@@ -36,7 +36,7 @@ public class BulletTest_P : MonoBehaviour {
 		//dirEuler = angleHardCode;
 		else
 		{
-			float runSpeed = GameObject.Find("Character2D").GetComponent<RaycastCharacterController2D>().movement.walkSpeed;
+			float runSpeed = GameManagerRG.Instance.player.GetComponent<RaycastCharacterController2D>().movement.walkSpeed;
 
 			Vector3 enemyPos = enemy.transform.position - shooter.transform.position; //- new Vector3(0,-1f,0);
 
@@ -44,6 +44,7 @@ public class BulletTest_P : MonoBehaviour {
 			if(shooter.transform.position.y-2 <= enemy.transform.position.y)
 			{
 				enemyPos -=new Vector3(0,-1f,0);
+
 			}
 
 			{
@@ -97,7 +98,7 @@ public class BulletTest_P : MonoBehaviour {
 	}
 	
 	
-	
+	/*
 	void OnCollisionEnter2D(Collision2D other) 
 	{
 		//Debug.Log (other.gameObject.tag);
@@ -149,7 +150,8 @@ public class BulletTest_P : MonoBehaviour {
 			transform.GetComponent<BoxCollider2D>().enabled = false;
 		}
 	}
-	
+	*/
+
 	void OnTriggerEnter2D(Collider2D other) 
 	{
 		if (other.gameObject.tag == "Player" && myRigid.velocity.magnitude > 0.2f && (shooter == null || shooter.name != "Shield")) 
@@ -163,19 +165,29 @@ public class BulletTest_P : MonoBehaviour {
 			ShieldControl2D temp = other.transform.parent.gameObject.GetComponentInChildren<ShieldControl2D>();
 			if(temp.shieldEquip )
 			{
-				Debug.Log("Bullet Transform Angle: " + transform.eulerAngles.z);
+				//Debug.Log("Bullet Transform Angle: " + transform.eulerAngles.z);
 				//Debug.Log(Mathf.Abs(transform.eulerAngles.z -90 - other.transform.parent.GetComponent<ShieldControl2D>().swipeAngle));
 				float angle = temp.angle < 0? (360.0f + temp.angle): temp.angle;
-				Debug.Log("Shield Testing Angle: " + angle);
+				//Debug.Log("Shield Testing Angle: " + angle);
 				float lowerBound = transform.eulerAngles.z - 90 - deflectBuffer;
 				float upperBound = transform.eulerAngles.z - 90 + deflectBuffer;
 				if(lowerBound < 0){
 					lowerBound += 360.0f;
 					upperBound += 360.0f;
 				}
+				//Debug.Log("Bounds: " + lowerBound + "-" + upperBound);
 
-				Debug.Log("Bounds: " + lowerBound + "-" + upperBound);
-				if( angle > lowerBound && angle < upperBound || (upperBound > 360 && angle > lowerBound - 360.0f && angle < upperBound - 360.0f))
+				float swipeAngle = temp.angle;
+				Vector3 arrowVector = (this.transform.parent.position - GameManagerRG.Instance.player.transform.position).normalized;
+
+				//Debug.Log(this.transform.position +" "+ GameObject.Find("Character2D").transform.position +" "+arrowVector);
+				float testAngle = Vector3.Dot(new Vector3(1,0,0),arrowVector);
+				float arrowAngle = Mathf.Acos( testAngle)*Mathf.Rad2Deg;
+				float judgeAngle = Mathf.Abs(Mathf.Abs(swipeAngle)-arrowAngle);
+				Debug.Log("judgeAngle: "+judgeAngle);
+				//Debug.Log("papapapapa: " +Mathf.Acos( testAngle)*Mathf.Rad2Deg +" ooooo: "+(Mathf.Abs(swipeAngle)-Mathf.Acos( testAngle)*Mathf.Rad2Deg));
+				//if( angle > lowerBound && angle < upperBound || (upperBound > 360 && angle > lowerBound - 360.0f && angle < upperBound - 360.0f))
+				if(judgeAngle <= deflectBuffer)
 				{
 					myRigid.velocity = -oriSpeed+new Vector3(0.5f/ time, 0, 0);
 					shooter = other.transform;

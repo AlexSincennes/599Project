@@ -261,7 +261,7 @@ GameObject:
   - 114: {fileID: 11432022}
   m_Layer: 0
   m_Name: FlatGround25m
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1571,6 +1571,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags

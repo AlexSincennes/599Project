@@ -16,10 +16,10 @@ public class LoadOnClick : MonoBehaviour {
         CastUI.GetComponent<PauseMenu>().enabled = true;
         CastUI.GetComponent<Canvas>().enabled = false;
         
-        CastUI = GameObject.FindGameObjectWithTag("Camera");
-		if(level == 2)
-		GameManager.Instance.curTimes++;
-		GameManager.Instance.curLevel = level;
+		CastUI = GameObject.FindGameObjectWithTag("Camera");
+		//if(level == 2)
+		//GameManager.Instance.curTimes++;
+		//GameManager.Instance.curLevel = level;
 	}
 	public void OnOptions(){
 	}
