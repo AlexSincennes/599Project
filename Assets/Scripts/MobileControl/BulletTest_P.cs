@@ -36,7 +36,7 @@ public class BulletTest_P : MonoBehaviour {
 		//dirEuler = angleHardCode;
 		else
 		{
-			float runSpeed = GameObject.Find("Character2D").GetComponent<RaycastCharacterController2D>().movement.walkSpeed;
+			float runSpeed = GameManagerRG.Instance.player.GetComponent<RaycastCharacterController2D>().movement.walkSpeed;
 
 			Vector3 enemyPos = enemy.transform.position - shooter.transform.position; //- new Vector3(0,-1f,0);
 
@@ -178,7 +178,7 @@ public class BulletTest_P : MonoBehaviour {
 				//Debug.Log("Bounds: " + lowerBound + "-" + upperBound);
 
 				float swipeAngle = temp.angle;
-				Vector3 arrowVector = (this.transform.parent.position - GameObject.Find("Character2D").transform.position).normalized;
+				Vector3 arrowVector = (this.transform.parent.position - GameManagerRG.Instance.player.transform.position).normalized;
 
 				//Debug.Log(this.transform.position +" "+ GameObject.Find("Character2D").transform.position +" "+arrowVector);
 				float testAngle = Vector3.Dot(new Vector3(1,0,0),arrowVector);

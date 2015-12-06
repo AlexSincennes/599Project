@@ -1719,16 +1719,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1327279439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02519d4e1d2abf74292a4bc2d6ee32d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b56dd66fe8397b04382878dd8f8b8d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CastEnabled: 0
-  curLevel: 0
-  loadlev: 0
-  curTimes: 0
   spawnPointPos: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
-  isCutScene: 0
+  ghost: {fileID: 0}
+  UIcanvas: {fileID: 0}
+  MainCamera: {fileID: 0}
+  RemoteCamera: {fileID: 0}
   haveShield: 0
 --- !u!4 &1327279441
 Transform:

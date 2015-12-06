@@ -51,6 +51,6 @@ public class StopBlock : MonoBehaviour {
 
 			storedSpeed = obj.movement.walkSpeed;
 		}
-		ghost = GameObject.FindGameObjectWithTag ("Ghost").GetComponent<GhostMovement>();
+		ghost = GameManagerRG.Instance.ghost.GetComponent<GhostMovement>();//GameObject.FindGameObjectWithTag ("Ghost")
 	}
 }

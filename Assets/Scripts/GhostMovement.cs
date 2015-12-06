@@ -18,15 +18,17 @@ public class GhostMovement : MonoBehaviour {
     private Vector3 velocity;
     void Awake()
     {
-        RemoteCam = GameObject.FindGameObjectWithTag("Camera");
-        MainCam = GameObject.FindGameObjectWithTag("MainCamera");
-        if (RemoteCam != null)
-        {
-            RemoteCam.transform.position = MainCam.transform.position;
-            RemoteCam.transform.parent = this.transform;
-        }
+
     }
 	void Start(){
+		RemoteCam = GameObject.FindGameObjectWithTag("Camera");//GameObject.FindGameObjectWithTag("Camera");
+		MainCam = GameManagerRG.Instance.MainCamera;
+		if (RemoteCam != null)
+		{
+			RemoteCam.transform.position = MainCam.transform.position;
+			RemoteCam.transform.parent = this.transform;
+		}
+
 		player.GetComponent<RaycastCharacterController2D>().movement.walkSpeed = startMovementSpeed;
 		currentMovementSpeed = startMovementSpeed;
 		movementSpeedY = 0f;

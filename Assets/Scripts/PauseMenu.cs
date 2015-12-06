@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Restart(){
-        RemoteCam = GameObject.FindGameObjectWithTag("Camera");
+		RemoteCam = GameManagerRG.Instance.RemoteCamera;
         RemoteCam.transform.parent = null;
 		Application.LoadLevel (Application.loadedLevel);
         paused = !paused;
@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour {
         CastUI = GameObject.FindGameObjectWithTag("PauseUI");
         if (CastUI != null)
             CastUI.SetActive(false);
-        CastUI = GameObject.FindGameObjectWithTag("Camera");
+		CastUI = GameManagerRG.Instance.RemoteCamera;
         CastUI.transform.parent = null;
         CastUI.transform.position = new Vector3(0.0f,2.5f,-10.0f);
         CastUI = null;  

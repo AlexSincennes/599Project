@@ -6,7 +6,7 @@ public class ShowTipPattern : MonoBehaviour {
 	public int curCombo;
 	// Use this for initialization
 	void Start () {
-		tpm = GameObject.Find("Ghost/Main Camera").GetComponentInChildren<TipPatternManager>();
+		tpm = GameManagerRG.Instance.MainCamera.GetComponentInChildren<TipPatternManager>();
 	}
 	
 	// Update is called once per frame

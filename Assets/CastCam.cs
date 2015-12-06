@@ -21,7 +21,7 @@ public class CastCam : MonoBehaviour {
 			Spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
 			JumpTutorialCG = GameObject.Find("JumpTutorialUI").GetComponent<CanvasGroup>();
 			BlockTutorialCG = GameObject.Find ("BlockTutorialUI").GetComponent<CanvasGroup>();
-			GameManager.Instance.CastEnabled = false;	
+			GameManagerRG.Instance.CastEnabled = false;	
 		}
 		catch
 		{
@@ -35,14 +35,14 @@ public class CastCam : MonoBehaviour {
         {
             Caster = GameObject.Find("CastRemoteDisplayManager").GetComponent<CastRemoteDisplayManager>();
         }
-        if (Caster != null && Caster.IsCasting() && !GameManager.Instance.CastEnabled)
+        if (Caster != null && Caster.IsCasting() && !GameManagerRG.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI") | 1 << LayerMask.NameToLayer("UIadd");
              
-            GameManager.Instance.CastEnabled = true;
+            GameManagerRG.Instance.CastEnabled = true;
         }
-        else if (Caster != null && !Caster.IsCasting() && GameManager.Instance.CastEnabled)
+        else if (Caster != null && !Caster.IsCasting() && GameManagerRG.Instance.CastEnabled)
         {
             MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default") 
@@ -63,7 +63,7 @@ public class CastCam : MonoBehaviour {
             RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
             RemoteCam = GameObject.Find("BlockTutorialUI");
             RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
-            GameManager.Instance.CastEnabled = false;
+            GameManagerRG.Instance.CastEnabled = false;
         }
 		//Fade in the buttons after the spawner starts
 		if (Caster != null && Caster.IsCasting () && Spawner.isStarted () && !JumpTutorialCG.alpha.Equals (1.0f) && !BlockTutorialCG.alpha.Equals (1.0f)) {

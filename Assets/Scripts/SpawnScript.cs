@@ -43,7 +43,7 @@ public class SpawnScript : MonoBehaviour {
 
 	void Update(){
 		if (ghostTransform == null) {
-			ghostTransform = GameObject.FindGameObjectWithTag ("Ghost").transform;
+			ghostTransform = GameManagerRG.Instance.ghost.transform;
 		}
 		totalTravelDist += transform.position.x - lastPosition.x;
 		if (Application.loadedLevel != 2 || totalTravelDist > startSpawnerDist) {
