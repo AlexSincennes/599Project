@@ -245,6 +245,7 @@ GameObject:
   - 114: {fileID: 11438710}
   - 114: {fileID: 11441954}
   - 114: {fileID: 11464748}
+  - 81: {fileID: 8140582}
   m_Layer: 12
   m_Name: Character2D
   m_TagString: Player
@@ -1926,6 +1927,13 @@ BoxCollider2D:
   m_Offset: {x: -.800000012, y: -.100000001}
   serializedVersion: 2
   m_Size: {x: 5, y: 2}
+--- !u!81 &8140582
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126006}
+  m_Enabled: 1
 --- !u!111 &11138178
 Animation:
   m_ObjectHideFlags: 1

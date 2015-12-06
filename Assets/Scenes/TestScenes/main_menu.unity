@@ -487,7 +487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Tutorial
+  m_Text: Tutorial Level
 --- !u!222 &297608804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1417,8 +1417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 1
-  minAlpha: 20
-  maxAlpha: 120
+  minAlpha: 10
+  maxAlpha: 60
 --- !u!114 &856375466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,7 +1578,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 375, y: 150}
+  m_SizeDelta: {x: 475, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1052650951
 GameObject:
@@ -2207,7 +2207,7 @@ GameObject:
   - 114: {fileID: 2107504645}
   - 114: {fileID: 2107504644}
   m_Layer: 5
-  m_Name: TutorialButton
+  m_Name: TutorialLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2229,7 +2229,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 375, y: 150}
+  m_SizeDelta: {x: 475, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2107504644
 MonoBehaviour:

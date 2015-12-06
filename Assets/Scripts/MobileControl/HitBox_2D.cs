@@ -29,11 +29,6 @@ public class HitBox_2D : MonoBehaviour {
 
         BashPlane = GameObject.Find("ScoreCalculator");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
-		//Mason Added
-		BashPlane.SetActive(false);
-		BashPlane = GameObject.Find("TutorialMenu");
-		BashPlane.SetActive(false);
-		//
         if(curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore",curmeter);
         Score.text = PlayerPrefs.GetInt("HighScore").ToString();
@@ -90,11 +85,6 @@ public class HitBox_2D : MonoBehaviour {
         	ScoreScreen.GetComponent<Canvas>().enabled = true;
         BashPlane = GameObject.Find("ScoreCalculator");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
-		//Mason Added
-		BashPlane.SetActive(false);
-		BashPlane = GameObject.Find("TutorialMenu");
-		BashPlane.SetActive(false);
-		//
         if (curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore", curmeter);
         Score.text = PlayerPrefs.GetInt("HighScore").ToString();

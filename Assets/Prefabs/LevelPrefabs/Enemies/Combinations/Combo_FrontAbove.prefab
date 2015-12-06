@@ -531,7 +531,7 @@ GameObject:
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &149432
 GameObject:
@@ -782,7 +782,7 @@ GameObject:
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &179206
 GameObject:
@@ -2158,7 +2158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 0}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -2286,7 +2285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 0}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -2566,10 +2564,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
