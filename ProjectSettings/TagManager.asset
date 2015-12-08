@@ -56,6 +56,15 @@ TagManager:
   - bullet
   - detectionarea
   m_SortingLayers:
+  - name: BGSky
+    uniqueID: 949762155
+    locked: 0
+  - name: BGMountain
+    uniqueID: 2659433739
+    locked: 0
+  - name: BGStructure
+    uniqueID: 1552693615
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

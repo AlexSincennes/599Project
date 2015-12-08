@@ -11,7 +11,8 @@ public class LevelDestroyerScript : MonoBehaviour {
 			GameObject curr = other.gameObject;
 			while (curr.transform.parent != null && 
 			       curr.transform.parent.name != "StartPlatform" &&
-			       curr.transform.parent.name != "PrefabContainer")
+			       curr.transform.parent.name != "PrefabContainer" &&
+			       curr.transform.parent.name != "TutorialTerrain")
 			{
 				curr = curr.gameObject.transform.parent.gameObject;
 			} 

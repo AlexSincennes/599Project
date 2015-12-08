@@ -16,6 +16,7 @@ public class GlowOutline : MonoBehaviour {
 		outline = GetComponent<Outline> ();
 		minAlpha = (minAlpha > maxAlpha) ? maxAlpha : (minAlpha < 0) ? 0 : (minAlpha > 255) ? 255 : minAlpha;
 		maxAlpha = (maxAlpha < minAlpha) ? minAlpha : (maxAlpha < 0) ? 0 : (maxAlpha > 255) ? 255 : maxAlpha;
+		outline.effectColor = new Color (outline.effectColor.r, outline.effectColor.g, outline.effectColor.b, (minAlpha + 1)/255f);
 		fadingIn = true;
 	}
 
