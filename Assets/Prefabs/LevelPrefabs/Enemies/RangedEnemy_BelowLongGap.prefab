@@ -1669,7 +1669,8 @@ AudioSource:
   m_GameObject: {fileID: 180536}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300001, guid: 8143dead68d9c437e92f2a4068df5d5d,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1808,7 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240fa2ef830423a4a9bdfaf1086bd5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowFireSound: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
+  arrowFireSound: {fileID: 8300000, guid: e4c6b1cb8e11347de92cbaadfa3ce5f9, type: 3}
   attackDis: 0
   patrolDis: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -2676,7 +2677,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: arrowFireSound
       value: 
-      objectReference: {fileID: 8300000, guid: e4aad35657e624672970fd9f41661114, type: 3}
+      objectReference: {fileID: 8300000, guid: e4c6b1cb8e11347de92cbaadfa3ce5f9, type: 3}
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Terrain
@@ -2685,6 +2686,11 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300001, guid: 8143dead68d9c437e92f2a4068df5d5d,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176750}
