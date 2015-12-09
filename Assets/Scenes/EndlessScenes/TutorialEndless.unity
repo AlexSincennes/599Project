@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -694,6 +696,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf3e64ff3880b0246b21bc6075f77891, type: 2}
   m_IsPrefabParent: 0
+--- !u!225 &462582733 stripped
+CanvasGroup:
+  m_PrefabParentObject: {fileID: 22506200, guid: 01890668d6f71c542b83a16ac70afa6f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1440771435}
 --- !u!1 &463438319
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,11 +738,6 @@ Transform:
   - {fileID: 1246977120}
   m_Father: {fileID: 817743064}
   m_RootOrder: 0
---- !u!225 &462582733 stripped
-CanvasGroup:
-  m_PrefabParentObject: {fileID: 22506200, guid: 01890668d6f71c542b83a16ac70afa6f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1440771435}
 --- !u!4 &475539672 stripped
 Transform:
   m_PrefabParentObject: {fileID: 415260, guid: af7664cb9815d354cac041614f0e3f19, type: 2}
@@ -957,6 +959,10 @@ Prefab:
     - target: {fileID: 429138, guid: 50c7163cc8ff9a9479b805a35976d584, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 143336, guid: 50c7163cc8ff9a9479b805a35976d584, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50c7163cc8ff9a9479b805a35976d584, type: 2}
@@ -1303,6 +1309,10 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07effd9ea8d5c46a1b5d41fe74abf791, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &750608770 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 183164, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
+  m_PrefabInternal: {fileID: 1440771435}
 --- !u!1 &750826674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,10 +1368,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4169dde379d1a45be9fd3b0da6b1a10e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &750608770 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 183164, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-  m_PrefabInternal: {fileID: 1440771435}
 --- !u!4 &755137250 stripped
 Transform:
   m_PrefabParentObject: {fileID: 450724, guid: cf3e64ff3880b0246b21bc6075f77891, type: 2}
@@ -2281,7 +2287,7 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceModuleActive: 0
+  m_AllowActivationOnStandalone: 0
 --- !u!114 &1024998842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,7 +2305,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: .5
-  m_ForceModuleActive: 0
+  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1024998843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,9 +2901,9 @@ Transform:
   - {fileID: 1247678627}
   - {fileID: 98522174}
   - {fileID: 906679266}
-  - {fileID: 755137250}
   - {fileID: 475539672}
   - {fileID: 391610064}
+  - {fileID: 755137250}
   - {fileID: 9220526}
   - {fileID: 1965008140}
   - {fileID: 1454445647}
@@ -3019,6 +3025,10 @@ Prefab:
     - target: {fileID: 2091338, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_ClearFlags
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
+      propertyPath: startSpawnerDist
+      value: 355
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
@@ -4151,6 +4161,10 @@ Transform:
   - {fileID: 1982496251}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!4 &1880311540 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 429138, guid: 50c7163cc8ff9a9479b805a35976d584, type: 2}
+  m_PrefabInternal: {fileID: 591596294}
 --- !u!1 &1898129378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,10 +4220,6 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1192cbcfd51974789a6599701524b2fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &1880311540 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 429138, guid: 50c7163cc8ff9a9479b805a35976d584, type: 2}
-  m_PrefabInternal: {fileID: 591596294}
 --- !u!4 &1926432588 stripped
 Transform:
   m_PrefabParentObject: {fileID: 415260, guid: af7664cb9815d354cac041614f0e3f19, type: 2}
