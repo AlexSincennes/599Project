@@ -416,7 +416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1005700643
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1082193876
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495846, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
@@ -851,6 +851,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1082193876}
   RemoteCamera: {fileID: 0}
   haveShield: 0
+  score: 0
 --- !u!4 &1586116025
 Transform:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1618576251 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 156100, guid: ebffa2b3d9ada3641ae76651e99a294b, type: 2}
@@ -1091,7 +1092,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: basicObj.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: transWeights.Array.size
@@ -1099,7 +1100,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: basicWeights.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 479028, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1131,7 +1132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479028, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: player
@@ -1240,7 +1241,7 @@ Prefab:
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: basicObj.Array.data[12]
       value: 
-      objectReference: {fileID: 167364, guid: d186405efe5afb14296ee31746018dea, type: 2}
+      objectReference: {fileID: 141632, guid: 99488d7dff32d6d439b78673ead4cbff, type: 2}
     - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: basicWeights.Array.data[8]
       value: 10
@@ -1272,6 +1273,10 @@ Prefab:
     - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
+      propertyPath: startMovementSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
