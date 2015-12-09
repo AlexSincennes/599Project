@@ -34,6 +34,10 @@ public class GhostMovement : MonoBehaviour {
 		movementSpeedY = 0f;
 		movementSpeedX = currentMovementSpeed;
         velocity = new Vector3(0,0,0);
+//		AudioListener[] myListeners = GameObject.FindObjectsOfType<AudioListener>();
+//		foreach(AudioListener hidden in myListeners) {
+//			Debug.Log("Found:  " + hidden.gameObject);
+//		}
 	}
 
 	// Update is called once per frame

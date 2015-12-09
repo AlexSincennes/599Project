@@ -73,3 +73,5 @@ ProjectSettings/UnityAnalyticsManager.asset
 ProjectSettings/ProjectSettings.asset
 
 .vs/599Project/v14/.suo
+
+findBrokenMeta.rb

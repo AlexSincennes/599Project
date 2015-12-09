@@ -65,7 +65,7 @@ GameObject:
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &106650
 GameObject:
@@ -331,7 +331,7 @@ GameObject:
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &156138
 GameObject:
@@ -471,7 +471,7 @@ GameObject:
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &189698
 GameObject:
@@ -1408,11 +1408,9 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_TagString
-      value: Terrain
-      objectReference: {fileID: 0}
+    m_Modifications: [{target: {fileID: 0}, propertyPath: m_TagString, value: Terrain,
+        objectReference: {fileID: 0}}, {target: {fileID: 0}, propertyPath: m_StaticEditorFlags,
+        value: 4294967295, objectReference: {fileID: 0}}]
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153632}
