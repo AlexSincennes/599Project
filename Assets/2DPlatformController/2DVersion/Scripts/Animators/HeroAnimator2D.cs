@@ -50,18 +50,18 @@ public class HeroAnimator2D : MonoBehaviour {
 		controller.CharacterAnimationEvent += new RaycastCharacterController2D.CharacterControllerEventDelegate (CharacterAnimationEvent);
 	}
 
-	void Update() {
-		//CheckDirection ();
-		// targetRotation = targetRotation * 
-		//transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, targetRotation.eulerAngles.y, 0.0f);
-		//Ash's Code
-		/*if (((controller.State == CharacterState.WALL_JUMPING) && (controller.monty == 1)) || ((controller.State == CharacterState.FALLING) && (controller.monty == 1)) || ((controller.State == CharacterState.WALL_SLIDING) && (controller.monty == 1))) {
-		} else {
-			transform.localRotation = targetRotation;		
-		}*/
-		//transform.rotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);
-		// transform.localRotation = Quaternion.Euler (Quaternion.Inverse(transform.parent.rotation).eulerAngles.z, result.eulerAngles.y, 0.0f);
-	}
+    //void Update() {
+    //    //CheckDirection ();
+    //    // targetRotation = targetRotation * 
+    //    //transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * Quaternion.Euler (0.0f, targetRotation.eulerAngles.y, 0.0f);
+    //    //Ash's Code
+    //    /*if (((controller.State == CharacterState.WALL_JUMPING) && (controller.monty == 1)) || ((controller.State == CharacterState.FALLING) && (controller.monty == 1)) || ((controller.State == CharacterState.WALL_SLIDING) && (controller.monty == 1))) {
+    //    } else {
+    //        transform.localRotation = targetRotation;		
+    //    }*/
+    //    //transform.rotation = Quaternion.RotateTowards (transform.localRotation, targetRotation, Time.deltaTime * 400.0f);
+    //    // transform.localRotation = Quaternion.Euler (Quaternion.Inverse(transform.parent.rotation).eulerAngles.z, result.eulerAngles.y, 0.0f);
+    //}
 	/// <summary>
 	/// Respond to an animation event.
 	/// </summary>
