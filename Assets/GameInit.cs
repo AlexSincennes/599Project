@@ -9,7 +9,6 @@ public class GameInit : MonoBehaviour {
 	public GameObject RemoteCamera;
 	// Use this for initialization
 	void Start () {
-        //Application.targetFrameRate = 60;
 		GameManagerRG.Instance.player = player;
 		GameManagerRG.Instance.ghost = ghost;
 		GameManagerRG.Instance.UIcanvas = UIcanvas;
@@ -17,4 +16,8 @@ public class GameInit : MonoBehaviour {
 		GameManagerRG.Instance.RemoteCamera = GameObject.FindGameObjectWithTag("Camera");
 	}
 	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 }

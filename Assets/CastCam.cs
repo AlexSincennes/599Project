@@ -21,8 +21,6 @@ public class CastCam : MonoBehaviour {
 			Spawner = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<SpawnScript>();
 			JumpTutorialCG = GameObject.Find("JumpTutorialUI").GetComponent<CanvasGroup>();
 			BlockTutorialCG = GameObject.Find ("BlockTutorialUI").GetComponent<CanvasGroup>();
-            MainCam = GameObject.FindGameObjectWithTag("MainCamera");
-            RemoteCam = GameManagerRG.Instance.RemoteCamera;
 			GameManagerRG.Instance.CastEnabled = false;	
 		}
 		catch
@@ -39,44 +37,32 @@ public class CastCam : MonoBehaviour {
         }
         if (Caster != null && Caster.IsCasting() && !GameManagerRG.Instance.CastEnabled)
         {
-            
+            MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI") | 1 << LayerMask.NameToLayer("UIadd");
+             
             GameManagerRG.Instance.CastEnabled = true;
-
-            RemoteCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default")
-                //| 1 << LayerMask.NameToLayer("TransparentFX") 
-                //| 1 << LayerMask.NameToLayer("IgnoreRaycast") 
-                //| 1 << LayerMask.NameToLayer("Water") 
-                    | 1 << LayerMask.NameToLayer("passthrough")
-                    | 1 << LayerMask.NameToLayer("l12")
-                //| 1 << LayerMask.NameToLayer("Checkpoint") 
-                    | 1 << LayerMask.NameToLayer("enemybody")
-                //| 1 << LayerMask.NameToLayer("door") 
-                    | 1 << LayerMask.NameToLayer("shield")
-                    | 1 << LayerMask.NameToLayer("bullet")
-                //| 1 << LayerMask.NameToLayer("detectionarea")
-                //| 1 << LayerMask.NameToLayer("Destroyers")
-                    | 1 << LayerMask.NameToLayer("UI");
         }
         else if (Caster != null && !Caster.IsCasting() && GameManagerRG.Instance.CastEnabled)
         {
-            RemoteCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("UI") | 1 << LayerMask.NameToLayer("UIadd");
+            MainCam = GameObject.FindGameObjectWithTag("MainCamera");
             MainCam.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Default") 
-				//| 1 << LayerMask.NameToLayer("TransparentFX") 
-					//| 1 << LayerMask.NameToLayer("IgnoreRaycast") 
-					//| 1 << LayerMask.NameToLayer("Water") 
+				| 1 << LayerMask.NameToLayer("TransparentFX") 
+					| 1 << LayerMask.NameToLayer("IgnoreRaycast") 
+					| 1 << LayerMask.NameToLayer("Water") 
 					| 1 << LayerMask.NameToLayer("passthrough") 
 					| 1 << LayerMask.NameToLayer("l12") 
-					//| 1 << LayerMask.NameToLayer("Checkpoint") 
+					| 1 << LayerMask.NameToLayer("Checkpoint") 
 					| 1 << LayerMask.NameToLayer("enemybody") 
-					//| 1 << LayerMask.NameToLayer("door") 
+					| 1 << LayerMask.NameToLayer("door") 
 					| 1 << LayerMask.NameToLayer("shield") 
 					| 1 << LayerMask.NameToLayer("bullet") 
-					//| 1 << LayerMask.NameToLayer("detectionarea")
-					//| 1 << LayerMask.NameToLayer("Destroyers")
+					| 1 << LayerMask.NameToLayer("detectionarea")
+					| 1 << LayerMask.NameToLayer("Destroyers")
                     | 1 << LayerMask.NameToLayer("UI");
-            JumpTutorialCG.alpha = 0f;
-            BlockTutorialCG.alpha = 0f;
+            RemoteCam = GameObject.Find("JumpTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
+            RemoteCam = GameObject.Find("BlockTutorialUI");
+            RemoteCam.GetComponent<CanvasGroup>().alpha = 0f;
             GameManagerRG.Instance.CastEnabled = false;
         }
 		//Fade in the buttons after the spawner starts

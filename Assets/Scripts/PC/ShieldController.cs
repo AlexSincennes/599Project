@@ -18,23 +18,23 @@ public class ShieldController : MonoBehaviour
 	
 	}
 
-    //void Update()
-    //{
-    //    /*
-    //    print("DEFLECT");
-    //    //If the block button was pressed.
-    //    if (ophionInput.blockButtonDown) {
-    //        if(Time.time - lastDeflectTime < deflectTime)
-    //        {
-    //            canDeflect = true;
+	void Update()
+	{
+		/*
+		print("DEFLECT");
+		//If the block button was pressed.
+		if (ophionInput.blockButtonDown) {
+			if(Time.time - lastDeflectTime < deflectTime)
+			{
+				canDeflect = true;
 
-    //        }
-    //        else{
-    //            canDeflect = false;
-    //        }
-    //    }
-    //    */
-    //}
+			}
+			else{
+				canDeflect = false;
+			}
+		}
+		*/
+	}
 
 	void OnTriggerEnter(Collider other) 
 	{
