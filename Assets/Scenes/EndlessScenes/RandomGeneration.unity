@@ -1030,6 +1030,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11416198, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
+      propertyPath: showingTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
   m_IsPrefabParent: 0
