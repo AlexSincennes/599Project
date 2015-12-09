@@ -22,6 +22,7 @@ TagManager:
   - Score
   - TutorialUI
   - DetectionArea
+  - BGM
   layers:
   - Default
   - TransparentFX
