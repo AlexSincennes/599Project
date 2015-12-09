@@ -60,7 +60,7 @@ public class SwipeTest : MonoBehaviour {
 
 			//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
 			float dis = Vector3.Distance (swipStartPos, position);
-			if (dis > 0.5f && isdefend) 
+			if (dis > 1.0f && isdefend) 
 			{
 				sc.defendStartTime = Time.time;
 				isdefend = false;

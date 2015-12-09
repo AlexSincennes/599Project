@@ -201,8 +201,9 @@ public class BulletTest_P : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy" && shooter.name == "Shield") 
 		{
-			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(Enemy1_2.IDLE);
+			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(1);
 			other.transform.parent.gameObject.SetActive(false);
+
 			//Destroy(other.transform.parent.gameObject);
 			Destroy(transform.parent.gameObject);
 		}
