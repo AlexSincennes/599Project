@@ -24,9 +24,11 @@ public class SetUpPhysics2D : MonoBehaviour {
 		foreach (int i in ignoreColliderLayers) {
 			Physics2D.IgnoreLayerCollision(0, i);
 			Physics2D.IgnoreLayerCollision(2, i);
-			Physics2D.IgnoreLayerCollision(character.backgroundLayer, i);
-			Physics2D.IgnoreLayerCollision(character.passThroughLayer, i);
-			Physics2D.IgnoreLayerCollision(character.climableLayer, i);
+			if(character != null){
+				Physics2D.IgnoreLayerCollision(character.backgroundLayer, i);
+				Physics2D.IgnoreLayerCollision(character.passThroughLayer, i);
+				Physics2D.IgnoreLayerCollision(character.climableLayer, i);
+			}
 		}
 
 
