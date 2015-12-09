@@ -122,16 +122,33 @@ public class SpawnScript : MonoBehaviour {
 		started = true;
 	}
 
+	int counter =0;
+	int sumChilds = 0;
+	GameObject temp;
 	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
+		counter = 0;
 		Vector3 spawnPos = transform.position + new Vector3(spawnXOffset, yOffset, 0);
 		Transform prefabTransform = prefabContainer.transform.FindChild(obj[spawnIndex].name + "(Clone)");
 		if (prefabTransform != null && !prefabTransform.gameObject.active)
 		{
 			GameObject prefab = prefabTransform.gameObject;
-			prefab.SetActive(true);
+
 			prefab.transform.position = spawnPos;
 			// TODO(sot): reset prefab
-			Debug.Log ("DEBUG TIM");
+			prefab.SetActive(true);
+
+			sumChilds = prefab.transform.childCount;
+			while(counter < sumChilds)
+			{
+				temp = prefab.transform.GetChild(counter).gameObject;
+				if(!temp.activeInHierarchy)
+				{
+					temp.SetActive(true);
+				}
+				counter ++;
+			}
+
+			//Debug.Log ("DEBUG TIM");
 		}
 		else
 		{

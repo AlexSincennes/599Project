@@ -184,7 +184,7 @@ public class BulletTest_P : MonoBehaviour {
 				float testAngle = Vector3.Dot(new Vector3(1,0,0),arrowVector);
 				float arrowAngle = Mathf.Acos( testAngle)*Mathf.Rad2Deg;
 				float judgeAngle = Mathf.Abs(Mathf.Abs(swipeAngle)-arrowAngle);
-				Debug.Log("judgeAngle: "+judgeAngle);
+				//Debug.Log("judgeAngle: "+judgeAngle);
 				//Debug.Log("papapapapa: " +Mathf.Acos( testAngle)*Mathf.Rad2Deg +" ooooo: "+(Mathf.Abs(swipeAngle)-Mathf.Acos( testAngle)*Mathf.Rad2Deg));
 				//if( angle > lowerBound && angle < upperBound || (upperBound > 360 && angle > lowerBound - 360.0f && angle < upperBound - 360.0f))
 				if(judgeAngle <= deflectBuffer)
@@ -201,7 +201,9 @@ public class BulletTest_P : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy" && shooter.name == "Shield") 
 		{
-			Destroy(other.transform.parent.gameObject);
+			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(Enemy1_2.IDLE);
+			other.transform.parent.gameObject.SetActive(false);
+			//Destroy(other.transform.parent.gameObject);
 			Destroy(transform.parent.gameObject);
 		}
 
