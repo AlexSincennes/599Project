@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 112000001, guid: 08a30f8c5b5c3ff4bae6b1d9dccee407,
     type: 2}
   m_RuntimeCPUUsage: 25
@@ -259,7 +261,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1140,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceModuleActive: 0
+  m_AllowActivationOnStandalone: 0
 --- !u!114 &1005700645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,7 +1159,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: .5
-  m_ForceModuleActive: 0
+  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1005700646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,7 +1854,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495846, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b8e355f0c4821e4a944e13136f57f5b, type: 2}
@@ -2283,7 +2284,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404880, guid: ef7fa5567bb9641aca1bb56a345bd35b, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef7fa5567bb9641aca1bb56a345bd35b, type: 2}
