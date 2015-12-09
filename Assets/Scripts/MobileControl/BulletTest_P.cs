@@ -199,9 +199,16 @@ public class BulletTest_P : MonoBehaviour {
 			}			
 		}
 
+		TweenScale temptsforalert = null;
 		if (other.gameObject.tag == "Enemy" && shooter.name == "Shield") 
 		{
-			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(1);
+			temptsforalert = other.transform.parent.gameObject.GetComponentInChildren<TweenScale>();
+			if(temptsforalert != null)
+			{
+				temptsforalert.gameObject.SetActive(false);
+			}
+
+			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(3);
 			other.transform.parent.gameObject.SetActive(false);
 
 			//Destroy(other.transform.parent.gameObject);
