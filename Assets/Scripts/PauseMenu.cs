@@ -85,7 +85,7 @@ public class PauseMenu : MonoBehaviour {
             PauseUI.SetActive(false);
             RUI.GetComponent<Canvas>().enabled = false;
             CastUI.GetComponent<Canvas>().enabled = false;
-            Time.timeScale = 1.5f;
+            Time.timeScale = 1.2f;
         }
     }
 }
