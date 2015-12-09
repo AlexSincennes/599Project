@@ -60,12 +60,12 @@ public class SwipeTest : MonoBehaviour {
 
 			//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
 			float dis = Vector3.Distance (swipStartPos, position);
-			if (dis > 1 && isdefend) 
+			if (dis > 0.5f && isdefend) 
 			{
 				sc.defendStartTime = Time.time;
 				isdefend = false;
 				float angles = gesture.GetSwipeOrDragAngle();
-				Debug.Log("Swipe Angle: " + angles);
+				//Debug.Log("Swipe Angle: " + angles);
 				if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
 				{
 					Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
