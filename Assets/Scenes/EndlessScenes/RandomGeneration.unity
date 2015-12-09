@@ -1005,12 +1005,12 @@ Prefab:
     - target: {fileID: 11416198, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: comboPattern.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 187d1ebc83e3bde49addca9e715f9ca6,
+      objectReference: {fileID: 21300000, guid: c2eaf20572d479947af924cedd2a2eaf,
         type: 3}
     - target: {fileID: 11416198, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: comboPattern.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: c2eaf20572d479947af924cedd2a2eaf,
+      objectReference: {fileID: 21300000, guid: 187d1ebc83e3bde49addca9e715f9ca6,
         type: 3}
     - target: {fileID: 11416198, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: comboPattern.Array.data[2]
