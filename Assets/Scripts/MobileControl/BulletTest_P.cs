@@ -210,7 +210,7 @@ public class BulletTest_P : MonoBehaviour {
 
 			other.transform.parent.gameObject.GetComponent<Enemy1_2>().SetState(3);
 			other.transform.parent.gameObject.SetActive(false);
-
+			GameManagerRG.Instance.score += 10;
 			//Destroy(other.transform.parent.gameObject);
 			Destroy(transform.parent.gameObject);
 		}
