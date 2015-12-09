@@ -358,7 +358,7 @@ GameObject:
   - 4: {fileID: 434586}
   - 114: {fileID: 11484926}
   m_Layer: 0
-  m_Name: Combo_PitfallFront
+  m_Name: RangedEnemy_PitfallFront
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

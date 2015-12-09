@@ -628,7 +628,7 @@ GameObject:
   - 4: {fileID: 466956}
   - 114: {fileID: 11442330}
   m_Layer: 0
-  m_Name: RangedEnemy_Below
+  m_Name: RangedEnemy_BelowLongGap
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
