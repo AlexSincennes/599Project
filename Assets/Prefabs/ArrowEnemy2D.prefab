@@ -121,7 +121,7 @@ GameObject:
   - 4: {fileID: 492664}
   - 212: {fileID: 21202834}
   - 114: {fileID: 11483564}
-  m_Layer: 31
+  m_Layer: 8
   m_Name: alertSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
