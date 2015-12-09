@@ -1251,6 +1251,18 @@ Prefab:
       propertyPath: remoteAudioListener
       value: 
       objectReference: {fileID: 364710855}
+    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
+      propertyPath: configuration.frameRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
+      propertyPath: configuration.resolution
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467948, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
+      propertyPath: configuration.targetDelay
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc8f90af760314e868c4d6f32515226c, type: 2}
   m_IsPrefabParent: 0
