@@ -9,6 +9,10 @@ public class SpawnScript : MonoBehaviour {
 	public float startSpawnerDist = 355f;	//The world x position at which to start the spawner
 	public GameObject[] basicObj;
 	public float[] basicWeights;
+	public float[] BlandWeights;
+	public float[] MildWeights;
+	public float[] SpicyWeights;
+	public float[] CrazyWeights;
 	public GameObject[] transObj;
 	public float[] transWeights;
 	public Transform ghostTransform;
@@ -39,6 +43,7 @@ public class SpawnScript : MonoBehaviour {
 		if (Application.loadedLevel != 2) {
 			InitSpawner();
 		}
+		System.Array.Copy(BlandWeights, basicWeights, BlandWeights.Length);
 	}
 
 	void Update(){
@@ -122,15 +127,33 @@ public class SpawnScript : MonoBehaviour {
 		started = true;
 	}
 
+	int ContainerCounter;
 	int counter =0;
 	int sumChilds = 0;
 	GameObject temp;
+	Transform tempgo;
 	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
 		counter = 0;
+		ContainerCounter = 0;
 		Vector3 spawnPos = transform.position + new Vector3(spawnXOffset, yOffset, 0);
-		Transform prefabTransform = prefabContainer.transform.FindChild(obj[spawnIndex].name + "(Clone)");
-		if (prefabTransform != null && !prefabTransform.gameObject.active)
+		sumChilds = prefabContainer.transform.childCount;
+		Transform prefabTransform = null;
+
+		while (ContainerCounter < sumChilds) 
 		{
+			tempgo = prefabContainer.transform.GetChild(ContainerCounter);
+			if(tempgo.name == obj[spawnIndex].name + "(Clone)" &&!tempgo .gameObject.activeInHierarchy)
+			{
+				prefabTransform = tempgo;
+			}
+			
+			ContainerCounter++;
+		}
+
+
+		if (prefabTransform != null )//&& !prefabTransform.gameObject.activeInHierarchy
+		{
+			//Debug.Log (prefabTransform.name+"");
 			GameObject prefab = prefabTransform.gameObject;
 
 			prefab.transform.position = spawnPos;
@@ -161,5 +184,26 @@ public class SpawnScript : MonoBehaviour {
 
 	public bool isStarted(){
 		return started;
+	}
+
+	public void ChangeWeights(float speed)
+	{
+		switch((int)(speed * 10f))
+		{
+		case 70:
+			System.Array.Copy(BlandWeights, basicWeights, BlandWeights.Length);
+			break;
+		case 75:
+			System.Array.Copy(MildWeights, basicWeights, MildWeights.Length);
+			break;
+		case 85:
+			System.Array.Copy(SpicyWeights, basicWeights, SpicyWeights.Length);
+			break;
+		case 95:
+			System.Array.Copy(CrazyWeights, basicWeights, CrazyWeights.Length);
+			break;
+		default:
+			break;
+		}
 	}
 }

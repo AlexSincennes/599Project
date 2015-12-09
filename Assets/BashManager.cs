@@ -25,9 +25,9 @@ public class BashManager : MonoBehaviour {
 	
 		if (Time.timeSinceLevelLoad > tim) {
 
-			curMeter += score;
+			GameManagerRG.Instance.score += score;
 			//print (score);
-            bashValueUI.text = curMeter.ToString();
+			bashValueUI.text = GameManagerRG.Instance.score.ToString();//curmeter
 			tim = Time.timeSinceLevelLoad + delay;
 		}
 	}

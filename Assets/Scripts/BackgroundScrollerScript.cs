@@ -11,12 +11,13 @@ public class BackgroundScrollerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		current = this;
-		Ghost = GameManagerRG.Instance.ghost.GetComponent<GhostMovement> ();
+		if(GameManagerRG.Instance.ghost != null)
+			Ghost = GameManagerRG.Instance.ghost.GetComponent<GhostMovement> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Ghost.movementSpeedX != 0 && Time.timeScale != 0) {
+		if ((Ghost == null || Ghost.movementSpeedX != 0) && Time.timeScale != 0) {
 			pos += speed;
 		}
 		if (pos > 1.0f) {

@@ -31,6 +31,7 @@ public class TransitionGhostDownSlope : MonoBehaviour {
 			//Increase the current movementspeed
 			if(ghostMovement.currentMovementSpeed < ghostMovement.maxMovementSpeed){
 				ghostMovement.currentMovementSpeed += ghostMovement.acceleration;
+				GameManagerRG.Instance.Spawner.GetComponent<SpawnScript>().ChangeWeights(ghostMovement.currentMovementSpeed);
 			}
 			//Reset the ghost's direction and speed
 			ghostMovement.movementSpeedY = 0.0f;

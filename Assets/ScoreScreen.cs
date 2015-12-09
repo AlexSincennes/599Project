@@ -12,7 +12,7 @@ public class ScoreScreen : MonoBehaviour {
 
     public void MainMenu()
     {
-
+		GameManagerRG.Instance.score = 0;
 		CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (CastUI != null)
         {
@@ -38,6 +38,7 @@ public class ScoreScreen : MonoBehaviour {
     }
 
 	public void Restart(){
+		GameManagerRG.Instance.score = 0;
         CastUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (CastUI != null)
         {
@@ -66,6 +67,7 @@ public class ScoreScreen : MonoBehaviour {
 
     public void Exit()
     {
+		GameManagerRG.Instance.score = 0;
         Application.Quit();
     }
 }

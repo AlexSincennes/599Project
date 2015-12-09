@@ -36,6 +36,7 @@ public class Enemy1_2 : MonoBehaviour {
 		}
         walkingSpeed = Speed;
 		myAni = transform.GetComponentInChildren<Animation> ();
+		state = IDLE;
 	}
 	
 	// Update is called once per frame
@@ -78,11 +79,12 @@ public class Enemy1_2 : MonoBehaviour {
 				{
 					temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
 					temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
-				}else if(temp.transform.GetComponentInChildren<BulletTest_Homing>())
-				{
-					temp.transform.GetComponentInChildren<BulletTest_Homing>().shooter = this.transform;
-					temp.transform.GetComponentInChildren<BulletTest_Homing>().target = player;
 				}
+				//else if(temp.transform.GetComponentInChildren<BulletTest_Homing>())
+				//{
+				//	temp.transform.GetComponentInChildren<BulletTest_Homing>().shooter = this.transform;
+				//	temp.transform.GetComponentInChildren<BulletTest_Homing>().target = player;
+				//}
 
 				/*
 				temp.transform.GetComponentInChildren<BulletTest_P>().ifHardCodeAngle = true;

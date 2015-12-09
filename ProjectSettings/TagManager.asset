@@ -68,6 +68,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Terrain
+    uniqueID: 3211132811
+    locked: 0
   - name: Shield
     uniqueID: 1041132615
     locked: 0
