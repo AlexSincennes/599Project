@@ -27,6 +27,10 @@ public class TutorialUIFade : MonoBehaviour {
 			//Check if done fading
 			if(temp < 0){
 				fadingOut = false;
+				if(CG.transform.gameObject.name.Equals("WallJumpTutorialUI"))
+				{
+					CG.transform.gameObject.layer = LayerMask.NameToLayer("UIadd");
+				}
 			}
 		}
 	}

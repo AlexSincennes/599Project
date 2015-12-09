@@ -28,12 +28,17 @@ public class HitBox_2D : MonoBehaviour {
         	ScoreScreen.GetComponent<Canvas>().enabled = true;
 
         BashPlane = GameObject.Find("ScoreCalculator");
-        int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
+		int curmeter = GameManagerRG.Instance.score;//BashPlane.GetComponent<BashManager>().curMeter;
+		//Mason Added
+		BashPlane.SetActive(false);
+		BashPlane = GameObject.Find("TutorialMenu");
+		BashPlane.SetActive(false);
+		//
         if(curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore",curmeter);
-        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+        Score.text = PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
-		Score.text = "Your Score : " + curmeter.ToString();
+		Score.text = curmeter.ToString();
         PauseUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (PauseUI != null)
         {
@@ -85,11 +90,16 @@ public class HitBox_2D : MonoBehaviour {
         	ScoreScreen.GetComponent<Canvas>().enabled = true;
         BashPlane = GameObject.Find("ScoreCalculator");
         int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
+		//Mason Added
+		BashPlane.SetActive(false);
+		BashPlane = GameObject.Find("TutorialMenu");
+		BashPlane.SetActive(false);
+		//
         if (curmeter > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore", curmeter);
-        Score.text = "High Score : " + PlayerPrefs.GetInt("HighScore").ToString();
+        Score.text = PlayerPrefs.GetInt("HighScore").ToString();
 		Score = GameObject.Find("ScoreScreen/YourScore").GetComponent<Text>();
-		Score.text = "Your Score : " + curmeter.ToString ();
+		Score.text = curmeter.ToString ();
         PauseUI = GameObject.FindGameObjectWithTag("RemoteUI");
         if (PauseUI != null)
         {

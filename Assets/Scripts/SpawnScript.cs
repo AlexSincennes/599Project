@@ -29,9 +29,12 @@ public class SpawnScript : MonoBehaviour {
 	private float milestoneXOffset; //Offset x-position used for perfect calculation of next milestone
 	private float nextMilestone;	//Location at which to spawn a milestone transition
 	private Vector3 lastPosition;
+	
+	private GameObject prefabContainer;
 
 	// Use this for initialization
 	void Start (){
+		prefabContainer = new GameObject("PrefabContainer");
 		//Delay initializing the spawner if the loaded level is the tutorial level
 		if (Application.loadedLevel != 2) {
 			InitSpawner();
@@ -40,7 +43,7 @@ public class SpawnScript : MonoBehaviour {
 
 	void Update(){
 		if (ghostTransform == null) {
-			ghostTransform = GameObject.FindGameObjectWithTag ("Ghost").transform;
+			ghostTransform = GameManagerRG.Instance.ghost.transform;
 		}
 		totalTravelDist += transform.position.x - lastPosition.x;
 		if (Application.loadedLevel != 2 || totalTravelDist > startSpawnerDist) {
@@ -119,9 +122,57 @@ public class SpawnScript : MonoBehaviour {
 		started = true;
 	}
 
+	int ContainerCounter;
+	int counter =0;
+	int sumChilds = 0;
+	GameObject temp;
+	Transform tempgo;
 	void Spawn(GameObject[] obj, int spawnIndex, float spawnXOffset){
+		counter = 0;
+		ContainerCounter = 0;
 		Vector3 spawnPos = transform.position + new Vector3(spawnXOffset, yOffset, 0);
-		Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
+		sumChilds = prefabContainer.transform.childCount;
+		Transform prefabTransform = null;
+
+		while (ContainerCounter < sumChilds) 
+		{
+			tempgo = prefabContainer.transform.GetChild(ContainerCounter);
+			if(tempgo.name == obj[spawnIndex].name + "(Clone)" &&!tempgo .gameObject.activeInHierarchy)
+			{
+				prefabTransform = tempgo;
+			}
+			
+			ContainerCounter++;
+		}
+
+
+		if (prefabTransform != null )//&& !prefabTransform.gameObject.activeInHierarchy
+		{
+			//Debug.Log (prefabTransform.name+"");
+			GameObject prefab = prefabTransform.gameObject;
+
+			prefab.transform.position = spawnPos;
+			// TODO(sot): reset prefab
+			prefab.SetActive(true);
+
+			sumChilds = prefab.transform.childCount;
+			while(counter < sumChilds)
+			{
+				temp = prefab.transform.GetChild(counter).gameObject;
+				if(!temp.activeInHierarchy)
+				{
+					temp.SetActive(true);
+				}
+				counter ++;
+			}
+
+			//Debug.Log ("DEBUG TIM");
+		}
+		else
+		{
+			GameObject go = (GameObject)Instantiate(obj[spawnIndex], spawnPos, Quaternion.identity);
+			go.transform.parent = prefabContainer.transform;
+		}
 		//Set the genDist so that a new object is "generated" after traveling half the length of the spawned prefab
 		genDist = obj[spawnIndex].GetComponent<PrefabAttributes>().Length / 2.0f;
 	}

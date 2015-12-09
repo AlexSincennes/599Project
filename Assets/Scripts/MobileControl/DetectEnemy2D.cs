@@ -13,25 +13,25 @@ public class DetectEnemy2D : MonoBehaviour {
 	
 	}
 
-	void OnTriggerStay2D(Collider2D other) 
+	//void OnTriggerStay2D(Collider2D other) 
+	//{
+	//}
+	void OnTriggerEnter2D(Collider2D other)
 	{
-		//Debug.Log ("lalala");
+		//if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
+		//	transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (2);
+
+		//if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
+		//	transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.FOLLOW);
+
 		if (other.gameObject.tag == "Player") 
 		{
 			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
 				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (2);
-            
-        }
 			
+		}
 	}
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		if(transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
-			transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (2);
 
-		if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
-			transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.FOLLOW);
-	}
 
 	void OnTriggerExit2D(Collider2D other) 
 	{
@@ -39,14 +39,14 @@ public class DetectEnemy2D : MonoBehaviour {
 		if (other.gameObject.tag == "Player") 
 		{
 			if(transform.parent.gameObject.GetComponent<Enemy1_2> ())
-				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (1);
-            if (transform.parent.gameObject.GetComponent<EnemyStandStill>())
-                transform.parent.gameObject.GetComponent<EnemyStandStill>().SetState(1);
-            if (transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
-				transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (1);
+				transform.parent.gameObject.GetComponent<Enemy1_2> ().SetState (3);
+            //if (transform.parent.gameObject.GetComponent<EnemyStandStill>())
+            //    transform.parent.gameObject.GetComponent<EnemyStandStill>().SetState(1);
+           // if (transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ())
+			//	transform.parent.gameObject.GetComponentInChildren<EnemyMelee> ().SetState (1);
 
-			if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
-				transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.WALK);
+			//if(transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ())
+			//	transform.parent.gameObject.GetComponentInChildren<Enemy_Melee> ().SetState (Enemy_Melee.WALK);
 		}
 			
 	}

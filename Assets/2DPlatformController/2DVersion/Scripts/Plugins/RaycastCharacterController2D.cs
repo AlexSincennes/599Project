@@ -101,7 +101,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 	/// less apparent. Static so it is the same across all components.
 	/// WARNING: If this is too large your character can fall through the ground, or move through small platforms.
 	/// </summary>
-	public static float maxFrameTime = 0.033f;
+	public static float maxFrameTime = 0.3f;
 
 	//Ash's Code Wall Jump Variables
 	public int dir;
@@ -699,7 +699,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					}
 					
 					/// Update wall slide
-					if ((wall.canWallSlide || wall.canWallJump) && !grounded) {
+					if ((wall.canWallSlide || wall.canWallJump) && !grounded && Vector3.Dot(velocity, new Vector3(0.0f, hitsides2D.point.y - myTransform.position.y, 0.0f)) < 0) {
 						if ((sides [i] == highestSideColliders [1] || sides [i] == highestSideColliders [0])&& (hitsides2D.collider.CompareTag("WALLJUMP"))) { //Changed Ash's Code
 							if (hitsides2D.fraction * (sides[i].distance + additionalDistance) <= sides [i].distance + wall.wallSlideAdditionalDistance) {
 								wallSlideCount++;
@@ -1311,7 +1311,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 			if ((!IsGrounded (groundedLookAhead, false) && !hasHitFeet) || jumpButtonTimer > 0.0f) {
 				State = CharacterState.AIRBORNE;
 				//Ash's Code
-				if(dir == 1){
+				/*if(dir == 1){
 
 					h1.Rotate(new Vector3(0,1,0),180);
 					//directionChecker.UpdateDirection(this);
@@ -1322,7 +1322,7 @@ public class RaycastCharacterController2D : MonoBehaviour {
 					//directionChecker.UpdateDirection(this);
 					monty = 1;
 					dir =0;
-				}
+				}*/
 			}
 			
 			if (velocity.y < jump.fallVelocity) {

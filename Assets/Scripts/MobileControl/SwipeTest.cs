@@ -10,6 +10,9 @@ public class SwipeTest : MonoBehaviour {
 	public ShieldControl2D sc; 
 	private bool isdefend = false;
 	private Vector3 swipStartPos;
+	
+	public AudioClip jumpSound;
+	
 	// Subscribe to events
 	void OnEnable(){
 		EasyTouch.On_SwipeStart += On_SwipeStart;
@@ -57,12 +60,12 @@ public class SwipeTest : MonoBehaviour {
 
 			//Debug.Log (Vector3.Distance(pos,position) +"hahaha");
 			float dis = Vector3.Distance (swipStartPos, position);
-			if (dis > 1 && isdefend) 
+			if (dis > 1.0f && isdefend) 
 			{
 				sc.defendStartTime = Time.time;
 				isdefend = false;
 				float angles = gesture.GetSwipeOrDragAngle();
-				Debug.Log("Swipe Angle: " + angles);
+				//Debug.Log("Swipe Angle: " + angles);
 				if ((angles > 135.0f && angles < 180.0f) || (angles > -180.0f && angles < -135.0f)) 
 				{
 					Hero.GetComponentInChildren<ShieldControl2D>().isBashing = true;
@@ -101,7 +104,10 @@ public class SwipeTest : MonoBehaviour {
 	{
 		//Debug.Log (Screen.width);
 		if(gesture.position.x < Screen.width * 0.3f)
+		{
 			Hero.GetComponent<SimpleCharacterInput> ().jump = true;
+			GetComponent<AudioSource>().PlayOneShot(jumpSound);
+		}
 
 	}
 

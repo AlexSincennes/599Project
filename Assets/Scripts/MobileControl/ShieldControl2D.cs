@@ -30,10 +30,10 @@ public class ShieldControl2D : MonoBehaviour {
 		//lastTime = 0;
 		
 		//set directionshield to default status
-		directionShield.transform.localPosition = new Vector3 (0,0.2f,0f);
+		//directionShield.transform.localPosition = new Vector3 (0,0.2f,0f);
 		directionShield.transform.localEulerAngles = new Vector3 (0,0,0);
 		directionShield.SetActive (false);
-		playerGO = GameObject.Find("Character2D");//GameManager.Instance.player;
+		playerGO = GameManagerRG.Instance.player;//GameManager.Instance.player;
 
 		isStartDefending = isStartbashing=isStartShield=false;
 		lastTime = 0;
@@ -86,9 +86,9 @@ public class ShieldControl2D : MonoBehaviour {
 			{
 				shieldmesh.SetActive(false);
 
-				directionShield.transform.localPosition = new Vector3 (Mathf.Cos(angle*Mathf.Deg2Rad),Mathf.Sin(angle*Mathf.Deg2Rad)+0.2f,0f);
+				//directionShield.transform.localPosition = new Vector3 (Mathf.Cos(angle*Mathf.Deg2Rad),Mathf.Sin(angle*Mathf.Deg2Rad)+0.2f,0f);
 				//Debug.Log(directionShield.transform.localPosition);
-				directionShield.transform.localEulerAngles = new Vector3 (0,0,angle);
+				transform.localEulerAngles = new Vector3 (0,0,angle);
 				directionShield.SetActive (true);												
 						
 			}

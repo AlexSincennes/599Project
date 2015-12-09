@@ -6,6 +6,7 @@ public class BulletTest : MonoBehaviour {
     //private float dis;
     //private Vector3 targetposion;
     //private bool isLeft = false;
+    
     public int i=0;
 	public static GameObject spawnpoint = null;
 	public static GameObject player = null;
@@ -114,6 +115,7 @@ public class BulletTest : MonoBehaviour {
 				//transform.GetComponent<Rigidbody>().c
 				//transform.GetComponent<Rigidbody>().isKinematic = false;
 				shooter = other.transform;
+				
 			}
 
 

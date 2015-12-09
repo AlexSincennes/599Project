@@ -7,6 +7,8 @@ public class Enemy1_2 : MonoBehaviour {
 	public const int IDLE = 3;
 	public const int GETHIT = 4;
 	
+	public AudioClip arrowFireSound;
+	
 	public float attackDis;
 	public float patrolDis;
 	public Vector3 targetPosition;
@@ -30,10 +32,11 @@ public class Enemy1_2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(player == null) {
-			player = GameObject.FindGameObjectWithTag("Player").transform;
+			player = GameManagerRG.Instance.player.transform;
 		}
         walkingSpeed = Speed;
 		myAni = transform.GetComponentInChildren<Animation> ();
+		state = IDLE;
 	}
 	
 	// Update is called once per frame
@@ -70,15 +73,18 @@ public class Enemy1_2 : MonoBehaviour {
 			if(Time.time - lastAttackTime > attackRate)
 			{ 
 				GameObject temp = (GameObject) Instantiate( Bullet, Bow.position,Bullet.transform.rotation );
+				// Play sound
+				GetComponent<AudioSource>().PlayOneShot(arrowFireSound);
 				if(temp.transform.GetComponentInChildren<BulletTest_P>())
 				{
 					temp.transform.GetComponentInChildren<BulletTest_P>().shooter = this.transform;
 					temp.transform.GetComponentInChildren<BulletTest_P>().enemy = player;
-				}else if(temp.transform.GetComponentInChildren<BulletTest_Homing>())
-				{
-					temp.transform.GetComponentInChildren<BulletTest_Homing>().shooter = this.transform;
-					temp.transform.GetComponentInChildren<BulletTest_Homing>().target = player;
 				}
+				//else if(temp.transform.GetComponentInChildren<BulletTest_Homing>())
+				//{
+				//	temp.transform.GetComponentInChildren<BulletTest_Homing>().shooter = this.transform;
+				//	temp.transform.GetComponentInChildren<BulletTest_Homing>().target = player;
+				//}
 
 				/*
 				temp.transform.GetComponentInChildren<BulletTest_P>().ifHardCodeAngle = true;

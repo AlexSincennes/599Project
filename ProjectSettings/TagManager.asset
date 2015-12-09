@@ -56,6 +56,39 @@ TagManager:
   - bullet
   - detectionarea
   m_SortingLayers:
+  - name: BGSky
+    uniqueID: 949762155
+    locked: 0
+  - name: BGMountain
+    uniqueID: 2659433739
+    locked: 0
+  - name: BGStructure
+    uniqueID: 1552693615
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 3211132811
+    locked: 0
+  - name: Shield
+    uniqueID: 1041132615
+    locked: 0
+  - name: LeftArm
+    uniqueID: 1102900365
+    locked: 0
+  - name: LeftLeg
+    uniqueID: 3083554495
+    locked: 0
+  - name: RightLeg
+    uniqueID: 2050555193
+    locked: 0
+  - name: Torso
+    uniqueID: 4180288455
+    locked: 0
+  - name: RightArm
+    uniqueID: 2101193691
+    locked: 0
+  - name: UI
+    uniqueID: 1544503981
     locked: 0
