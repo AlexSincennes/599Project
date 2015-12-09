@@ -18,6 +18,7 @@ public class GameManagerRG : MonoBehaviour {
 	public GameObject MainCamera;
 	public GameObject RemoteCamera;
 	public bool haveShield = false;
+	public int score;
 
 	void Awake()
 	{

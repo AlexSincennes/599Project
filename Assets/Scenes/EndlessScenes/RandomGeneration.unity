@@ -851,6 +851,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1082193876}
   RemoteCamera: {fileID: 0}
   haveShield: 0
+  score: 0
 --- !u!4 &1586116025
 Transform:
   m_ObjectHideFlags: 0
