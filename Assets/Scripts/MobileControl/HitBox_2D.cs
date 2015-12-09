@@ -89,7 +89,7 @@ public class HitBox_2D : MonoBehaviour {
 		if(ScoreScreen != null)
         	ScoreScreen.GetComponent<Canvas>().enabled = true;
         BashPlane = GameObject.Find("ScoreCalculator");
-        int curmeter = BashPlane.GetComponent<BashManager>().curMeter;
+		int curmeter = GameManagerRG.Instance.score;//BashPlane.GetComponent<BashManager>().curMeter;
 		//Mason Added
 		BashPlane.SetActive(false);
 		BashPlane = GameObject.Find("TutorialMenu");

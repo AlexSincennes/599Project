@@ -9,6 +9,10 @@ public class SpawnScript : MonoBehaviour {
 	public float startSpawnerDist = 355f;	//The world x position at which to start the spawner
 	public GameObject[] basicObj;
 	public float[] basicWeights;
+	public float[] BlandWeights;
+	public float[] MildWeights;
+	public float[] SpicyWeights;
+	public float[] CrazyWeights;
 	public GameObject[] transObj;
 	public float[] transWeights;
 	public Transform ghostTransform;
@@ -39,6 +43,7 @@ public class SpawnScript : MonoBehaviour {
 		if (Application.loadedLevel != 2) {
 			InitSpawner();
 		}
+		System.Array.Copy(BlandWeights, basicWeights, BlandWeights.Length);
 	}
 
 	void Update(){
@@ -179,5 +184,26 @@ public class SpawnScript : MonoBehaviour {
 
 	public bool isStarted(){
 		return started;
+	}
+
+	public void ChangeWeights(float speed)
+	{
+		switch((int)(speed * 10f))
+		{
+		case 70:
+			System.Array.Copy(BlandWeights, basicWeights, BlandWeights.Length);
+			break;
+		case 75:
+			System.Array.Copy(MildWeights, basicWeights, MildWeights.Length);
+			break;
+		case 85:
+			System.Array.Copy(SpicyWeights, basicWeights, SpicyWeights.Length);
+			break;
+		case 95:
+			System.Array.Copy(CrazyWeights, basicWeights, CrazyWeights.Length);
+			break;
+		default:
+			break;
+		}
 	}
 }

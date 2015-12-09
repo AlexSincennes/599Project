@@ -17,6 +17,7 @@ public class GameManagerRG : MonoBehaviour {
 	public GameObject UIcanvas;
 	public GameObject MainCamera;
 	public GameObject RemoteCamera;
+	public GameObject Spawner;
 	public bool haveShield = false;
 	public int score;
 
