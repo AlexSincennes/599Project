@@ -1768,7 +1768,9 @@ MonoBehaviour:
   UIcanvas: {fileID: 0}
   MainCamera: {fileID: 0}
   RemoteCamera: {fileID: 0}
+  Spawner: {fileID: 0}
   haveShield: 0
+  score: 0
 --- !u!4 &1327279441
 Transform:
   m_ObjectHideFlags: 0
