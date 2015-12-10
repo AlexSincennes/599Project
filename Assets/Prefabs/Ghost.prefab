@@ -1547,9 +1547,9 @@ MonoBehaviour:
   curCombo: 0
   TipSprite: {fileID: 21211484}
   comboPattern:
-  - {fileID: 21300000, guid: 0cddd6a3198b24c4a93f051e3f7d77f9, type: 3}
-  - {fileID: 21300000, guid: 98cca49df5b238c4fbbcca004fa5ac11, type: 3}
-  - {fileID: 21300000, guid: 5d12f905e119f95458a879ff29c19a9e, type: 3}
+  - {fileID: 21300000, guid: c2eaf20572d479947af924cedd2a2eaf, type: 3}
+  - {fileID: 21300000, guid: 187d1ebc83e3bde49addca9e715f9ca6, type: 3}
+  - {fileID: 21300000, guid: 029adf6e34666da43b7cc5bc75a39aa4, type: 3}
   showingTime: 1
 --- !u!114 &11418428
 MonoBehaviour:
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstObjectIndex: 1
   milestoneFreq: 100
-  startSpawnerDist: 0
+  startSpawnerDist: 355
   basicObj:
   - {fileID: 162488, guid: 1e5122b64334f1e45a71212666ee9fa9, type: 2}
   - {fileID: 117604, guid: af7664cb9815d354cac041614f0e3f19, type: 2}

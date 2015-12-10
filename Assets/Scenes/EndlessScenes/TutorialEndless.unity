@@ -3070,40 +3070,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479028, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
       propertyPath: player
       value: 
       objectReference: {fileID: 784874831}
-    - target: {fileID: 456726, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174072, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145858, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2091338, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1744835361
-      objectReference: {fileID: 0}
-    - target: {fileID: 2091338, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_ClearFlags
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11424276, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: startSpawnerDist
-      value: 355
-      objectReference: {fileID: 0}
-    - target: {fileID: 11476752, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 21211484, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 029adf6e34666da43b7cc5bc75a39aa4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01890668d6f71c542b83a16ac70afa6f, type: 2}
   m_IsPrefabParent: 0
