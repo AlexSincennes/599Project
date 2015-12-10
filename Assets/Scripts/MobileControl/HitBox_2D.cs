@@ -62,7 +62,8 @@ public class HitBox_2D : MonoBehaviour {
 		//Debug.Log (other.gameObject.tag );
 		if (other.gameObject.tag == "Enemy") 
 		{
-			Application.LoadLevel(Application.loadedLevel);
+			Die();
+			//Application.LoadLevel(Application.loadedLevel);
 			//GameManager.Instance.deathPos = transform.parent.position;
 			//if(Application.loadedLevel == 2)
 			//GameManager.Instance.curTimes++;
